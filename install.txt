@@ -1,0 +1,22 @@
+常用插件
+https://segmentfault.com/a/1190000019806829
+
+安装与部署
+gitbook init
+gitbook serve
+gitbook build
+
+安装常用插件
+npm install gitbook-plugin-search-pro --registry=https://registry.npm.taobao.org/
+npm install gitbook-plugin-chapter-fold
+npm install gitbook-plugin-splitter
+npm install gitbook-plugin-page-treeview
+npm install gitbook-plugin-back-to-top-button
+npm install gitbook-plugin-edit-link
+npm install gitbook-plugin-popup
+npm install gitbook-plugin-tbfed-pagefooter
+npm install gitbook-plugin-hide-element
+npm install gitbook-plugin-prism
+npm install gitbook-plugin-code
+npm install gitbook-plugin-anchor-navigation-ex
+npm install gitbook-plugin-theme-fexa

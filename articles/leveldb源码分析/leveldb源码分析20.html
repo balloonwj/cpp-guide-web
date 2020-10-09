@@ -1,0 +1,2767 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>leveldb源码分析20 · 高性能服务器开发 技术专栏</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="easy_coder">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-fexa/fexa.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="leveldb源码分析21.html" />
+    
+    
+    <link rel="prev" href="leveldb源码分析19.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+	<div class="header-inner">
+		<!-- LOGO -->
+		<div class="logo"></div>
+		<span class="title"></span>
+
+		<!-- Search -->
+		
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+		<!-- Nav -->
+		<ul class="header-nav">
+			
+		</ul>
+	</div>
+
+	<div class="book-summary">
+		<div class="book-summary-title">文档目录</div>
+		
+		
+		<nav role="navigation">
+			
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Part I</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../C++必知必会的知识点/">
+            
+                <a href="../C++必知必会的知识点/">
+            
+                    
+                    C++必知必会的知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../C++必知必会的知识点/如何成为一名合格的CC++开发者？.html">
+            
+                <a href="../C++必知必会的知识点/如何成为一名合格的CC++开发者？.html">
+            
+                    
+                    如何成为一名合格的C/C++开发者？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../C++必知必会的知识点/不定参数函数实现var_arg系列的宏.html">
+            
+                <a href="../C++必知必会的知识点/不定参数函数实现var_arg系列的宏.html">
+            
+                    
+                    不定参数函数实现var_arg系列的宏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../C++必知必会的知识点/你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                <a href="../C++必知必会的知识点/你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                    
+                    你一定要搞明白的C函数调用方式与栈原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../C++必知必会的知识点/深入理解CC++中的指针.html">
+            
+                <a href="../C++必知必会的知识点/深入理解CC++中的指针.html">
+            
+                    
+                    深入理解C/C++中的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../C++必知必会的知识点/详解C++11中的智能指针.html">
+            
+                <a href="../C++必知必会的知识点/详解C++11中的智能指针.html">
+            
+                    
+                    详解C++11中的智能指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../C++必知必会的知识点/C++17结构化绑定.html">
+            
+                <a href="../C++必知必会的知识点/C++17结构化绑定.html">
+            
+                    
+                    C++17结构化绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../C++必知必会的知识点/C++必须掌握的pimpl惯用法.html">
+            
+                <a href="../C++必知必会的知识点/C++必须掌握的pimpl惯用法.html">
+            
+                    
+                    C++必须掌握的pimpl惯用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../C++必知必会的知识点/用VisualStudio调试Linux程序.html">
+            
+                <a href="../C++必知必会的知识点/用VisualStudio调试Linux程序.html">
+            
+                    
+                    用Visual Studio调试Linux程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../C++必知必会的知识点/如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                <a href="../C++必知必会的知识点/如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                    
+                    如何使用Visual Studio管理和阅读开源项目代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../C++必知必会的知识点/利用cmake工具生成VisualStudio工程文件.html">
+            
+                <a href="../C++必知必会的知识点/利用cmake工具生成VisualStudio工程文件.html">
+            
+                    
+                    利用cmake工具生成Visual Studio工程文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../多线程/">
+            
+                <a href="../多线程/">
+            
+                    
+                    多线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                <a href="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                    
+                    后台C++开发你一定要知道的条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                <a href="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                    
+                    整型变量赋值是原子操作吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../网络编程/">
+            
+                <a href="../网络编程/">
+            
+                    
+                    网络编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../网络编程/bind函数重难点解析.html">
+            
+                <a href="../网络编程/bind函数重难点解析.html">
+            
+                    
+                    bind 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                <a href="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                    
+                    connect 函数在阻塞和非阻塞模式下的行为
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../网络编程/select函数重难点解析.html">
+            
+                <a href="../网络编程/select函数重难点解析.html">
+            
+                    
+                    select 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                <a href="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                    
+                    Linux epoll 模型（含LT 模式和 ET 模式详解）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                <a href="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                    
+                    socket 的阻塞模式和非阻塞模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                <a href="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                    
+                    非阻塞模式下 send 和 recv 函数的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                <a href="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                    
+                    服务器开发通信协议设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                <a href="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                    
+                    TCP 协议如何解决粘包、半包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                <a href="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                    
+                    网络通信中收发数据的正确姿势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                <a href="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                    
+                    服务器端发数据时，如果对端一直不收，怎么办？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../程序员必知必会的网络命令/">
+            
+                <a href="../程序员必知必会的网络命令/">
+            
+                    
+                    程序员必知必会的网络命令
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                <a href="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                    
+                    利用telnet命令发电子邮件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                <a href="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                    
+                    做Java或者C++开发都应该知道的lsof命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                <a href="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                    
+                    Linux网络故障排查的瑞士军刀nc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                <a href="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                    
+                    Linux tcpdump使用详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                <a href="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                    
+                    从抓包的角度分析connect函数的连接过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                <a href="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                    
+                    服务器开发中网络数据分析与故障排查经验漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part II</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../高性能服务器框架设计/">
+            
+                <a href="../高性能服务器框架设计/">
+            
+                    
+                    高性能服务器框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                <a href="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                    
+                    主线程与工作线程的分工
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../高性能服务器框架设计/Reactor模式.html">
+            
+                <a href="../高性能服务器框架设计/Reactor模式.html">
+            
+                    
+                    Reactor模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                <a href="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                    
+                    实例：一个服务器程序的架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                    
+                    错误码系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../高性能服务器框架设计/日志系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/日志系统的设计.html">
+            
+                    
+                    日志系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                <a href="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                    
+                    如何设计断线自动重连机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                <a href="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                    
+                    心跳包机制设计详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                <a href="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                    
+                    业务数据处理一定要单独开线程吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                <a href="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                    
+                    C++ 高性能服务器网络框架设计细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../服务器开发案例实战/">
+            
+                <a href="../服务器开发案例实战/">
+            
+                    
+                    服务器开发案例实战
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../服务器开发案例实战/从零实现一个http服务器.html">
+            
+                <a href="../服务器开发案例实战/从零实现一个http服务器.html">
+            
+                    
+                    从零实现一个http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../服务器开发案例实战/从零实现一款12306刷票软件.html">
+            
+                <a href="../服务器开发案例实战/从零实现一款12306刷票软件.html">
+            
+                    
+                    从零实现一款12306刷票软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../服务器开发案例实战/从零实现一个邮件收发客户端.html">
+            
+                <a href="../服务器开发案例实战/从零实现一个邮件收发客户端.html">
+            
+                    
+                    从零实现一个邮件收发客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../服务器开发案例实战/从零开发一个WebSocket服务器.html">
+            
+                <a href="../服务器开发案例实战/从零开发一个WebSocket服务器.html">
+            
+                    
+                    从零开发一个WebSocket服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../服务器开发案例实战/1从一款多人联机实时对战游戏开始.html">
+            
+                <a href="../服务器开发案例实战/1从一款多人联机实时对战游戏开始.html">
+            
+                    
+                    从零学习开源项目系列（一） 从一款多人联机实时对战游戏开始
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../服务器开发案例实战/2最后一战概况.html">
+            
+                <a href="../服务器开发案例实战/2最后一战概况.html">
+            
+                    
+                    从零学习开源项目系列（二） 最后一战概况
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../服务器开发案例实战/3CSBattleMgr服务源码研究.html">
+            
+                <a href="../服务器开发案例实战/3CSBattleMgr服务源码研究.html">
+            
+                    
+                    从零学习开源项目系列（三） CSBattleMgr服务源码研究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../服务器开发案例实战/4LogServer源码探究.html">
+            
+                <a href="../服务器开发案例实战/4LogServer源码探究.html">
+            
+                    
+                    从零学习开源项目系列（四）LogServer源码探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part III</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../TeamTalk源码解析/">
+            
+                <a href="../TeamTalk源码解析/">
+            
+                    
+                    TeamTalk IM源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../TeamTalk源码解析/01TeamTalk介绍.html">
+            
+                <a href="../TeamTalk源码解析/01TeamTalk介绍.html">
+            
+                    
+                    01 TeamTalk介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../TeamTalk源码解析/02服务器端的程序的编译与部署.html">
+            
+                <a href="../TeamTalk源码解析/02服务器端的程序的编译与部署.html">
+            
+                    
+                    02 服务器端的程序的编译与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../TeamTalk源码解析/03服务器端的程序架构介绍.html">
+            
+                <a href="../TeamTalk源码解析/03服务器端的程序架构介绍.html">
+            
+                    
+                    03 服务器端的程序架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../TeamTalk源码解析/04服务器端db_proxy_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/04服务器端db_proxy_server源码分析.html">
+            
+                    
+                    04 服务器端db_proxy_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../TeamTalk源码解析/05服务器端msg_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/05服务器端msg_server源码分析.html">
+            
+                    
+                    05 服务器端msg_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../TeamTalk源码解析/06服务器端login_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/06服务器端login_server源码分析.html">
+            
+                    
+                    06 服务器端login_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../TeamTalk源码解析/07服务器端msfs源码分析.html">
+            
+                <a href="../TeamTalk源码解析/07服务器端msfs源码分析.html">
+            
+                    
+                    07 服务器端msfs源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.8" data-path="../TeamTalk源码解析/08服务器端file_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/08服务器端file_server源码分析.html">
+            
+                    
+                    08 服务器端file_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.9" data-path="../TeamTalk源码解析/09服务器端route_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/09服务器端route_server源码分析.html">
+            
+                    
+                    09 服务器端route_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.10" data-path="../TeamTalk源码解析/10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                <a href="../TeamTalk源码解析/10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                    
+                    10 开放一个TeamTalk测试服务器地址和几个测试账号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.11" data-path="../TeamTalk源码解析/11pc客户端源码分析.html">
+            
+                <a href="../TeamTalk源码解析/11pc客户端源码分析.html">
+            
+                    
+                    11 pc客户端源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../libevent源码深度剖析/">
+            
+                <a href="../libevent源码深度剖析/">
+            
+                    
+                    libevent源码深度剖析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                    
+                    libevent源码深度剖析01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                    
+                    libevent源码深度剖析02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                    
+                    libevent源码深度剖析03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                    
+                    libevent源码深度剖析04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.5" data-path="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                    
+                    libevent源码深度剖析05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.6" data-path="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                    
+                    libevent源码深度剖析06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.7" data-path="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                    
+                    libevent源码深度剖析07
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.8" data-path="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                    
+                    libevent源码深度剖析08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.9" data-path="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                    
+                    libevent源码深度剖析09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.10" data-path="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                    
+                    libevent源码深度剖析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.11" data-path="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                    
+                    libevent源码深度剖析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.12" data-path="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                    
+                    libevent源码深度剖析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.13" data-path="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                    
+                    libevent源码深度剖析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    leveldb源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="leveldb源码分析1.html">
+            
+                <a href="leveldb源码分析1.html">
+            
+                    
+                    leveldb源码分析1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="leveldb源码分析2.html">
+            
+                <a href="leveldb源码分析2.html">
+            
+                    
+                    leveldb源码分析2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="leveldb源码分析3.html">
+            
+                <a href="leveldb源码分析3.html">
+            
+                    
+                    leveldb源码分析3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="leveldb源码分析4.html">
+            
+                <a href="leveldb源码分析4.html">
+            
+                    
+                    leveldb源码分析4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.5" data-path="leveldb源码分析5.html">
+            
+                <a href="leveldb源码分析5.html">
+            
+                    
+                    leveldb源码分析5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.6" data-path="leveldb源码分析6.html">
+            
+                <a href="leveldb源码分析6.html">
+            
+                    
+                    leveldb源码分析6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.7" data-path="leveldb源码分析7.html">
+            
+                <a href="leveldb源码分析7.html">
+            
+                    
+                    leveldb源码分析7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.8" data-path="leveldb源码分析8.html">
+            
+                <a href="leveldb源码分析8.html">
+            
+                    
+                    leveldb源码分析8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.9" data-path="leveldb源码分析9.html">
+            
+                <a href="leveldb源码分析9.html">
+            
+                    
+                    leveldb源码分析9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.10" data-path="leveldb源码分析10.html">
+            
+                <a href="leveldb源码分析10.html">
+            
+                    
+                    leveldb源码分析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.11" data-path="leveldb源码分析11.html">
+            
+                <a href="leveldb源码分析11.html">
+            
+                    
+                    leveldb源码分析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.12" data-path="leveldb源码分析12.html">
+            
+                <a href="leveldb源码分析12.html">
+            
+                    
+                    leveldb源码分析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.13" data-path="leveldb源码分析13.html">
+            
+                <a href="leveldb源码分析13.html">
+            
+                    
+                    leveldb源码分析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.14" data-path="leveldb源码分析14.html">
+            
+                <a href="leveldb源码分析14.html">
+            
+                    
+                    leveldb源码分析14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.15" data-path="leveldb源码分析15.html">
+            
+                <a href="leveldb源码分析15.html">
+            
+                    
+                    leveldb源码分析15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.16" data-path="leveldb源码分析16.html">
+            
+                <a href="leveldb源码分析16.html">
+            
+                    
+                    leveldb源码分析16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.17" data-path="leveldb源码分析17.html">
+            
+                <a href="leveldb源码分析17.html">
+            
+                    
+                    leveldb源码分析17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.18" data-path="leveldb源码分析18.html">
+            
+                <a href="leveldb源码分析18.html">
+            
+                    
+                    leveldb源码分析18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.19" data-path="leveldb源码分析19.html">
+            
+                <a href="leveldb源码分析19.html">
+            
+                    
+                    leveldb源码分析19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="7.2.20" data-path="leveldb源码分析20.html">
+            
+                <a href="leveldb源码分析20.html">
+            
+                    
+                    leveldb源码分析20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.21" data-path="leveldb源码分析21.html">
+            
+                <a href="leveldb源码分析21.html">
+            
+                    
+                    leveldb源码分析21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.22" data-path="leveldb源码分析22.html">
+            
+                <a href="leveldb源码分析22.html">
+            
+                    
+                    leveldb源码分析22
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Memcached源码分析/">
+            
+                <a href="../Memcached源码分析/">
+            
+                    
+                    Memcached源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Memcached源码分析/00服务器资源调整.html">
+            
+                <a href="../Memcached源码分析/00服务器资源调整.html">
+            
+                    
+                    00 服务器资源调整
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Memcached源码分析/01初始化参数解析.html">
+            
+                <a href="../Memcached源码分析/01初始化参数解析.html">
+            
+                    
+                    01 初始化参数解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../Memcached源码分析/02网络监听的建立.html">
+            
+                <a href="../Memcached源码分析/02网络监听的建立.html">
+            
+                    
+                    02 网络监听的建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../Memcached源码分析/03网络连接建立.html">
+            
+                <a href="../Memcached源码分析/03网络连接建立.html">
+            
+                    
+                    03 网络连接建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.5" data-path="../Memcached源码分析/04内存初始化.html">
+            
+                <a href="../Memcached源码分析/04内存初始化.html">
+            
+                    
+                    04 内存初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.6" data-path="../Memcached源码分析/05资源初始化.html">
+            
+                <a href="../Memcached源码分析/05资源初始化.html">
+            
+                    
+                    05 资源初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.7" data-path="../Memcached源码分析/06get过程.html">
+            
+                <a href="../Memcached源码分析/06get过程.html">
+            
+                    
+                    06 get过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.8" data-path="../Memcached源码分析/07cas属性.html">
+            
+                <a href="../Memcached源码分析/07cas属性.html">
+            
+                    
+                    07 cas属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.9" data-path="../Memcached源码分析/08内存池.html">
+            
+                <a href="../Memcached源码分析/08内存池.html">
+            
+                    
+                    08 内存池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.10" data-path="../Memcached源码分析/09连接队列.html">
+            
+                <a href="../Memcached源码分析/09连接队列.html">
+            
+                    
+                    09 连接队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.11" data-path="../Memcached源码分析/10Hash表操作.html">
+            
+                <a href="../Memcached源码分析/10Hash表操作.html">
+            
+                    
+                    10 Hash表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.12" data-path="../Memcached源码分析/12set操作.html">
+            
+                <a href="../Memcached源码分析/12set操作.html">
+            
+                    
+                    12 set操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.13" data-path="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                <a href="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                    
+                    13 do_item_alloc操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.14" data-path="../Memcached源码分析/14item结构.html">
+            
+                <a href="../Memcached源码分析/14item结构.html">
+            
+                    
+                    14 item结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.15" data-path="../Memcached源码分析/15Hash表扩容.html">
+            
+                <a href="../Memcached源码分析/15Hash表扩容.html">
+            
+                    
+                    15 Hash表扩容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.16" data-path="../Memcached源码分析/16线程交互.html">
+            
+                <a href="../Memcached源码分析/16线程交互.html">
+            
+                    
+                    16 线程交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.17" data-path="../Memcached源码分析/17状态机.html">
+            
+                <a href="../Memcached源码分析/17状态机.html">
+            
+                    
+                    17 状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../游戏开发专题/">
+            
+                <a href="../游戏开发专题/">
+            
+                    
+                    游戏开发专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                <a href="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                    
+                    1 游戏服务器开发的基本体系与服务器端开发的一些建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                <a href="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                    
+                    2 网络游戏服务器开发框架设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                <a href="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                    
+                    3 游戏后端开发需要掌握的知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                <a href="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                    
+                    4 关于游戏服务端架构的整理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                <a href="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                    
+                    5 各类游戏对应的服务端架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                <a href="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                    
+                    6 从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                <a href="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                    
+                    7 QQ游戏百万人同时在线服务器架构实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                    
+                    8 大型多人在线游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                    
+                    9 百万用户级游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                <a href="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                    
+                    10 十万在线的WebGame的数据库设计思路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                    
+                    11 一种高性能网络游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                <a href="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                    
+                    12 经典游戏服务器端架构概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                <a href="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                    
+                    13 游戏跨服架构进化之路
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part IV</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../程序员面试题精讲/">
+            
+                <a href="../程序员面试题精讲/">
+            
+                    
+                    程序员面试题精讲
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                <a href="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                    
+                    腾讯后台开发实习生技能要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                <a href="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                    
+                    聊聊如何拿大厂的 offer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                <a href="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                    
+                    网络通信题目集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                <a href="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                    
+                    我面试后端开发经理的经历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                <a href="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                    
+                    Linux C/C++后端开发面试问哪些问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../职业规划/">
+            
+                <a href="../职业规划/">
+            
+                    
+                    职业规划
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.2.1" data-path="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                <a href="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                    
+                    给工作 4 年迷茫的程序员们的一点建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.2" data-path="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                <a href="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                    
+                    聊聊技术人员的常见的职业问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.3" data-path="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                <a href="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                    
+                    写给那些傻傻想做服务器开发的朋友
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../自我提升与开源代码/">
+            
+                <a href="../自我提升与开源代码/">
+            
+                    
+                    自我提升与开源代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.3.1" data-path="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                <a href="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                    
+                    2020 年好好读一读开源代码吧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../后端开发相关的书籍/">
+            
+                <a href="../后端开发相关的书籍/">
+            
+                    
+                    后端开发相关的书籍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.4.1" data-path="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                <a href="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                    
+                    后台开发应该读的书
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="../程序员的简历/">
+            
+                <a href="../程序员的简历/">
+            
+                    
+                    程序员的简历
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.5.1" data-path="../程序员的简历/程序员如何写简历.html">
+            
+                <a href="../程序员的简历/程序员如何写简历.html">
+            
+                    
+                    程序员如何写简历
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="../程序员的薪资与年终奖那些事儿/">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/">
+            
+                    
+                    程序员的薪资与年终奖那些事儿
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.6.1" data-path="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                    
+                    技术面试与HR谈薪资技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.2" data-path="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                    
+                    聊一聊程序员如何增加收入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.3" data-path="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                    
+                    谈一谈年终奖
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="../程序员的烦心事/">
+            
+                <a href="../程序员的烦心事/">
+            
+                    
+                    程序员的烦心事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.7.1" data-path="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                <a href="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                    
+                    拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7.2" data-path="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                <a href="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                    
+                    我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="../作者的故事/">
+            
+                <a href="../作者的故事/">
+            
+                    
+                    作者的故事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.8.1" data-path="../作者的故事/我的2019.html">
+            
+                <a href="../作者的故事/我的2019.html">
+            
+                    
+                    我的 2019
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8.2" data-path="../作者的故事/我是如何年薪五十万的.html">
+            
+                <a href="../作者的故事/我是如何年薪五十万的.html">
+            
+                    
+                    我是如何年薪五十万的
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+		</nav>
+		
+		
+	</div>
+
+	<!-- Content nav -->
+	<div class="book-anchor">
+		<div class="book-anchor-title">在这篇文章中:</div>
+		<div class="book-anchor-body">
+
+		</div>
+	</div>
+
+	<div class="book-body">
+		
+		<div class="body-inner">
+			
+			
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >leveldb源码分析20</a>
+    </h1>
+</div>
+
+
+
+
+			<div class="page-wrapper" tabindex="-1" role="main">
+				<div class="page-inner">
+					
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+					<section class="normal markdown-section">
+						
+						<div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#leveldb&#x6E90;&#x7801;&#x5206;&#x6790;20"><b></b>leveldb&#x6E90;&#x7801;&#x5206;&#x6790;20</a></li><ul><li><span class="title-icon "></span><a href="#&#x672C;&#x7CFB;&#x5217;&#x300A;leveldb&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;&#x5171;&#x6709;22&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x5341;&#x7BC7;"><b></b>&#x672C;&#x7CFB;&#x5217;&#x300A;leveldb&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;&#x5171;&#x6709;22&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x5341;&#x7BC7;</a></li><ul><li><span class="title-icon "></span><a href="#12-db&#x7684;&#x6253;&#x5F00;"><b></b>12 DB&#x7684;&#x6253;&#x5F00;</a></li><li><span class="title-icon "></span><a href="#121-dbopen"><b></b>12.1 DB::Open()</a></li><li><span class="title-icon "></span><a href="#123-dbimpnewdb"><b></b>12.3 DBImp::NewDB()</a></li><li><span class="title-icon "></span><a href="#125-dbimpldeleteobsoletefiles"><b></b>12.5 DBImpl::DeleteObsoleteFiles()</a></li><li><span class="title-icon "></span><a href="#126-dbimplrecoverlogfile"><b></b>12.6 DBImpl::RecoverLogFile()</a></li></ul><li><span class="title-icon "></span><a href="#_1"><b></b> </a></li><ul><li><span class="title-icon "></span><a href="#13-db&#x7684;&#x5173;&#x95ED;&#x9500;&#x6BC1;"><b></b>13 DB&#x7684;&#x5173;&#x95ED;&amp;&#x9500;&#x6BC1;</a></li><li><span class="title-icon "></span><a href="#131-db&#x5173;&#x95ED;"><b></b>13.1 DB&#x5173;&#x95ED;</a></li><li><span class="title-icon "></span><a href="#132-db&#x9500;&#x6BC1;"><b></b>13.2 DB&#x9500;&#x6BC1;</a></li></ul></ul></ul></div><h1 id="leveldb&#x6E90;&#x7801;&#x5206;&#x6790;20"><a name="leveldb&#x6E90;&#x7801;&#x5206;&#x6790;20" class="anchor-navigation-ex-anchor" href="#leveldb&#x6E90;&#x7801;&#x5206;&#x6790;20"><i class="fa fa-link" aria-hidden="true"></i></a>leveldb&#x6E90;&#x7801;&#x5206;&#x6790;20</h1>
+<h2 id="&#x672C;&#x7CFB;&#x5217;&#x300A;leveldb&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;&#x5171;&#x6709;22&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x5341;&#x7BC7;"><a name="&#x672C;&#x7CFB;&#x5217;&#x300A;leveldb&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;&#x5171;&#x6709;22&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x5341;&#x7BC7;" class="anchor-navigation-ex-anchor" href="#&#x672C;&#x7CFB;&#x5217;&#x300A;leveldb&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;&#x5171;&#x6709;22&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x5341;&#x7BC7;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x672C;&#x7CFB;&#x5217;&#x300A;leveldb&#x6E90;&#x7801;&#x5206;&#x6790;&#x300B;&#x5171;&#x6709;22&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x8FD9;&#x662F;&#x7B2C;&#x4E8C;&#x5341;&#x7BC7;</h2>
+<h3 id="12-db&#x7684;&#x6253;&#x5F00;"><a name="12-db&#x7684;&#x6253;&#x5F00;" class="anchor-navigation-ex-anchor" href="#12-db&#x7684;&#x6253;&#x5F00;"><i class="fa fa-link" aria-hidden="true"></i></a>12 DB&#x7684;&#x6253;&#x5F00;</h3>
+<p>&#x5148;&#x5206;&#x6790;LevelDB&#x662F;&#x5982;&#x4F55;&#x6253;&#x5F00;db&#x7684;&#xFF0C;&#x4E07;&#x7269;&#x59CB;&#x4E8E;&#x521B;&#x5EFA;&#x3002;&#x5728;&#x6253;&#x5F00;&#x6D41;&#x7A0B;&#x4E2D;&#x6709;&#x51E0;&#x4E2A;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#xFF1A;<strong>DBImpl()&#xFF0C;DBImpl::Recover, DBImpl::DeleteObsoleteFiles, DBImpl::RecoverLogFile, DBImpl::MaybeScheduleCompaction</strong>&#x3002;</p>
+<h3 id="121-dbopen"><a name="121-dbopen" class="anchor-navigation-ex-anchor" href="#121-dbopen"><i class="fa fa-link" aria-hidden="true"></i></a>12.1 DB::Open()</h3>
+<p>&#x6253;&#x5F00;&#x4E00;&#x4E2A;db&#xFF0C;&#x8FDB;&#x884C;PUT&#x3001;GET&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x662F;&#x524D;&#x9762;&#x7684;&#x9759;&#x6001;&#x51FD;&#x6570;<strong>DB::Open</strong>&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x5982;&#x679C;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#xFF0C;&#x5B83;&#x5C31;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;db&#x6307;&#x9488;&#x3002;&#x524D;&#x9762;&#x8BF4;&#x8FC7;DB&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7C7B;&#xFF0C;&#x5176;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x5728;DBImp&#x7C7B;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;DB&#x7684;&#x5B50;&#x7C7B;&#x3002;
+&#x51FD;&#x6570;&#x58F0;&#x660E;&#x4E3A;&#xFF1A;</p>
+<pre class="language-"><code>Status DB::Open(const Options&amp; options, const std::string&amp;dbname, DB** dbptr);
+</code></pre><p>&#x5206;&#x89E3;&#x6765;&#x770B;&#xFF0C;Open()&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x6709;&#x4EE5;&#x4E0B;5&#x4E2A;&#x6267;&#x884C;&#x6B65;&#x9AA4;&#x3002;
+S1 &#x521B;&#x5EFA;DBImpl&#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x540E;&#x8FDB;&#x5165;<strong>DBImpl::Recover()</strong>&#x51FD;&#x6570;&#x6267;&#x884C;S2&#x548C;S3&#x3002;
+S2 &#x4ECE;&#x5DF2;&#x5B58;&#x5728;&#x7684;db&#x6587;&#x4EF6;&#x6062;&#x590D;db&#x6570;&#x636E;&#xFF0C;&#x6839;&#x636E;CURRENT&#x8BB0;&#x5F55;&#x7684;MANIFEST&#x6587;&#x4EF6;&#x8BFB;&#x53D6;db&#x5143;&#x4FE1;&#x606F;&#xFF1B;&#x8FD9;&#x901A;&#x8FC7;&#x8C03;&#x7528;<strong>VersionSet::Recover()</strong>&#x5B8C;&#x6210;&#x3002;
+S3 &#x7136;&#x540E;&#x8FC7;&#x6EE4;&#x51FA;&#x90A3;&#x4E9B;&#x6700;&#x8FD1;&#x7684;&#x66F4;&#x65B0;log&#xFF0C;&#x524D;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x65B0;&#x52A0;&#x4E86;&#x8FD9;&#x4E9B;log&#xFF0C;&#x4F46;&#x5E76;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x5728;MANIFEST&#x4E2D;&#x3002;&#x7136;&#x540E;&#x4F9D;&#x6B21;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x987A;&#x5E8F;&#xFF0C;&#x8C03;&#x7528;<strong>DBImpl::RecoverLogFile()</strong>&#x4ECE;&#x65E7;&#x5230;&#x65B0;&#x56DE;&#x653E;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;log&#x3002;&#x56DE;&#x653E;log&#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x4FEE;&#x6539;db&#x5143;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;dump&#x4E86;&#x65B0;&#x7684;level 0&#x6587;&#x4EF6;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x5C06;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;VersionEdit&#x5BF9;&#x8C61;&#xFF0C;&#x8BB0;&#x5F55;db&#x5143;&#x4FE1;&#x606F;&#x7684;&#x53D8;&#x52A8;&#x3002;
+S4 &#x5982;&#x679C;<strong>DBImpl::Recover()</strong>&#x8FD4;&#x56DE;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x6267;&#x884C;<strong>VersionSet::LogAndApply()</strong>&#x5E94;&#x7528;VersionEdit&#xFF0C;&#x5E76;&#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x7684;DB&#x4FE1;&#x606F;&#x5230;&#x65B0;&#x7684;MANIFEST&#x6587;&#x4EF6;&#x4E2D;&#x3002;
+S5 &#x6700;&#x540E;&#x5220;&#x9664;&#x4E00;&#x4E9B;&#x8FC7;&#x671F;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x9700;&#x8981;&#x6267;&#x884C;compaction&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#xFF0C;&#x5C31;&#x542F;&#x52A8;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x3002;
+&#x4E0B;&#x9762;&#x5C31;&#x6765;&#x5177;&#x4F53;&#x5206;&#x6790;Open&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5728;Open&#x51FD;&#x6570;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x4E0A;&#x9762;&#x7684;3&#x4E2A;&#x6D41;&#x7A0B;&#x3002;
+S1 &#x9996;&#x5148;&#x521B;&#x5EFA;DBImpl&#x5BF9;&#x8C61;&#xFF0C;&#x9501;&#x5B9A;&#x5E76;&#x8BD5;&#x56FE;&#x505A;Recover&#x64CD;&#x4F5C;&#x3002;Recover&#x64CD;&#x4F5C;&#x7528;&#x6765;&#x5904;&#x7406;&#x521B;&#x5EFA;flag&#xFF0C;&#x6BD4;&#x5982;&#x5B58;&#x5728;&#x5C31;&#x8FD4;&#x56DE;&#x5931;&#x8D25;&#x7B49;&#x7B49;&#xFF0C;&#x5C1D;&#x8BD5;&#x4ECE;&#x5DF2;&#x5B58;&#x5728;&#x7684;sstable&#x6587;&#x4EF6;&#x6062;&#x590D;db&#x3002;&#x5E76;&#x8FD4;&#x56DE;db&#x5143;&#x4FE1;&#x606F;&#x7684;&#x53D8;&#x52A8;&#x4FE1;&#x606F;&#xFF0C;&#x4E00;&#x4E2A;VersionEdit&#x5BF9;&#x8C61;&#x3002;</p>
+<pre class="language-"><code>1DBImpl* impl = newDBImpl(options, dbname);  
+2impl-&gt;mutex_.Lock(); // &#x9501;db  
+3VersionEdit edit;  
+4Status s =impl-&gt;Recover(&amp;edit); // &#x5904;&#x7406;flag&amp;&#x6062;&#x590D;&#xFF1A;create_if_missing,error_if_exists
+</code></pre><p>S2 &#x5982;&#x679C;Recover&#x8FD4;&#x56DE;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x8C03;&#x7528;VersionSet&#x53D6;&#x5F97;&#x65B0;&#x7684;log&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#x2014;&#x2014;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5728;&#x5F53;&#x524D;&#x57FA;&#x7840;&#x4E0A;+1&#xFF0C;&#x51C6;&#x5907;&#x65B0;&#x7684;log&#x6587;&#x4EF6;&#x3002;&#x5982;&#x679C;log&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x6839;&#x636E;log&#x6587;&#x4EF6;&#x521B;&#x5EFA;log::Writer&#x3002;&#x7136;&#x540E;&#x6267;&#x884C;VersionSet::LogAndApply&#xFF0C;&#x6839;&#x636E;edit&#x8BB0;&#x5F55;&#x7684;&#x589E;&#x91CF;&#x53D8;&#x52A8;&#x751F;&#x6210;&#x65B0;&#x7684;current version&#xFF0C;&#x5E76;&#x5199;&#x5165;MANIFEST&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x51FD;&#x6570;<strong>NewFileNumber(){returnnext<em>file_number</em>++;}</strong>&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;<strong>next<em>file_number</em></strong>&#x3002;</p>
+<pre class="language-"><code> 1uint64_t new_log_number = impl-&gt;versions_-&gt;NewFileNumber();
+ 2WritableFile* lfile;
+ 3s = options.env-&gt;NewWritableFile(LogFileName(dbname, new_log_number), &amp;lfile);
+ 4if (s.ok()) {
+ 5    edit.SetLogNumber(new_log_number);
+ 6    impl-&gt;logfile_ = lfile;
+ 7    impl-&gt;logfile_number_ = new_log_number;
+ 8    impl-&gt;log_ = newlog::Writer(lfile);
+ 9    s = impl-&gt;versions_-&gt;LogAndApply(&amp;edit, &amp;impl-&gt;mutex_);
+10}
+</code></pre><p>S3 &#x5982;&#x679C;VersionSet::LogAndApply&#x8FD4;&#x56DE;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x5220;&#x9664;&#x8FC7;&#x671F;&#x6587;&#x4EF6;&#xFF0C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x9700;&#x8981;&#x6267;&#x884C;compaction&#xFF0C;&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x521B;&#x5EFA;&#x7684;DBImpl&#x5BF9;&#x8C61;&#x3002;</p>
+<pre class="language-"><code>1if (s.ok()) {
+2    impl-&gt;DeleteObsoleteFiles();
+3    impl-&gt;MaybeScheduleCompaction();
+4}
+5impl-&gt;mutex_.Unlock();
+6if (s.ok()) *dbptr = impl;
+7return s;
+</code></pre><p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;DB::Open&#x7684;&#x4E3B;&#x9898;&#x903B;&#x8F91;&#x3002;</p>
+<p><strong>12.2 DBImpl::DBImpl()</strong></p>
+<p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x505A;&#x7684;&#x90FD;&#x662F;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#xFF0C;</p>
+<pre class="language-"><code>DBImpl::DBImpl(const Options&amp; options, const std::string&amp;dbname)
+</code></pre><p>&#x9996;&#x5148;&#x662F;&#x521D;&#x59CB;&#x5316;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x76F4;&#x63A5;&#x6839;&#x636E;&#x53C2;&#x6570;&#x8D4B;&#x503C;&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x521D;&#x59CB;&#x5316;&#x3002;Comparator&#x548C;filter policy&#x90FD;&#x662F;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x7684;&#x3002;&#x5728;&#x4F20;&#x9012;option&#x65F6;&#x4F1A;&#x9996;&#x5148;&#x5C06;option&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x5408;&#x6CD5;&#x5316;&#xFF0C;<strong>logfile<em>number</em></strong>&#x521D;&#x59CB;&#x5316;&#x4E3A;0&#xFF0C;&#x6307;&#x9488;&#x521D;&#x59CB;&#x5316;&#x4E3A;NULL&#x3002;
+&#x521B;&#x5EFA;MemTable&#xFF0C;&#x5E76;&#x589E;&#x52A0;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x521B;&#x5EFA;WriteBatch&#x3002;</p>
+<pre class="language-"><code>1mem_(newMemTable(internal_comparator_)),
+2tmp_batch_(new WriteBatch),
+3mem_-&gt;Ref();
+4// &#x7136;&#x540E;&#x5728;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#xFF0C;&#x521B;&#x5EFA;TableCache&#x548C;VersionSet&#x3002;  
+5// &#x4E3A;&#x5176;&#x4ED6;&#x9884;&#x7559;10&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x90FD;&#x7ED9;TableCache.  
+6const int table_cache_size = options.max_open_files - 10;
+7table_cache_ = newTableCache(dbname_, &amp;options_, table_cache_size);
+8versions_ = newVersionSet(dbname_, &amp;options_, table_cache_, &amp;internal_comparator_);
+</code></pre><h3 id=""> </h3>
+<h3 id="123-dbimpnewdb"><a name="123-dbimpnewdb" class="anchor-navigation-ex-anchor" href="#123-dbimpnewdb"><i class="fa fa-link" aria-hidden="true"></i></a>12.3 DBImp::NewDB()</h3>
+<p>&#x5F53;&#x5916;&#x90E8;&#x5728;&#x8C03;&#x7528;DB::Open()&#x65F6;&#x8BBE;&#x7F6E;&#x4E86;option&#x6307;&#x5B9A;&#x5982;&#x679C;db&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x521B;&#x5EFA;&#xFF0C;&#x5982;&#x679C;db&#x4E0D;&#x5B58;&#x5728;leveldb&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x65B0;&#x7684;db&#x3002;&#x5224;&#x65AD;db&#x662F;&#x5426;&#x5B58;&#x5728;&#x7684;&#x4F9D;&#x636E;&#x662F;<strong><db name="">/CURRENT</db></strong>&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x5176;&#x903B;&#x8F91;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
+<pre class="language-"><code> 1// S1&#x9996;&#x5148;&#x751F;&#x4EA7;DB&#x5143;&#x4FE1;&#x606F;&#xFF0C;&#x8BBE;&#x7F6E;comparator&#x540D;&#xFF0C;&#x4EE5;&#x53CA;log&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#x3001;&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#xFF0C;&#x4EE5;&#x53CA;seq no&#x3002;  
+ 2VersionEdit new_db;
+ 3new_db.SetComparatorName(user_comparator()-&gt;Name());
+ 4new_db.SetLogNumber(0);
+ 5new_db.SetNextFile(2);
+ 6new_db.SetLastSequence(0);
+ 7// S2 &#x751F;&#x4EA7;MANIFEST&#x6587;&#x4EF6;&#xFF0C;&#x5C06;db&#x5143;&#x4FE1;&#x606F;&#x5199;&#x5165;MANIFEST&#x6587;&#x4EF6;&#x3002;  
+ 8const std::string manifest = DescriptorFileName(dbname_, 1);
+ 9WritableFile* file;
+10Status s = env_-&gt;NewWritableFile(manifest, &amp;file);
+11if (!s.ok()) return s;
+12{
+13    log::Writer log(file);
+14    std::string record;
+15    new_db.EncodeTo(&amp;record);
+16    s = log.AddRecord(record);
+17    if (s.ok()) s = file-&gt;Close();
+18}
+19delete file;
+20// S3 &#x5982;&#x679C;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x628A;MANIFEST&#x6587;&#x4EF6;&#x540D;&#x5199;&#x5165;&#x5230;CURRENT&#x6587;&#x4EF6;&#x4E2D;  
+21if (s.ok()) s = SetCurrentFile(env_, dbname_, 1);
+22elseenv_-&gt;DeleteFile(manifest);
+23return s;
+</code></pre><p>&#x8FD9;&#x5C31;&#x662F;&#x521B;&#x5EFA;&#x65B0;DB&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
+<p><strong>12.4 DBImpl::Recover()</strong></p>
+<p>&#x51FD;&#x6570;&#x58F0;&#x660E;&#x4E3A;&#xFF1A;</p>
+<pre class="language-"><code>StatusDBImpl::Recover(VersionEdit* edit)
+</code></pre><p>&#x5982;&#x679C;&#x8C03;&#x7528;&#x6210;&#x529F;&#x5219;&#x8BBE;&#x7F6E;VersionEdit&#x3002;Recover&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x662F;&#xFF1A;&#x9996;&#x5148;&#x662F;&#x5904;&#x7406;&#x521B;&#x5EFA;flag&#xFF0C;&#x6BD4;&#x5982;&#x5B58;&#x5728;&#x5C31;&#x8FD4;&#x56DE;&#x5931;&#x8D25;&#x7B49;&#x7B49;&#xFF1B;&#x7136;&#x540E;&#x662F;&#x5C1D;&#x8BD5;&#x4ECE;&#x5DF2;&#x5B58;&#x5728;&#x7684;sstable&#x6587;&#x4EF6;&#x6062;&#x590D;db&#xFF1B;&#x6700;&#x540E;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x6709;&#x5927;&#x4E8E;&#x539F;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;&#x7684;log&#x7F16;&#x53F7;&#x7684;log&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x56DE;&#x653E;log&#xFF0C;&#x66F4;&#x65B0;db&#x6570;&#x636E;&#x3002;&#x56DE;&#x653E;&#x671F;&#x95F4;db&#x53EF;&#x80FD;&#x4F1A;dump&#x65B0;&#x7684;level 0&#x6587;&#x4EF6;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x628A;db&#x5143;&#x4FE1;&#x606F;&#x7684;&#x53D8;&#x52A8;&#x8BB0;&#x5F55;&#x5230;edit&#x4E2D;&#x8FD4;&#x56DE;&#x3002;&#x51FD;&#x6570;&#x903B;&#x8F91;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>S1 &#x521B;&#x5EFA;&#x76EE;&#x5F55;&#xFF0C;&#x76EE;&#x5F55;&#x4EE5;db name&#x547D;&#x540D;&#xFF0C;&#x5FFD;&#x7565;&#x4EFB;&#x4F55;&#x521B;&#x5EFA;&#x9519;&#x8BEF;&#xFF0C;&#x7136;&#x540E;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;d<strong>b name/LOCK</strong>&#x6587;&#x4EF6;&#x9501;&#xFF0C;&#x5931;&#x8D25;&#x5219;&#x8FD4;&#x56DE;&#x3002;</p>
+<pre class="language-"><code>1env_-&gt;CreateDir(dbname_);
+2Status s = env_-&gt;LockFile(LockFileName(dbname_), &amp;db_lock_);
+3if (!s.ok()) return s;
+</code></pre><p>S2 &#x6839;&#x636E;CURRENT&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4EE5;&#x53CA;option&#x53C2;&#x6570;&#x6267;&#x884C;&#x68C0;&#x67E5;&#x3002;
+&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;<strong>&amp;create_is_missing=true</strong>&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x51FD;&#x6570;NewDB()&#x521B;&#x5EFA;&#xFF1B;&#x5426;&#x5219;&#x62A5;&#x9519;&#x3002;
+&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5B58;&#x5728;&amp; error_if_exists=true&#xFF0C;&#x5219;&#x62A5;&#x9519;&#x3002;
+S3 &#x8C03;&#x7528;VersionSet&#x7684;<strong>Recover()</strong>&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x6062;&#x590D;&#x6570;&#x636E;&#x3002;&#x5982;&#x679C;&#x51FA;&#x9519;&#x5219;&#x6253;&#x5F00;&#x5931;&#x8D25;&#xFF0C;&#x6210;&#x529F;&#x5219;&#x5411;&#x4E0B;&#x6267;&#x884C;S4&#x3002;</p>
+<pre class="language-"><code>s = versions_-&gt;Recover();
+</code></pre><p>S4&#x5C1D;&#x8BD5;&#x4ECE;&#x6240;&#x6709;&#x6BD4;manifest&#x6587;&#x4EF6;&#x4E2D;&#x8BB0;&#x5F55;&#x7684;log&#x8981;&#x65B0;&#x7684;log&#x6587;&#x4EF6;&#x4E2D;&#x6062;&#x590D;&#xFF08;&#x524D;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x4F1A;&#x6DFB;&#x52A0;&#x65B0;&#x7684;log&#x6587;&#x4EF6;&#xFF0C;&#x5374;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x5728;manifest&#x4E2D;&#xFF09;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x51FD;&#x6570;PrevLogNumber()&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x7528;&#x4E86;&#xFF0C;&#x4EC5;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x8001;&#x7248;&#x672C;&#x3002;</p>
+<pre class="language-"><code> 1//  S4.1 &#x8FD9;&#x91CC;&#x5148;&#x627E;&#x51FA;&#x6240;&#x6709;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;log&#x6587;&#x4EF6;&#xFF1A;&#x6BD4;manifest&#x6587;&#x4EF6;&#x8BB0;&#x5F55;&#x7684;log&#x7F16;&#x53F7;&#x66F4;&#x65B0;&#x3002;  
+ 2SequenceNumber max_sequence(0);
+ 3const uint64_t min_log = versions_-&gt;LogNumber();
+ 4const uint64_t prev_log = versions_-&gt;PrevLogNumber();
+ 5std::vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">std:</span>:string</span><span class="token punctuation">&gt;</span></span>filenames;
+ 6s = env_-&gt;GetChildren(dbname_, &amp;filenames); // &#x5217;&#x51FA;&#x76EE;&#x5F55;&#x5185;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;  
+ 7uint64_t number;
+ 8FileType type;
+ 9std::vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uint64_t</span><span class="token punctuation">&gt;</span></span>logs;
+10for (size_t i = 0; i &lt; filenames.size(); i++) { // &#x68C0;&#x67E5;log&#x6587;&#x4EF6;&#x662F;&#x5426;&#x6BD4;min log&#x66F4;&#x65B0;  
+11    if (ParseFileName(filenames[i], &amp;number, &amp;type) &amp;&amp; type == kLogFile
+12        &amp;&amp; ((number &gt;= min_log) || (number == prev_log))) {
+13        logs.push_back(number);
+14    }
+15}
+16//  S4.2 &#x627E;&#x5230;log&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x9996;&#x5148;&#x6392;&#x5E8F;&#xFF0C;&#x4FDD;&#x8BC1;&#x6309;&#x7167;&#x751F;&#x6210;&#x987A;&#x5E8F;&#xFF0C;&#x4F9D;&#x6B21;&#x56DE;&#x653E;log&#x3002;&#x5E76;&#x628A;DB&#x5143;&#x4FE1;&#x606F;&#x7684;&#x53D8;&#x52A8;&#xFF08;sstable&#x6587;&#x4EF6;&#x7684;&#x53D8;&#x52A8;&#xFF09;&#x8FFD;&#x52A0;&#x5230;edit&#x4E2D;&#x8FD4;&#x56DE;&#x3002;  
+17std::sort(logs.begin(), logs.end());
+18for (size_t i = 0; i &lt; logs.size(); i++) {
+19    s = RecoverLogFile(logs[i], edit, &amp;max_sequence);
+20    // &#x524D;&#x4E00;&#x7248;&#x53EF;&#x80FD;&#x5728;&#x751F;&#x6210;&#x8BE5;log&#x7F16;&#x53F7;&#x540E;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x5728;MANIFEST&#x4E2D;&#xFF0C;  
+21    //&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x66F4;&#x65B0;VersionSet&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x7F16;&#x53F7;&#x8BA1;&#x6570;&#x5668;  
+22    versions_-&gt;MarkFileNumberUsed(logs[i]);
+23}
+24//  S4.3 &#x66F4;&#x65B0;VersionSet&#x7684;sequence  
+25if (s.ok()) {
+26    if (versions_-&gt;LastSequence() &lt; max_sequence)
+27        versions_-&gt;SetLastSequence(max_sequence);
+28}
+</code></pre><p>&#x4E0A;&#x9762;&#x5C31;&#x662F;Recover&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x3002;</p>
+<h3 id="125-dbimpldeleteobsoletefiles"><a name="125-dbimpldeleteobsoletefiles" class="anchor-navigation-ex-anchor" href="#125-dbimpldeleteobsoletefiles"><i class="fa fa-link" aria-hidden="true"></i></a>12.5 DBImpl::DeleteObsoleteFiles()</h3>
+<p>&#x8FD9;&#x4E2A;&#x662F;&#x5783;&#x573E;&#x56DE;&#x6536;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x6BCF;&#x6B21;compaction&#x548C;recovery&#x4E4B;&#x540E;&#x90FD;&#x4F1A;&#x6709;&#x6587;&#x4EF6;&#x88AB;&#x5E9F;&#x5F03;&#x3002;DeleteObsoleteFiles&#x5C31;&#x662F;&#x5220;&#x9664;&#x8FD9;&#x4E9B;&#x5783;&#x573E;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x5B83;&#x5728;&#x6BCF;&#x6B21;compaction&#x548C;recovery&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x88AB;&#x8C03;&#x7528;&#x3002;
+&#x5176;&#x8C03;&#x7528;&#x70B9;&#x5305;&#x62EC;&#xFF1A;<strong>DBImpl::CompactMemTable,DBImpl::BackgroundCompaction,</strong> &#x4EE5;&#x53CA;DB::Open&#x7684;<strong>recovery</strong>&#x6B65;&#x9AA4;&#x4E4B;&#x540E;&#x3002;
+&#x5B83;&#x4F1A;&#x5220;&#x9664;&#x6240;&#x6709;&#x8FC7;&#x671F;&#x7684;log&#x6587;&#x4EF6;&#xFF0C;&#x6CA1;&#x6709;&#x88AB;&#x4EFB;&#x4F55;level&#x5F15;&#x7528;&#x5230;&#x3001;&#x6216;&#x4E0D;&#x662F;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;compaction&#x7684;output&#x7684;sstable&#x6587;&#x4EF6;&#x3002;
+&#x8BE5;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#xFF0C;&#x5176;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x4E5F;&#x5F88;&#x76F4;&#x89C2;&#xFF0C;&#x5C31;&#x662F;&#x5217;&#x51FA;db&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x5BF9;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6587;&#x4EF6;&#x5206;&#x522B;&#x5224;&#x65AD;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x8FC7;&#x671F;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x5220;&#x9664;&#x4E4B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code> 1// S1 &#x9996;&#x5148;&#xFF0C;&#x786E;&#x4FDD;&#x4E0D;&#x4F1A;&#x5220;&#x9664;pending&#x6587;&#x4EF6;&#xFF0C;&#x5C06;versionset&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x52A0;&#x5165;&#x5230;live&#x4E2D;&#x3002;  
+ 2std::set<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uint64_t</span><span class="token punctuation">&gt;</span></span> live = pending_outputs_;
+ 3versions_-&gt;AddLiveFiles(&amp;live); //&#x8BE5;&#x51FD;&#x6570;&#x5176;&#x540E;&#x5206;&#x6790;  
+ 4                                // S2 &#x5217;&#x4E3E;db&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;  
+ 5std::vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">std:</span>:string</span><span class="token punctuation">&gt;</span></span>filenames;
+ 6env_-&gt;GetChildren(dbname_, &amp;filenames);
+ 7// S3 &#x904D;&#x5386;&#x6240;&#x6709;&#x5217;&#x4E3E;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6839;&#x636E;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#xFF0C;&#x5206;&#x522B;&#x5904;&#x7406;&#xFF1B;  
+ 8uint64_t number;
+ 9FileType type;
+10for (size_t i = 0; i &lt; filenames.size(); i++) {
+11    if (ParseFileName(filenames[i], &amp;number, &amp;type)) {
+12        bool keep = true; //false&#x8868;&#x660E;&#x662F;&#x8FC7;&#x671F;&#x6587;&#x4EF6;  
+13                          // S3.1 kLogFile&#xFF0C;log&#x6587;&#x4EF6;&#xFF0C;&#x6839;&#x636E;log&#x7F16;&#x53F7;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8FC7;&#x671F;  
+14        keep = ((number &gt;= versions_-&gt;LogNumber()) ||
+15            (number == versions_-&gt;PrevLogNumber()));
+16        // S3.2 kDescriptorFile&#xFF0C;MANIFEST&#x6587;&#x4EF6;&#xFF0C;&#x6839;&#x636E;versionset&#x8BB0;&#x5F55;&#x7684;&#x7F16;&#x53F7;&#x5224;&#x65AD;  
+17        keep = (number &gt;= versions_-&gt;ManifestFileNumber());
+18        // S3.3 kTableFile&#xFF0C;sstable&#x6587;&#x4EF6;&#xFF0C;&#x53EA;&#x8981;&#x5728;live&#x4E2D;&#x5C31;&#x4E0D;&#x80FD;&#x5220;&#x9664;  
+19        // S3.4 kTempFile&#xFF0C;&#x5982;&#x679C;&#x662F;&#x6B63;&#x5728;&#x5199;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x53EA;&#x8981;&#x5728;live&#x4E2D;&#x5C31;&#x4E0D;&#x80FD;&#x5220;&#x9664;  
+20        keep = (live.find(number) != live.end());
+21        // S3.5 kCurrentFile,kDBLockFile, kInfoLogFile&#xFF0C;&#x4E0D;&#x80FD;&#x5220;&#x9664;  
+22        keep = true;
+23        // S3.6 &#x5982;&#x679C;keep&#x4E3A;false&#xFF0C;&#x8868;&#x660E;&#x9700;&#x8981;&#x5220;&#x9664;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x662F;table&#x8FD8;&#x8981;&#x4ECE;cache&#x4E2D;&#x5220;&#x9664;  
+24        if (!keep) {
+25            if (type == kTableFile) table_cache_-&gt;Evict(number);
+26            Log(options_.info_log, &quot;Delete type=%d #%lld\n&quot;, type, number);
+27            env_-&gt;DeleteFile(dbname_ + &quot;/&quot; + filenames[i]);
+28        }
+29    }
+30}
+</code></pre><p>&#x8FD9;&#x5C31;&#x662F;&#x5220;&#x9664;&#x8FC7;&#x671F;&#x6587;&#x4EF6;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x5176;&#x4E2D;&#x8C03;&#x7528;&#x5230;&#x4E86;<strong>VersionSet::AddLiveFiles</strong>&#x51FD;&#x6570;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E0D;&#x4F1A;&#x5220;&#x9664;active&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x51FD;&#x6570;DbImpl::MaybeScheduleCompaction()&#x653E;&#x5728;Compaction&#x4E00;&#x8282;&#x5206;&#x6790;&#xFF0C;&#x57FA;&#x672C;&#x903B;&#x8F91;&#x5C31;&#x662F;&#x5982;&#x679C;&#x9700;&#x8981;compaction&#xFF0C;&#x5C31;&#x542F;&#x52A8;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x6267;&#x884C;compaction&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="126-dbimplrecoverlogfile"><a name="126-dbimplrecoverlogfile" class="anchor-navigation-ex-anchor" href="#126-dbimplrecoverlogfile"><i class="fa fa-link" aria-hidden="true"></i></a>12.6 DBImpl::RecoverLogFile()</h3>
+<p>&#x51FD;&#x6570;&#x58F0;&#x660E;&#xFF1A;</p>
+<pre class="language-"><code>StatusRecoverLogFile(uint64_t log_number, VersionEdit* edit,SequenceNumber* max_sequence)
+</code></pre><p>&#x53C2;&#x6570;&#x8BF4;&#x660E;&#xFF1A;
+@log_number&#x662F;&#x6307;&#x5B9A;&#x7684;log&#x6587;&#x4EF6;&#x7F16;&#x53F7;
+@edit&#x8BB0;&#x5F55;db&#x5143;&#x4FE1;&#x606F;&#x7684;&#x53D8;&#x5316;&#x2014;&#x2014;sstable&#x6587;&#x4EF6;&#x53D8;&#x52A8;
+@max_sequence &#x8FD4;&#x56DE;max{log&#x8BB0;&#x5F55;&#x7684;&#x6700;&#x5927;&#x5E8F;&#x53F7;, *max_sequence}
+&#x8BE5;&#x51FD;&#x6570;&#x6253;&#x5F00;&#x6307;&#x5B9A;&#x7684;log&#x6587;&#x4EF6;&#xFF0C;&#x56DE;&#x653E;&#x65E5;&#x5FD7;&#x3002;&#x671F;&#x95F4;&#x53EF;&#x80FD;&#x4F1A;&#x6267;&#x884C;compaction&#xFF0C;&#x751F;&#x4EA7;&#x65B0;&#x7684;level 0sstable&#x6587;&#x4EF6;&#xFF0C;&#x8BB0;&#x5F55;&#x6587;&#x4EF6;&#x53D8;&#x52A8;&#x5230;edit&#x4E2D;&#x3002;
+&#x5B83;&#x58F0;&#x660E;&#x4E86;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x7C7B;LogReporter&#x4EE5;&#x6253;&#x5370;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#xFF0C;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x8BF4;&#x7684;&#xFF0C;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x3002;</p>
+<pre class="language-"><code> 1// S1 &#x6253;&#x5F00;log&#x6587;&#x4EF6;&#x8FD4;&#x56DE;SequentialFile*file&#xFF0C;&#x51FA;&#x9519;&#x5C31;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x5411;&#x4E0B;&#x6267;&#x884C;S2&#x3002;  
+ 2// S2 &#x6839;&#x636E;log&#x6587;&#x4EF6;&#x53E5;&#x67C4;file&#x521B;&#x5EFA;log::Reader&#xFF0C;&#x51C6;&#x5907;&#x8BFB;&#x53D6;log&#x3002;  
+ 3log::Reader reader(file, &amp;reporter, true/*checksum*/, 0/*initial_offset*/);
+ 4// S3 &#x4F9D;&#x6B21;&#x8BFB;&#x53D6;&#x6240;&#x6709;&#x7684;log&#x8BB0;&#x5F55;&#xFF0C;&#x5E76;&#x63D2;&#x5165;&#x5230;&#x65B0;&#x751F;&#x6210;&#x7684;memtable&#x4E2D;&#x3002;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x5230;&#x4E86;&#x6279;&#x91CF;&#x66F4;&#x65B0;&#x63A5;&#x53E3;WriteBatch&#xFF0C;&#x5177;&#x4F53;&#x540E;&#x9762;&#x518D;&#x5206;&#x6790;&#x3002;  
+ 5std::string scratch;
+ 6Slice record;
+ 7WriteBatch batch;
+ 8MemTable* mem = NULL;
+ 9while (reader.ReadRecord(&amp;record, &amp;scratch) &amp;&amp; status.ok()) { // &#x8BFB;&#x53D6;&#x5168;&#x90E8;log  
+10    if (record.size() &lt; 12) { // log&#x6570;&#x636E;&#x9519;&#x8BEF;&#xFF0C;&#x4E0D;&#x6EE1;&#x8DB3;&#x6700;&#x5C0F;&#x957F;&#x5EA6;12  
+11        reporter.Corruption(record.size(), Status::Corruption(&quot;log recordtoo small&quot;));
+12        continue;
+13    }
+14    WriteBatchInternal::SetContents(&amp;batch, record); // log&#x5185;&#x5BB9;&#x8BBE;&#x7F6E;&#x5230;WriteBatch&#x4E2D;  
+15    if (mem == NULL) { // &#x521B;&#x5EFA;memtable  
+16        mem = new MemTable(internal_comparator_);
+17        mem-&gt;Ref();
+18    }
+19    status = WriteBatchInternal::InsertInto(&amp;batch, mem); // &#x63D2;&#x5165;&#x5230;memtable&#x4E2D;  
+20    MaybeIgnoreError(&amp;status);
+21    if (!status.ok()) break;
+22    const SequenceNumber last_seq =
+23        WriteBatchInternal::Sequence(&amp;batch) + WriteBatchInternal::Count(&amp;batch) - 1;
+24    if (last_seq &gt; *max_sequence) *max_sequence = last_seq; // &#x66F4;&#x65B0;max sequence  
+25                                                           // &#x5982;&#x679C;mem&#x7684;&#x5185;&#x5B58;&#x8D85;&#x8FC7;&#x8BBE;&#x7F6E;&#x503C;&#xFF0C;&#x5219;&#x6267;&#x884C;compaction&#xFF0C;&#x5982;&#x679C;compaction&#x51FA;&#x9519;&#xFF0C;  
+26                                                           // &#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;DB::Open&#x5931;&#x8D25;  
+27    if (mem-&gt;ApproximateMemoryUsage() &gt; options_.write_buffer_size) {
+28        status = WriteLevel0Table(mem, edit, NULL);
+29        if (!status.ok()) break;
+30        mem-&gt;Unref(); // &#x91CA;&#x653E;&#x5F53;&#x524D;memtable  
+31        mem = NULL;
+32    }
+33}
+34// S4 &#x626B;&#x5C3E;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x679C;mem != NULL&#xFF0C;&#x8BF4;&#x660E;&#x8FD8;&#x9700;&#x8981;dump&#x5230;&#x65B0;&#x7684;sstable&#x6587;&#x4EF6;&#x4E2D;&#x3002;  
+35if (status.ok() &amp;&amp; mem != NULL) {// &#x5982;&#x679C;compaction&#x51FA;&#x9519;&#xFF0C;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;  
+36    status = WriteLevel0Table(mem, edit, NULL);
+37}
+38if (mem != NULL)mem-&gt;Unref();
+39delete file;
+40return status;
+</code></pre><p>&#x628A;MemTabledump&#x5230;sstable&#x662F;&#x51FD;&#x6570;WriteLevel0Table&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5176;&#x5B9E;&#x8FD9;&#x662F;compaction&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x51C6;&#x5907;&#x653E;&#x5728;compaction&#x4E00;&#x8282;&#x6765;&#x5206;&#x6790;&#x3002;</p>
+<p><strong>12.7 &#x5C0F;&#x7ED3;</strong></p>
+<p>&#x5982;&#x4E0A;DB&#x6253;&#x5F00;&#x7684;&#x903B;&#x8F91;&#x5C31;&#x5DF2;&#x7ECF;&#x5206;&#x6790;&#x5B8C;&#x4E86;&#xFF0C;&#x6253;&#x5F00;&#x903B;&#x8F91;&#x53C2;&#x89C1;DB::Open()&#x4E2D;&#x63CF;&#x8FF0;&#x7684;5&#x4E2A;&#x6B65;&#x9AA4;&#x3002;&#x6B64;&#x5916;&#x8FD8;&#x6709;&#x4E24;&#x4E2A;&#x4E1C;&#x4E1C;&#xFF1A;&#x628A;Memtable dump&#x5230;sstable&#x7684;WriteLevel0Table()&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x53CA;&#x6279;&#x91CF;&#x4FEE;&#x6539;WriteBatch&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x653E;&#x5728;&#x540E;&#x9762;&#x7684;compaction&#x4E00;&#x8282;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x653E;&#x5728;DB&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x4E2D;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;db&#x7684;&#x5173;&#x95ED;&#x3002;</p>
+<h2 id="_1"><a name="_1" class="anchor-navigation-ex-anchor" href="#_1"><i class="fa fa-link" aria-hidden="true"></i></a> </h2>
+<h3 id="13-db&#x7684;&#x5173;&#x95ED;&#x9500;&#x6BC1;"><a name="13-db&#x7684;&#x5173;&#x95ED;&#x9500;&#x6BC1;" class="anchor-navigation-ex-anchor" href="#13-db&#x7684;&#x5173;&#x95ED;&#x9500;&#x6BC1;"><i class="fa fa-link" aria-hidden="true"></i></a>13 DB&#x7684;&#x5173;&#x95ED;&amp;&#x9500;&#x6BC1;</h3>
+<h3 id="131-db&#x5173;&#x95ED;"><a name="131-db&#x5173;&#x95ED;" class="anchor-navigation-ex-anchor" href="#131-db&#x5173;&#x95ED;"><i class="fa fa-link" aria-hidden="true"></i></a>13.1 DB&#x5173;&#x95ED;</h3>
+<p>&#x5916;&#x90E8;&#x8C03;&#x7528;&#x8005;&#x901A;&#x8FC7;DB::Open()&#x83B7;&#x53D6;&#x4E00;&#x4E2A;DB<em>&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5173;&#x95ED;&#x6253;&#x5F00;&#x7684;DB</em>db&#x5BF9;&#x8C61;&#xFF0C;&#x5219;&#x76F4;&#x63A5;delete db&#x5373;&#x53EF;&#xFF0C;&#x8FD9;&#x4F1A;&#x8C03;&#x7528;&#x5230;DBImpl&#x7684;&#x6790;&#x6784;&#x51FD;&#x6570;&#x3002;
+&#x6790;&#x6784;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x7684;5&#x4E2A;&#x903B;&#x8F91;&#xFF1A;
+S1 &#x7B49;&#x5F85;&#x540E;&#x53F0;compaction&#x4EFB;&#x52A1;&#x7ED3;&#x675F;
+S2 &#x91CA;&#x653E;db&#x6587;&#x4EF6;&#x9501;&#xFF0C;<dbname>/lock&#x6587;&#x4EF6;
+S3 &#x5220;&#x9664;VersionSet&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x91CA;&#x653E;MemTable&#x5BF9;&#x8C61;
+S4 &#x5220;&#x9664;log&#x76F8;&#x5173;&#x4EE5;&#x53CA;TableCache&#x5BF9;&#x8C61;
+S5 &#x5220;&#x9664;options&#x7684;block_cache&#x4EE5;&#x53CA;info_log&#x5BF9;&#x8C61;</dbname></p>
+<h3 id="132-db&#x9500;&#x6BC1;"><a name="132-db&#x9500;&#x6BC1;" class="anchor-navigation-ex-anchor" href="#132-db&#x9500;&#x6BC1;"><i class="fa fa-link" aria-hidden="true"></i></a>13.2 DB&#x9500;&#x6BC1;</h3>
+<p>&#x51FD;&#x6570;&#x58F0;&#x660E;&#xFF1A;</p>
+<pre class="language-"><code>StatusDestroyDB(const std::string&amp; dbname, const Options&amp; options)
+</code></pre><p>&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x5220;&#x9664;&#x6389;db&#x7684;&#x6570;&#x636E;&#x5185;&#x5BB9;&#xFF0C;&#x8981;&#x8C28;&#x614E;&#x4F7F;&#x7528;&#x3002;&#x51FD;&#x6570;&#x903B;&#x8F91;&#x4E3A;&#xFF1A;
+S1 &#x83B7;&#x53D6;dbname&#x76EE;&#x5F55;&#x7684;&#x6587;&#x4EF6;&#x5217;&#x8868;&#x5230;filenames&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E3A;&#x7A7A;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x5426;&#x5219;&#x8FDB;&#x5165;S2&#x3002;
+S2 &#x9501;&#x6587;&#x4EF6;<dbname>/lock&#xFF0C;&#x5982;&#x679C;&#x9501;&#x6210;&#x529F;&#x5C31;&#x6267;&#x884C;S3
+S3 &#x904D;&#x5386;filenames&#x6587;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x8FC7;&#x6EE4;&#x6389;lock&#x6587;&#x4EF6;&#xFF0C;&#x4F9D;&#x6B21;&#x8C03;&#x7528;DeleteFile&#x5220;&#x9664;&#x3002;
+S4 &#x91CA;&#x653E;lock&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5220;&#x9664;&#x4E4B;&#xFF0C;&#x7136;&#x540E;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5939;&#x3002;
+Destory&#x5C31;&#x6267;&#x884C;&#x5B8C;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;&#x8BB0;&#x5F55;&#x4E4B;&#xFF0C;&#x4F9D;&#x7136;&#x7EE7;&#x7EED;&#x5220;&#x9664;&#x4E0B;&#x4E00;&#x4E2A;&#x3002;&#x6700;&#x540E;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x3002;
+&#x770B;&#x6765;&#x8FD9;&#x4E00;&#x7AE0;&#x5F88;&#x77ED;&#x5C0F;&#x3002;DB&#x7684;&#x6253;&#x5F00;&#x5173;&#x95ED;&#x5206;&#x6790;&#x5B8C;&#x6BD5;&#x3002; </dbname></p>
+<footer class="page-footer"><span class="copyright">&#x5982;&#x9700;&#x4E0B;&#x8F7D;&#x672C;&#x7AD9;&#x5168;&#x90E8;&#x6280;&#x672F;&#x6587;&#x7AE0;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x3010;&#x9AD8;&#x6027;&#x80FD;&#x670D;&#x52A1;&#x5668;&#x5F00;&#x53D1;&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x5173;&#x952E;&#x5B57;&#x201C;&#x6587;&#x7AE0;&#x4E0B;&#x8F7D;&#x201D;&#x5373;&#x53EF;&#x3002;</span><span class="footer-modification">&#x6700;&#x8FD1;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2020-09-13 18:56:48
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+						
+					</section>
+					
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+		
+		<a href="leveldb源码分析19.html" class="navigation navigation-prev " aria-label="Previous page: leveldb源码分析19">
+			<i class="fa fa-angle-left"></i>
+		</a>
+		
+		
+		<a href="leveldb源码分析21.html" class="navigation navigation-next " aria-label="Next page: leveldb源码分析21">
+			<i class="fa fa-angle-right"></i>
+		</a>
+		
+		
+		
+	</div>
+	<script>
+		var gitbook = gitbook || [];
+		gitbook.push(function() {
+			gitbook.page.hasChanged({"page":{"title":"leveldb源码分析20","level":"7.2.20","depth":2,"next":{"title":"leveldb源码分析21","level":"7.2.21","depth":2,"path":"articles/leveldb源码分析/leveldb源码分析21.md","ref":"articles/leveldb源码分析/leveldb源码分析21.md","articles":[]},"previous":{"title":"leveldb源码分析19","level":"7.2.19","depth":2,"path":"articles/leveldb源码分析/leveldb源码分析19.md","ref":"articles/leveldb源码分析/leveldb源码分析19.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","-lunr","-search","search-pro","splitter","popup","back-to-top-button","hide-element","prism","-highlight","tbfed-pagefooter","code","anchor-navigation-ex","theme-fexa","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"如需下载本站全部技术文章，可以在【高性能服务器开发】公众号回复关键字“文章下载”即可。","modify_label":"最近更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{},"livereload":{},"splitter":{},"search-pro":{},"popup":{},"theme-fexa":{"search-placeholder":"输入关键字搜索","logo":"./logo.png","favicon":"./favicon.ico"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":false,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"easy_coder","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"高性能服务器开发 技术专栏","links":{},"gitbook":"*","description":"","theme-default":{"showLevel":true},"extension":null},"file":{"path":"articles/leveldb源码分析/leveldb源码分析20.md","mtime":"2020-09-13T10:56:48.829Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T15:31:57.905Z"},"basePath":"../..","book":{"language":""}});
+		});
+	</script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-fexa/fexa.js"></script>
+        
+    
+
+    </body>
+</html>
+

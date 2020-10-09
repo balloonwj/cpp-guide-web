@@ -1,0 +1,3264 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>03 服务器端的程序架构介绍 · 高性能服务器开发 技术专栏</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="easy_coder">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-fexa/fexa.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="04服务器端db_proxy_server源码分析.html" />
+    
+    
+    <link rel="prev" href="02服务器端的程序的编译与部署.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+	<div class="header-inner">
+		<!-- LOGO -->
+		<div class="logo"></div>
+		<span class="title"></span>
+
+		<!-- Search -->
+		
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+		<!-- Nav -->
+		<ul class="header-nav">
+			
+		</ul>
+	</div>
+
+	<div class="book-summary">
+		<div class="book-summary-title">文档目录</div>
+		
+		
+		<nav role="navigation">
+			
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Part I</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../C++必知必会的知识点/">
+            
+                <a href="../C++必知必会的知识点/">
+            
+                    
+                    C++必知必会的知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../C++必知必会的知识点/如何成为一名合格的CC++开发者？.html">
+            
+                <a href="../C++必知必会的知识点/如何成为一名合格的CC++开发者？.html">
+            
+                    
+                    如何成为一名合格的C/C++开发者？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../C++必知必会的知识点/不定参数函数实现var_arg系列的宏.html">
+            
+                <a href="../C++必知必会的知识点/不定参数函数实现var_arg系列的宏.html">
+            
+                    
+                    不定参数函数实现var_arg系列的宏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../C++必知必会的知识点/你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                <a href="../C++必知必会的知识点/你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                    
+                    你一定要搞明白的C函数调用方式与栈原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../C++必知必会的知识点/深入理解CC++中的指针.html">
+            
+                <a href="../C++必知必会的知识点/深入理解CC++中的指针.html">
+            
+                    
+                    深入理解C/C++中的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../C++必知必会的知识点/详解C++11中的智能指针.html">
+            
+                <a href="../C++必知必会的知识点/详解C++11中的智能指针.html">
+            
+                    
+                    详解C++11中的智能指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../C++必知必会的知识点/C++17结构化绑定.html">
+            
+                <a href="../C++必知必会的知识点/C++17结构化绑定.html">
+            
+                    
+                    C++17结构化绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../C++必知必会的知识点/C++必须掌握的pimpl惯用法.html">
+            
+                <a href="../C++必知必会的知识点/C++必须掌握的pimpl惯用法.html">
+            
+                    
+                    C++必须掌握的pimpl惯用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../C++必知必会的知识点/用VisualStudio调试Linux程序.html">
+            
+                <a href="../C++必知必会的知识点/用VisualStudio调试Linux程序.html">
+            
+                    
+                    用Visual Studio调试Linux程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../C++必知必会的知识点/如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                <a href="../C++必知必会的知识点/如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                    
+                    如何使用Visual Studio管理和阅读开源项目代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../C++必知必会的知识点/利用cmake工具生成VisualStudio工程文件.html">
+            
+                <a href="../C++必知必会的知识点/利用cmake工具生成VisualStudio工程文件.html">
+            
+                    
+                    利用cmake工具生成Visual Studio工程文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../多线程/">
+            
+                <a href="../多线程/">
+            
+                    
+                    多线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                <a href="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                    
+                    后台C++开发你一定要知道的条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                <a href="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                    
+                    整型变量赋值是原子操作吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../网络编程/">
+            
+                <a href="../网络编程/">
+            
+                    
+                    网络编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../网络编程/bind函数重难点解析.html">
+            
+                <a href="../网络编程/bind函数重难点解析.html">
+            
+                    
+                    bind 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                <a href="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                    
+                    connect 函数在阻塞和非阻塞模式下的行为
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../网络编程/select函数重难点解析.html">
+            
+                <a href="../网络编程/select函数重难点解析.html">
+            
+                    
+                    select 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                <a href="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                    
+                    Linux epoll 模型（含LT 模式和 ET 模式详解）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                <a href="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                    
+                    socket 的阻塞模式和非阻塞模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                <a href="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                    
+                    非阻塞模式下 send 和 recv 函数的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                <a href="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                    
+                    服务器开发通信协议设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                <a href="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                    
+                    TCP 协议如何解决粘包、半包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                <a href="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                    
+                    网络通信中收发数据的正确姿势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                <a href="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                    
+                    服务器端发数据时，如果对端一直不收，怎么办？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../程序员必知必会的网络命令/">
+            
+                <a href="../程序员必知必会的网络命令/">
+            
+                    
+                    程序员必知必会的网络命令
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                <a href="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                    
+                    利用telnet命令发电子邮件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                <a href="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                    
+                    做Java或者C++开发都应该知道的lsof命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                <a href="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                    
+                    Linux网络故障排查的瑞士军刀nc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                <a href="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                    
+                    Linux tcpdump使用详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                <a href="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                    
+                    从抓包的角度分析connect函数的连接过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                <a href="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                    
+                    服务器开发中网络数据分析与故障排查经验漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part II</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../高性能服务器框架设计/">
+            
+                <a href="../高性能服务器框架设计/">
+            
+                    
+                    高性能服务器框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                <a href="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                    
+                    主线程与工作线程的分工
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../高性能服务器框架设计/Reactor模式.html">
+            
+                <a href="../高性能服务器框架设计/Reactor模式.html">
+            
+                    
+                    Reactor模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                <a href="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                    
+                    实例：一个服务器程序的架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                    
+                    错误码系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../高性能服务器框架设计/日志系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/日志系统的设计.html">
+            
+                    
+                    日志系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                <a href="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                    
+                    如何设计断线自动重连机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                <a href="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                    
+                    心跳包机制设计详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                <a href="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                    
+                    业务数据处理一定要单独开线程吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                <a href="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                    
+                    C++ 高性能服务器网络框架设计细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../服务器开发案例实战/">
+            
+                <a href="../服务器开发案例实战/">
+            
+                    
+                    服务器开发案例实战
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../服务器开发案例实战/从零实现一个http服务器.html">
+            
+                <a href="../服务器开发案例实战/从零实现一个http服务器.html">
+            
+                    
+                    从零实现一个http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../服务器开发案例实战/从零实现一款12306刷票软件.html">
+            
+                <a href="../服务器开发案例实战/从零实现一款12306刷票软件.html">
+            
+                    
+                    从零实现一款12306刷票软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../服务器开发案例实战/从零实现一个邮件收发客户端.html">
+            
+                <a href="../服务器开发案例实战/从零实现一个邮件收发客户端.html">
+            
+                    
+                    从零实现一个邮件收发客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../服务器开发案例实战/从零开发一个WebSocket服务器.html">
+            
+                <a href="../服务器开发案例实战/从零开发一个WebSocket服务器.html">
+            
+                    
+                    从零开发一个WebSocket服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../服务器开发案例实战/1从一款多人联机实时对战游戏开始.html">
+            
+                <a href="../服务器开发案例实战/1从一款多人联机实时对战游戏开始.html">
+            
+                    
+                    从零学习开源项目系列（一） 从一款多人联机实时对战游戏开始
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../服务器开发案例实战/2最后一战概况.html">
+            
+                <a href="../服务器开发案例实战/2最后一战概况.html">
+            
+                    
+                    从零学习开源项目系列（二） 最后一战概况
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../服务器开发案例实战/3CSBattleMgr服务源码研究.html">
+            
+                <a href="../服务器开发案例实战/3CSBattleMgr服务源码研究.html">
+            
+                    
+                    从零学习开源项目系列（三） CSBattleMgr服务源码研究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../服务器开发案例实战/4LogServer源码探究.html">
+            
+                <a href="../服务器开发案例实战/4LogServer源码探究.html">
+            
+                    
+                    从零学习开源项目系列（四）LogServer源码探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part III</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    TeamTalk IM源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="01TeamTalk介绍.html">
+            
+                <a href="01TeamTalk介绍.html">
+            
+                    
+                    01 TeamTalk介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="02服务器端的程序的编译与部署.html">
+            
+                <a href="02服务器端的程序的编译与部署.html">
+            
+                    
+                    02 服务器端的程序的编译与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.1.3" data-path="03服务器端的程序架构介绍.html">
+            
+                <a href="03服务器端的程序架构介绍.html">
+            
+                    
+                    03 服务器端的程序架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="04服务器端db_proxy_server源码分析.html">
+            
+                <a href="04服务器端db_proxy_server源码分析.html">
+            
+                    
+                    04 服务器端db_proxy_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="05服务器端msg_server源码分析.html">
+            
+                <a href="05服务器端msg_server源码分析.html">
+            
+                    
+                    05 服务器端msg_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="06服务器端login_server源码分析.html">
+            
+                <a href="06服务器端login_server源码分析.html">
+            
+                    
+                    06 服务器端login_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="07服务器端msfs源码分析.html">
+            
+                <a href="07服务器端msfs源码分析.html">
+            
+                    
+                    07 服务器端msfs源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.8" data-path="08服务器端file_server源码分析.html">
+            
+                <a href="08服务器端file_server源码分析.html">
+            
+                    
+                    08 服务器端file_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.9" data-path="09服务器端route_server源码分析.html">
+            
+                <a href="09服务器端route_server源码分析.html">
+            
+                    
+                    09 服务器端route_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.10" data-path="10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                <a href="10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                    
+                    10 开放一个TeamTalk测试服务器地址和几个测试账号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.11" data-path="11pc客户端源码分析.html">
+            
+                <a href="11pc客户端源码分析.html">
+            
+                    
+                    11 pc客户端源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../libevent源码深度剖析/">
+            
+                <a href="../libevent源码深度剖析/">
+            
+                    
+                    libevent源码深度剖析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                    
+                    libevent源码深度剖析01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                    
+                    libevent源码深度剖析02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                    
+                    libevent源码深度剖析03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                    
+                    libevent源码深度剖析04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.5" data-path="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                    
+                    libevent源码深度剖析05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.6" data-path="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                    
+                    libevent源码深度剖析06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.7" data-path="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                    
+                    libevent源码深度剖析07
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.8" data-path="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                    
+                    libevent源码深度剖析08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.9" data-path="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                    
+                    libevent源码深度剖析09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.10" data-path="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                    
+                    libevent源码深度剖析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.11" data-path="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                    
+                    libevent源码深度剖析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.12" data-path="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                    
+                    libevent源码深度剖析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.13" data-path="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                    
+                    libevent源码深度剖析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../leveldb源码分析/">
+            
+                <a href="../leveldb源码分析/">
+            
+                    
+                    leveldb源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../leveldb源码分析/leveldb源码分析1.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析1.html">
+            
+                    
+                    leveldb源码分析1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../leveldb源码分析/leveldb源码分析2.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析2.html">
+            
+                    
+                    leveldb源码分析2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../leveldb源码分析/leveldb源码分析3.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析3.html">
+            
+                    
+                    leveldb源码分析3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../leveldb源码分析/leveldb源码分析4.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析4.html">
+            
+                    
+                    leveldb源码分析4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.5" data-path="../leveldb源码分析/leveldb源码分析5.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析5.html">
+            
+                    
+                    leveldb源码分析5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.6" data-path="../leveldb源码分析/leveldb源码分析6.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析6.html">
+            
+                    
+                    leveldb源码分析6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.7" data-path="../leveldb源码分析/leveldb源码分析7.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析7.html">
+            
+                    
+                    leveldb源码分析7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.8" data-path="../leveldb源码分析/leveldb源码分析8.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析8.html">
+            
+                    
+                    leveldb源码分析8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.9" data-path="../leveldb源码分析/leveldb源码分析9.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析9.html">
+            
+                    
+                    leveldb源码分析9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.10" data-path="../leveldb源码分析/leveldb源码分析10.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析10.html">
+            
+                    
+                    leveldb源码分析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.11" data-path="../leveldb源码分析/leveldb源码分析11.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析11.html">
+            
+                    
+                    leveldb源码分析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.12" data-path="../leveldb源码分析/leveldb源码分析12.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析12.html">
+            
+                    
+                    leveldb源码分析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.13" data-path="../leveldb源码分析/leveldb源码分析13.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析13.html">
+            
+                    
+                    leveldb源码分析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.14" data-path="../leveldb源码分析/leveldb源码分析14.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析14.html">
+            
+                    
+                    leveldb源码分析14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.15" data-path="../leveldb源码分析/leveldb源码分析15.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析15.html">
+            
+                    
+                    leveldb源码分析15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.16" data-path="../leveldb源码分析/leveldb源码分析16.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析16.html">
+            
+                    
+                    leveldb源码分析16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.17" data-path="../leveldb源码分析/leveldb源码分析17.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析17.html">
+            
+                    
+                    leveldb源码分析17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.18" data-path="../leveldb源码分析/leveldb源码分析18.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析18.html">
+            
+                    
+                    leveldb源码分析18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.19" data-path="../leveldb源码分析/leveldb源码分析19.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析19.html">
+            
+                    
+                    leveldb源码分析19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.20" data-path="../leveldb源码分析/leveldb源码分析20.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析20.html">
+            
+                    
+                    leveldb源码分析20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.21" data-path="../leveldb源码分析/leveldb源码分析21.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析21.html">
+            
+                    
+                    leveldb源码分析21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.22" data-path="../leveldb源码分析/leveldb源码分析22.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析22.html">
+            
+                    
+                    leveldb源码分析22
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Memcached源码分析/">
+            
+                <a href="../Memcached源码分析/">
+            
+                    
+                    Memcached源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Memcached源码分析/00服务器资源调整.html">
+            
+                <a href="../Memcached源码分析/00服务器资源调整.html">
+            
+                    
+                    00 服务器资源调整
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Memcached源码分析/01初始化参数解析.html">
+            
+                <a href="../Memcached源码分析/01初始化参数解析.html">
+            
+                    
+                    01 初始化参数解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../Memcached源码分析/02网络监听的建立.html">
+            
+                <a href="../Memcached源码分析/02网络监听的建立.html">
+            
+                    
+                    02 网络监听的建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../Memcached源码分析/03网络连接建立.html">
+            
+                <a href="../Memcached源码分析/03网络连接建立.html">
+            
+                    
+                    03 网络连接建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.5" data-path="../Memcached源码分析/04内存初始化.html">
+            
+                <a href="../Memcached源码分析/04内存初始化.html">
+            
+                    
+                    04 内存初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.6" data-path="../Memcached源码分析/05资源初始化.html">
+            
+                <a href="../Memcached源码分析/05资源初始化.html">
+            
+                    
+                    05 资源初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.7" data-path="../Memcached源码分析/06get过程.html">
+            
+                <a href="../Memcached源码分析/06get过程.html">
+            
+                    
+                    06 get过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.8" data-path="../Memcached源码分析/07cas属性.html">
+            
+                <a href="../Memcached源码分析/07cas属性.html">
+            
+                    
+                    07 cas属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.9" data-path="../Memcached源码分析/08内存池.html">
+            
+                <a href="../Memcached源码分析/08内存池.html">
+            
+                    
+                    08 内存池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.10" data-path="../Memcached源码分析/09连接队列.html">
+            
+                <a href="../Memcached源码分析/09连接队列.html">
+            
+                    
+                    09 连接队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.11" data-path="../Memcached源码分析/10Hash表操作.html">
+            
+                <a href="../Memcached源码分析/10Hash表操作.html">
+            
+                    
+                    10 Hash表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.12" data-path="../Memcached源码分析/12set操作.html">
+            
+                <a href="../Memcached源码分析/12set操作.html">
+            
+                    
+                    12 set操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.13" data-path="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                <a href="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                    
+                    13 do_item_alloc操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.14" data-path="../Memcached源码分析/14item结构.html">
+            
+                <a href="../Memcached源码分析/14item结构.html">
+            
+                    
+                    14 item结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.15" data-path="../Memcached源码分析/15Hash表扩容.html">
+            
+                <a href="../Memcached源码分析/15Hash表扩容.html">
+            
+                    
+                    15 Hash表扩容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.16" data-path="../Memcached源码分析/16线程交互.html">
+            
+                <a href="../Memcached源码分析/16线程交互.html">
+            
+                    
+                    16 线程交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.17" data-path="../Memcached源码分析/17状态机.html">
+            
+                <a href="../Memcached源码分析/17状态机.html">
+            
+                    
+                    17 状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../游戏开发专题/">
+            
+                <a href="../游戏开发专题/">
+            
+                    
+                    游戏开发专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                <a href="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                    
+                    1 游戏服务器开发的基本体系与服务器端开发的一些建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                <a href="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                    
+                    2 网络游戏服务器开发框架设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                <a href="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                    
+                    3 游戏后端开发需要掌握的知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                <a href="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                    
+                    4 关于游戏服务端架构的整理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                <a href="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                    
+                    5 各类游戏对应的服务端架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                <a href="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                    
+                    6 从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                <a href="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                    
+                    7 QQ游戏百万人同时在线服务器架构实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                    
+                    8 大型多人在线游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                    
+                    9 百万用户级游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                <a href="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                    
+                    10 十万在线的WebGame的数据库设计思路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                    
+                    11 一种高性能网络游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                <a href="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                    
+                    12 经典游戏服务器端架构概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                <a href="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                    
+                    13 游戏跨服架构进化之路
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part IV</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../程序员面试题精讲/">
+            
+                <a href="../程序员面试题精讲/">
+            
+                    
+                    程序员面试题精讲
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                <a href="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                    
+                    腾讯后台开发实习生技能要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                <a href="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                    
+                    聊聊如何拿大厂的 offer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                <a href="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                    
+                    网络通信题目集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                <a href="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                    
+                    我面试后端开发经理的经历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                <a href="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                    
+                    Linux C/C++后端开发面试问哪些问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../职业规划/">
+            
+                <a href="../职业规划/">
+            
+                    
+                    职业规划
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.2.1" data-path="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                <a href="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                    
+                    给工作 4 年迷茫的程序员们的一点建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.2" data-path="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                <a href="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                    
+                    聊聊技术人员的常见的职业问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.3" data-path="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                <a href="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                    
+                    写给那些傻傻想做服务器开发的朋友
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../自我提升与开源代码/">
+            
+                <a href="../自我提升与开源代码/">
+            
+                    
+                    自我提升与开源代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.3.1" data-path="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                <a href="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                    
+                    2020 年好好读一读开源代码吧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../后端开发相关的书籍/">
+            
+                <a href="../后端开发相关的书籍/">
+            
+                    
+                    后端开发相关的书籍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.4.1" data-path="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                <a href="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                    
+                    后台开发应该读的书
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="../程序员的简历/">
+            
+                <a href="../程序员的简历/">
+            
+                    
+                    程序员的简历
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.5.1" data-path="../程序员的简历/程序员如何写简历.html">
+            
+                <a href="../程序员的简历/程序员如何写简历.html">
+            
+                    
+                    程序员如何写简历
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="../程序员的薪资与年终奖那些事儿/">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/">
+            
+                    
+                    程序员的薪资与年终奖那些事儿
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.6.1" data-path="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                    
+                    技术面试与HR谈薪资技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.2" data-path="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                    
+                    聊一聊程序员如何增加收入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.3" data-path="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                    
+                    谈一谈年终奖
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="../程序员的烦心事/">
+            
+                <a href="../程序员的烦心事/">
+            
+                    
+                    程序员的烦心事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.7.1" data-path="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                <a href="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                    
+                    拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7.2" data-path="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                <a href="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                    
+                    我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="../作者的故事/">
+            
+                <a href="../作者的故事/">
+            
+                    
+                    作者的故事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.8.1" data-path="../作者的故事/我的2019.html">
+            
+                <a href="../作者的故事/我的2019.html">
+            
+                    
+                    我的 2019
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8.2" data-path="../作者的故事/我是如何年薪五十万的.html">
+            
+                <a href="../作者的故事/我是如何年薪五十万的.html">
+            
+                    
+                    我是如何年薪五十万的
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+		</nav>
+		
+		
+	</div>
+
+	<!-- Content nav -->
+	<div class="book-anchor">
+		<div class="book-anchor-title">在这篇文章中:</div>
+		<div class="book-anchor-body">
+
+		</div>
+	</div>
+
+	<div class="book-body">
+		
+		<div class="body-inner">
+			
+			
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >03 服务器端的程序架构介绍</a>
+    </h1>
+</div>
+
+
+
+
+			<div class="page-wrapper" tabindex="-1" role="main">
+				<div class="page-inner">
+					
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+					<section class="normal markdown-section">
+						
+						<div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#03-&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#x67B6;&#x6784;&#x4ECB;&#x7ECD;"><b></b>03 &#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#x67B6;&#x6784;&#x4ECB;&#x7ECD;</a></li></ul></div><h1 id="03-&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#x67B6;&#x6784;&#x4ECB;&#x7ECD;"><a name="03-&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#x67B6;&#x6784;&#x4ECB;&#x7ECD;" class="anchor-navigation-ex-anchor" href="#03-&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#x67B6;&#x6784;&#x4ECB;&#x7ECD;"><i class="fa fa-link" aria-hidden="true"></i></a>03 &#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#x67B6;&#x6784;&#x4ECB;&#x7ECD;</h1>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x4E00;&#x8282;&#x7684;&#x7F16;&#x8BD1;&#x4E0E;&#x90E8;&#x7F72;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5F97;&#x5230;TeamTalk&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4EE5;&#x4E0B;&#x90E8;&#x7F72;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<pre class="language-"><code>db_proxy_server
+file_server
+http_msg_server
+login_server
+msfs
+msg_server
+push_server
+router_server
+</code></pre><p>&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x6784;&#x6210;&#x7684;&#x62D3;&#x6251;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../imgs/tt7.jpeg" alt=""></p>
+<p>&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x7A0B;&#x5E8F;&#x7684;&#x4F5C;&#x7528;&#x63CF;&#x8FF0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>LoginServer (C++): &#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x8D1F;&#x8F7D;&#x5C0F;&#x7684;MsgServer&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;</li>
+<li>MsgServer (C++): &#x6D88;&#x606F;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;&#x5BA2;&#x6237;&#x7AEF;&#x5927;&#x90E8;&#x5206;&#x4FE1;&#x4EE4;&#x5904;&#x7406;&#x529F;&#x80FD;&#xFF0C;&#x5305;&#x62EC;&#x79C1;&#x4EBA;&#x804A;&#x5929;&#x3001;&#x7FA4;&#x7EC4;&#x804A;&#x5929;&#x7B49;</li>
+<li>RouteServer (C++): &#x8DEF;&#x7531;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4E3A;&#x767B;&#x5F55;&#x5728;&#x4E0D;&#x540C;MsgServer&#x7684;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x6D88;&#x606F;&#x8F6C;&#x53D1;&#x529F;&#x80FD;</li>
+<li>FileServer (C++): &#x6587;&#x4EF6;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;&#x5BA2;&#x6237;&#x7AEF;&#x4E4B;&#x95F4;&#x5F97;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x670D;&#x52A1;&#xFF0C;&#x652F;&#x6301;&#x5728;&#x7EBF;&#x4EE5;&#x53CA;&#x79BB;&#x7EBF;&#x6587;&#x4EF6;&#x4F20;&#x8F93;</li>
+<li>MsfsServer (C++): &#x56FE;&#x7247;&#x5B58;&#x50A8;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;&#x5934;&#x50CF;&#xFF0C;&#x56FE;&#x7247;&#x4F20;&#x8F93;&#x4E2D;&#x7684;&#x56FE;&#x7247;&#x5B58;&#x50A8;&#x670D;&#x52A1;</li>
+<li>DBProxy (C++): &#x6570;&#x636E;&#x5E93;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;mysql&#x4EE5;&#x53CA;redis&#x7684;&#x8BBF;&#x95EE;&#x670D;&#x52A1;&#xFF0C;&#x5C4F;&#x853D;&#x5176;&#x4ED6;&#x670D;&#x52A1;&#x5668;&#x4E0E;mysql&#x4E0E;redis&#x7684;&#x76F4;&#x63A5;&#x4EA4;&#x4E92;</li>
+<li>HttpMsgServer(C++) :&#x5BF9;&#x5916;&#x63A5;&#x53E3;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;&#x5BF9;&#x5916;&#x63A5;&#x53E3;&#x529F;&#x80FD;&#x3002;&#xFF08;&#x76EE;&#x524D;&#x53EA;&#x662F;&#x6846;&#x67B6;&#xFF09;</li>
+<li>PushServer(C++): &#x6D88;&#x606F;&#x63A8;&#x9001;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;IOS&#x7CFB;&#x7EDF;&#x6D88;&#x606F;&#x63A8;&#x9001;&#x3002;&#xFF08;IOS&#x6D88;&#x606F;&#x63A8;&#x9001;&#x5FC5;&#x987B;&#x8D70;apns&#xFF09;</li>
+</ul>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4E0A;&#x56FE;&#x4E2D;&#x5E76;&#x6CA1;&#x6709;push_server&#x548C;http_push_server&#x3002;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x8C03;&#x8BD5;ios&#x7248;&#x672C;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x53EF;&#x4EE5;&#x6682;&#x4E14;&#x4E0D;&#x542F;&#x52A8;push_server&#xFF0C;&#x53E6;&#x5916;http_push_server&#x4E5F;&#x53EF;&#x4EE5;&#x6682;&#x4E0D;&#x542F;&#x52A8;&#x3002;</p>
+<p>&#x542F;&#x52A8;&#x987A;&#x5E8F;&#xFF1A;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x524D;&#x7AEF;&#x7684;&#x670D;&#x52A1;&#x4F1A;&#x4F9D;&#x8D56;&#x540E;&#x7AEF;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x5148;&#x542F;&#x52A8;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#xFF0C;&#x518D;&#x542F;&#x52A8;&#x524D;&#x7AEF;&#x670D;&#x52A1;&#x3002;&#x5EFA;&#x8BAE;&#x6309;&#x4EE5;&#x4E0B;&#x987A;&#x5E8F;&#x542F;&#x52A8;&#x670D;&#x52A1;&#xFF1A;</p>
+<pre class="language-"><code>1&#x3001;&#x542F;&#x52A8;db_proxy&#x3002;
+2&#x3001;&#x542F;&#x52A8;route_server&#xFF0C;file_server&#xFF0C;msfs
+3&#x3001;&#x542F;&#x52A8;login_server
+4&#x3001;&#x542F;&#x52A8;msg_server
+</code></pre><p>&#x90A3;&#x4E48;&#x6211;&#x5C31;&#x6309;&#x7167;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x542F;&#x52A8;&#x987A;&#x5E8F;&#x53BB;&#x8BB2;&#x89E3;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#x6982;&#x8FF0;&#x3002;
+&#x7B2C;&#x4E00;&#x6B65;:&#x542F;&#x52A8;db_proxy&#x540E;&#xFF0C;db_proxy&#x4F1A;&#x53BB;&#x6839;&#x636E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8FDE;&#x63A5;&#x76F8;&#x5E94;&#x7684;MySQL&#x5B9E;&#x4F8B;&#xFF0C;&#x4EE5;&#x53CA;redis&#x5B9E;&#x4F8B;&#x3002;
+&#x7B2C;&#x4E8C;&#x6B65;:&#x542F;&#x52A8;route_server,file_server,msfs&#x540E;&#xFF0C;&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x7AEF;&#x90FD;&#x4F1A;&#x5F00;&#x59CB;&#x76D1;&#x542C;&#x76F8;&#x5E94;&#x7684;&#x7AEF;&#x53E3;&#x3002;
+&#x7B2C;&#x4E09;&#x6B65;:&#x542F;&#x52A8;login_server,login_server&#x5C31;&#x5F00;&#x59CB;&#x76D1;&#x542C;&#x76F8;&#x5E94;&#x7684;&#x7AEF;&#x53E3;(8080)&#xFF0C;&#x7B49;&#x5F85;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x800C;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x8D1F;&#x8F7D;&#x76F8;&#x5BF9;&#x8F83;&#x5C0F;&#x7684;msg_server&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;
+&#x7B2C;&#x56DB;&#x6B65;:&#x542F;&#x52A8;msg_server(&#x7AEF;&#x53E3;8000)&#xFF0C;msg_server&#x542F;&#x52A8;&#x540E;&#xFF0C;&#x4F1A;&#x53BB;&#x4E3B;&#x52A8;&#x8FDE;&#x63A5;route_server&#xFF0C;login_server&#xFF0C;db_proxy_server&#xFF0C;&#x4F1A;&#x5C06;&#x81EA;&#x5DF1;&#x7684;&#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;&#x4FE1;&#x606F;&#x6CE8;&#x518C;&#x5230;login_server&#x53BB;&#xFF0C;&#x540C;&#x65F6;&#x5728;&#x7528;&#x6237;&#x4E0A;&#x7EBF;&#xFF0C;&#x4E0B;&#x7EBF;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5C06;&#x81EA;&#x5DF1;&#x7684;&#x8D1F;&#x8F7D;&#x60C5;&#x51B5;&#x6C47;&#x62A5;&#x7ED9;login_server.</p>
+<blockquote>
+<p>&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x7AEF;&#x53E3;&#x53F7; (&#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x90E8;&#x7F72;&#x5B8C;&#x6210;&#x540E;&#x4F46;&#x662F;&#x670D;&#x52A1;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x6709;&#x95EE;&#x9898;&#x6216;&#x8005;&#x53EA;&#x6709;&#x90E8;&#x5206;&#x670D;&#x52A1;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x4E86;&#xFF0C;&#x8BF7;&#x67E5;&#x770B;&#x76F8;&#x5E94;&#x7684;log&#x65E5;&#x5FD7;&#xFF0C;&#x8BF7;&#x67E5;&#x770B;&#x76F8;&#x5E94;&#x7684;log&#x65E5;&#x5FD7;&#xFF0C;&#x8BF7;&#x67E5;&#x770B;&#x76F8;&#x5E94;&#x7684;log&#x65E5;&#x5FD7;&#x3002;) </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>&#x670D;&#x52A1;</th>
+<th>&#x7AEF;&#x53E3;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>login_server</td>
+<td>8080/8008</td>
+</tr>
+<tr>
+<td>msg_server</td>
+<td>8000</td>
+</tr>
+<tr>
+<td>db_proxy_server</td>
+<td>10600</td>
+</tr>
+<tr>
+<td>route_server</td>
+<td>8200</td>
+</tr>
+<tr>
+<td>http_msg_server</td>
+<td>8400</td>
+</tr>
+<tr>
+<td>file_server</td>
+<td>8600/8601</td>
+</tr>
+</tbody>
+</table>
+<p>&#x670D;&#x52A1;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6846;&#x67B6;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<p>&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x90FD;&#x4F7F;&#x7528;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6846;&#x67B6;&#xFF0C;&#x8BE5;&#x901A;&#x4FE1;&#x6846;&#x67B6;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x62FF;&#x51FA;&#x6765;&#x505A;&#x4E3A;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6846;&#x67B6;&#x3002;&#x8BE5;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x91CC;&#x9762;&#x4E0D;&#x65AD;&#x5730;&#x68C0;&#x6D4B;IO&#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x68C0;&#x6D4B;&#x5230;&#x7684;&#x4E8B;&#x4EF6;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li><p>&#x4F7F;&#x7528;IO&#x590D;&#x7528;&#x6280;&#x672F;&#xFF08;linux&#x548C;windows&#x5E73;&#x53F0;&#x7528;select&#x3001;mac&#x5E73;&#x53F0;&#x7528;kevent&#xFF09;&#x5206;&#x79BB;&#x7F51;&#x7EDC;IO&#x3002;</p>
+</li>
+<li><p>&#x5BF9;&#x5206;&#x79BB;&#x51FA;&#x6765;&#x7684;&#x7F51;&#x7EDC;IO&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5206;&#x4E3A;socket&#x53E5;&#x67C4;&#x53EF;&#x8BFB;&#x3001;&#x53EF;&#x5199;&#x548C;&#x51FA;&#x9519;&#x4E09;&#x79CD;&#x60C5;&#x51B5;&#x3002;</p>
+</li>
+</ol>
+<p>&#x5F53;&#x7136;&#x518D;&#x52A0;&#x4E0A;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#xFF0C;&#x5373;&#x68C0;&#x6D4B;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5B9A;&#x65F6;&#x5668;&#x5230;&#x671F;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x8BE5;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x6574;&#x4E2A;&#x6846;&#x67B6;&#x7684;&#x4F2A;&#x7801;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>while (running) 
+{ 
+    //&#x5904;&#x7406;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6; 
+    _CheckTimer(); 
+
+    //IO multiplexing 
+    int n = select(socket&#x96C6;&#x5408;, ...); 
+
+    //&#x4E8B;&#x4EF6;&#x5904;&#x7406; 
+     **if** (&#x67D0;&#x4E9B;socket&#x53EF;&#x8BFB;) 
+     { 
+         pSocket-&gt;OnRead(); 
+     } 
+
+     **if** (&#x67D0;&#x4E9B;socket&#x53EF;&#x5199;) 
+     { 
+         pSocket-&gt;OnWrite(); 
+     } 
+
+     **if** (&#x67D0;&#x4E9B;socket&#x51FA;&#x9519;) 
+     { 
+         pSocket-&gt;OnClose(); 
+     } 
+ }
+</code></pre><p>&#x5904;&#x7406;&#x5B9A;&#x65F6;&#x5668;&#x4E8B;&#x4EF6;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>void CEventDispatch::_CheckTimer() 
+{ 
+    uint64_t curr_tick = get_tick_count(); 
+    list<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TimerItem*</span><span class="token punctuation">&gt;</span></span>::iterator it; 
+
+    for (it = m_timer_list.begin(); it != m_timer_list.end(); ) 
+    { 
+        TimerItem* pItem = *it; 
+        // iterator maybe deleted in the callback, so we should increment it before callback 
+        it++;    
+        if(curr_tick &gt;= pItem-&gt;next_tick) 
+        { 
+            pItem-&gt;next_tick += pItem-&gt;interval; 
+            pItem-&gt;callback(pItem-&gt;user_data, NETLIB_MSG_TIMER, 0, NULL); 
+        } 
+     } 
+}
+</code></pre><p>&#x5373;&#x904D;&#x5386;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#x5217;&#x8868;&#xFF0C;&#x5C06;&#x5B9A;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#x4E0E;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#xFF08;curr_tick&#xFF09;&#x505A;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x5DF2;&#x7ECF;&#x5927;&#x4E8E;&#x6216;&#x7B49;&#x4E8E;&#x5B9A;&#x65F6;&#x5668;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8868;&#x660E;&#x5B9A;&#x65F6;&#x5668;&#x65F6;&#x95F4;&#x5DF2;&#x7ECF;&#x5230;&#x4E86;&#xFF0C;&#x6267;&#x884C;&#x5B9A;&#x65F6;&#x5668;&#x5BF9;&#x8C61;&#x5BF9;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5728;&#x6765;&#x770B;&#x770B;OnRead&#x3001;OnWrite&#x548C;OnClose&#x8FD9;&#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x3002;&#x5728;TeamTalk&#x6E90;&#x7801;&#x4E2D;&#x6BCF;&#x4E00;&#x4E2A;socket&#x8FDE;&#x63A5;&#x88AB;&#x5C01;&#x88C5;&#x6210;&#x4E00;&#x4E2A;CBaseSocket&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x751F;&#x5B58;&#x671F;&#x81EA;&#x52A8;&#x7BA1;&#x7406;&#x3002;</p>
+<pre class="language-"><code>void CBaseSocket::OnRead() 
+{ 
+    if (m_state == SOCKET_STATE_LISTENING) 
+    { 
+        _AcceptNewSocket(); 
+    } 
+    else 
+    { 
+        u_long avail = 0; 
+        if ( (ioctlsocket(m_socket, FIONREAD, &amp;avail) == SOCKET_ERROR) || (avail == 0) ) 
+        { 
+            m_callback(m_callback_data, NETLIB_MSG_CLOSE, (net_handle_t)m_socket, NULL); 
+        } 
+        else 
+        { 
+            m_callback(m_callback_data, NETLIB_MSG_READ, (net_handle_t)m_socket, NULL); 
+        } 
+    } 
+}
+</code></pre><p>OnRead()&#x65B9;&#x6CD5;&#x6839;&#x636E;&#x72B6;&#x6001;&#x6807;&#x8BC6;m_state&#x786E;&#x5B9A;&#x4E00;&#x4E2A;socket&#x662F;&#x4FA6;&#x542C;&#x7684;socket&#x8FD8;&#x662F;&#x666E;&#x901A;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x7684;socket&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4FA6;&#x542C;sokcet&#x5219;&#x63A5;&#x6536;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x7684;socket&#xFF0C;&#x5219;&#x5148;&#x68C0;&#x6D4B;socket&#x4E0A;&#x6709;&#x591A;&#x5C11;&#x5B57;&#x8282;&#x53EF;&#x8BFB;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B57;&#x8282;&#x53EF;&#x8BFB;&#x6216;&#x8005;&#x68C0;&#x6D4B;&#x5B57;&#x8282;&#x6570;&#x65F6;&#x51FA;&#x9519;&#xFF0C;&#x5219;&#x5173;&#x95ED;socket&#xFF0C;&#x53CD;&#x4E4B;&#x8C03;&#x7528;&#x8BBE;&#x7F6E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<pre class="language-"><code>void CBaseSocket::OnWrite() 
+{ 
+\#if ((defined _WIN32) || (defined __APPLE__)) 
+    CEventDispatch::Instance()-&gt;RemoveEvent(m_socket, SOCKET_WRITE); 
+\#endif 
+
+    if (m_state == SOCKET_STATE_CONNECTING) 
+    { 
+        int error = 0; 
+        socklen_t len = sizeof(error); 
+\#ifdef _WIN32 
+        getsockopt(m_socket, SOL_SOCKET, SO_ERROR, (**char***)&amp;error, &amp;len); 
+\#else 
+        getsockopt(m_socket, SOL_SOCKET, SO_ERROR, (**void***)&amp;error, &amp;len); 
+\#endif 
+        if (error) { 
+            m_callback(m_callback_data, NETLIB_MSG_CLOSE, (net_handle_t)m_socket, NULL); 
+        } else { 
+            m_state = SOCKET_STATE_CONNECTED; 
+            m_callback(m_callback_data, NETLIB_MSG_CONFIRM, (net_handle_t)m_socket, NULL); 
+        } 
+    } 
+    else 
+    { 
+        m_callback(m_callback_data, NETLIB_MSG_WRITE, (net_handle_t)m_socket, NULL); 
+    } 
+}
+</code></pre><p>OnWrite()&#x51FD;&#x6570;&#x5219;&#x6839;&#x636E;m_state&#x6807;&#x8BC6;&#x68C0;&#x6D4B;socket&#x662F;&#x5426;&#x662F;&#x5C1D;&#x8BD5;&#x8FDE;&#x63A5;&#x7684;socket&#xFF08;connect&#x51FD;&#x6570;&#x4E2D;&#x7684;socket&#xFF09;&#xFF0C;&#x7528;&#x4E8E;&#x5224;&#x65AD;socket&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#xFF0C;&#x53CD;&#x4E4B;&#x5219;&#x662F;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x4FDD;&#x6301;&#x8FDE;&#x63A5;&#x7684;socket&#xFF0C;&#x8C03;&#x7528;&#x9884;&#x5148;&#x8BBE;&#x7F6E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<pre class="language-"><code>void CBaseSocket::OnClose()
+{
+    m_state = SOCKET_STATE_CLOSING;
+    m_callback(m_callback_data, NETLIB_MSG_CLOSE, (net_handle_t)m_socket, NULL);
+}
+</code></pre><p>OnClose()&#x65B9;&#x6CD5;&#x5C06;&#x6807;&#x8BC6;m_state&#x8BBE;&#x7F6E;&#x4E3A;&#x9700;&#x8981;&#x5173;&#x95ED;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x8C03;&#x7528;&#x9884;&#x5148;&#x8BBE;&#x7F6E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x7A0B;&#x5E8F;&#x90FD;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;stl hash_map&#x6765;&#x7BA1;&#x7406;&#x6240;&#x6709;&#x7684;socket&#xFF0C;&#x952E;&#x662F;socket&#x53E5;&#x67C4;&#xFF0C;&#x503C;&#x662F;CBaseSocket&#x5BF9;&#x8C61;&#x6307;&#x9488;&#xFF1A;</p>
+<pre class="language-"><code>typedef hash_map<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>net_handle_t,</span> <span class="token attr-name">CBaseSocket*</span><span class="token punctuation">&gt;</span></span> SocketMap;
+SocketMap    g_socket_map;
+</code></pre><p>&#x6240;&#x4EE5;&#x5728;&#x5220;&#x9664;&#x6216;&#x8005;&#x65B0;&#x589E;socket&#x65F6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x4ECE;&#x8FD9;&#x4E2A;hash_map&#x4E2D;&#x5220;&#x9664;&#x6216;&#x8005;&#x5411;&#x8FD9;&#x4E2A;hash_map&#x4E2D;&#x589E;&#x52A0;&#x5BF9;&#x8C61;&#x3002;&#x591A;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9501;&#x6765;&#x8FDB;&#x884C;&#x4FDD;&#x62A4;&#xFF1A;</p>
+<pre class="language-"><code>void CEventDispatch::AddEvent(SOCKET fd, uint8_t socket_event)
+{
+    CAutoLock func_lock(&amp;m_lock);
+
+    if ((socket_event &amp; SOCKET_READ) != 0)
+    {
+        FD_SET(fd, &amp;m_read_set);
+    }
+
+    if ((socket_event &amp; SOCKET_WRITE) != 0)
+    {
+        FD_SET(fd, &amp;m_write_set);
+    }
+
+    if ((socket_event &amp; SOCKET_EXCEP) != 0)
+    {
+        FD_SET(fd, &amp;m_excep_set);
+    }
+}
+</code></pre><p>&#x4EE3;&#x7801;CAutoLock func_lock(&amp;m_lock);&#x5373;&#x4FDD;&#x62A4;&#x8BE5;hash_map&#x7684;&#x9501;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x800C;&#x7BA1;&#x7406;&#x4EE5;&#x4E0A;&#x529F;&#x80FD;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x7C7B;CEventDispatch&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x96BE;&#x624D;&#x51FA;CEventDispatch&#x63D0;&#x4F9B;&#x7684;&#x63A5;&#x53E3;&#xFF1A;</p>
+<pre class="language-"><code>class CEventDispatch
+{
+public:
+    virtual ~CEventDispatch();
+
+    void AddEvent(SOCKET fd, uint8_t socket_event);
+    void RemoveEvent(SOCKET fd, uint8_t socket_event);
+
+    void AddTimer(callback_t callback, void* user_data, uint64_t interval);
+    void RemoveTimer(callback_t callback, void* user_data);
+
+    void AddLoop(callback_t callback, void* user_data);
+
+    void StartDispatch(uint32_t wait_timeout = 100);
+    void StopDispatch();
+
+    bool isRunning() {return running;}
+
+    static CEventDispatch* Instance();
+protected:
+    CEventDispatch();
+
+private:
+    void _CheckTimer();
+    void _CheckLoop();
+
+    typedef struct {
+        callback_t    callback;
+        void*        user_data;
+        uint64_t    interval;
+        uint64_t    next_tick;
+    } TimerItem;
+
+private:
+#ifdef _WIN32
+    fd_set    m_read_set;
+    fd_set    m_write_set;
+    fd_set    m_excep_set;
+#elif __APPLE__
+    int     m_kqfd;
+#else
+    int        m_epfd;
+#endif
+    CLock            m_lock;
+    list<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TimerItem*</span><span class="token punctuation">&gt;</span></span>    m_timer_list;
+    list<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TimerItem*</span><span class="token punctuation">&gt;</span></span>    m_loop_list;
+
+    static CEventDispatch* m_pEventDispatch;
+
+    bool running;
+};
+</code></pre><p>&#x5176;&#x4E2D;StartDispatch()&#x548C;StopDispatcher()&#x5206;&#x522B;&#x7528;&#x4E8E;&#x542F;&#x52A8;&#x548C;&#x505C;&#x6B62;&#x6574;&#x4E2A;&#x5FAA;&#x73AF;&#x6D41;&#x7A0B;&#x3002;&#x4E00;&#x822C;&#x5728;&#x7A0B;&#x5E8F;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;StartDispatch()&#xFF0C;&#x5728;&#x7A0B;&#x5E8F;&#x9000;&#x51FA;&#x65F6;StopDispatcher()&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4EE5;pc&#x7AEF;&#x767B;&#x5F55;&#x4E3A;&#x4F8B;&#x6765;&#x5177;&#x4F53;&#x770B;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5305;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x8D70;&#x8FC7;&#x7684;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p>&#x6B65;&#x9AA4;1&#xFF1A;login_server&#x521D;&#x59CB;&#x5316;&#x4FA6;&#x542C;socket&#xFF0C;&#x8BBE;&#x7F6E;&#x65B0;&#x8FDE;&#x63A5;&#x5230;&#x6765;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;8080&#x7AEF;&#x53E3;&#xFF0C;&#x8BE5;&#x7AEF;&#x53E3;&#x662F;&#x4E3A;http&#x670D;&#x52A1;&#x914D;&#x7F6E;&#x7684;&#x3002;</p>
+<p>&#x5728;login_server.cpp main&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;&#xFF1A;</p>
+<p><img src="../imgs/tt8.png" alt=""></p>
+<p>netlib_listen&#x8C03;&#x7528;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../imgs/tt9.png" alt=""></p>
+<p>pSocket-&gt;Listen&#x8C03;&#x7528;&#xFF1A;</p>
+<p><img src="../imgs/tt10.png" alt=""></p>
+<p>AddBaseSocket&#x5C06;&#x8BE5;socket&#x52A0;&#x5165;hash_map&#x4E2D;&#x3002;AddEvent&#x8BBE;&#x7F6E;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;socket&#x4E0A;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x5173;&#x6CE8;&#x53EF;&#x8BFB;&#x548C;&#x51FA;&#x9519;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x6B65;&#x9AA4;2&#xFF1A; &#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528;connect()&#x51FD;&#x6570;&#x8FDE;&#x63A5;login_server&#x7684;8080&#x7AEF;&#x53E3;&#x3002;</p>
+<p>&#x6B65;&#x9AA4;3&#xFF1A;login_server&#x6536;&#x5230;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#x540E;&#x8C03;&#x7528;OnRead&#x65B9;&#x6CD5;&#xFF0C;OnRead()&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x8C03;&#x7528;_AcceptNewSocket()&#xFF0C;_AcceptNewSocket()&#x63A5;&#x6536;&#x65B0;&#x8FDE;&#x63A5;&#xFF0C;&#x521B;&#x5EFA;&#x65B0;&#x7684;socket&#xFF0C;&#x5E76;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;netlib_listen&#x8BBE;&#x7F6E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;http_callback&#x3002;</p>
+<pre class="language-"><code>void CBaseSocket::OnRead()
+{
+    if (m_state == SOCKET_STATE_LISTENING)
+    {
+        _AcceptNewSocket();
+    }
+    else
+    {
+        u_long avail = 0;
+        if ( (ioctlsocket(m_socket, FIONREAD, &amp;avail) == SOCKET_ERROR) || (avail == 0) )
+        {
+            m_callback(m_callback_data, NETLIB_MSG_CLOSE, (net_handle_t)m_socket, NULL);
+        }
+        else
+        {
+            m_callback(m_callback_data, NETLIB_MSG_READ, (net_handle_t)m_socket, NULL);
+        }
+    }
+}
+</code></pre><pre class="language-"><code>void CBaseSocket::_AcceptNewSocket()
+{
+    SOCKET fd = 0;
+    sockaddr_in peer_addr;
+    socklen_t addr_len = sizeof(sockaddr_in);
+    char ip_str[64];
+    while ( (fd = accept(m_socket, (sockaddr*)&amp;peer_addr, &amp;addr_len)) != INVALID_SOCKET )
+    {
+        CBaseSocket* pSocket = new CBaseSocket();
+        uint32_t ip = ntohl(peer_addr.sin_addr.s_addr);
+        uint16_t port = ntohs(peer_addr.sin_port);
+
+        snprintf(ip_str, sizeof(ip_str), &quot;%d.%d.%d.%d&quot;, ip &gt;&gt; 24, (ip &gt;&gt; 16) &amp; 0xFF, (ip &gt;&gt; 8) &amp; 0xFF, ip &amp; 0xFF);
+
+        log(&quot;AcceptNewSocket, socket=%d from %s:%d\n&quot;, fd, ip_str, port);
+
+        pSocket-&gt;SetSocket(fd);
+        pSocket-&gt;SetCallback(m_callback);
+        pSocket-&gt;SetCallbackData(m_callback_data);
+        pSocket-&gt;SetState(SOCKET_STATE_CONNECTED);
+        pSocket-&gt;SetRemoteIP(ip_str);
+        pSocket-&gt;SetRemotePort(port);
+
+        _SetNoDelay(fd);
+        _SetNonblock(fd);
+        AddBaseSocket(pSocket);
+        CEventDispatch::Instance()-&gt;AddEvent(fd, SOCKET_READ | SOCKET_EXCEP);
+        m_callback(m_callback_data, NETLIB_MSG_CONNECT, (net_handle_t)fd, NULL);
+    }
+}
+</code></pre><pre class="language-"><code>void http_callback(void* callback_data, uint8_t msg, uint32_t handle, void* pParam)
+{
+    if (msg == NETLIB_MSG_CONNECT)
+    {
+        CHttpConn* pConn = new CHttpConn();
+        pConn-&gt;OnConnect(handle);
+    }
+    else
+    {
+        log(&quot;!!!error msg: %d &quot;, msg);
+    }
+}
+</code></pre><p>pConn-&gt;OnConnect(handle)&#x4E2D;&#x8BBE;&#x7F6E;http&#x6570;&#x636E;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;httpconn_callback&#xFF1A;</p>
+<pre class="language-"><code>void CHttpConn::OnConnect(net_handle_t handle)
+{
+    printf(&quot;OnConnect, handle=%d\n&quot;, handle);
+    m_sock_handle = handle;
+    m_state = CONN_STATE_CONNECTED;
+    g_http_conn_map.insert(make_pair(m_conn_handle, this));
+
+    netlib_option(handle, NETLIB_OPT_SET_CALLBACK, (void*)httpconn_callback);
+    netlib_option(handle, NETLIB_OPT_SET_CALLBACK_DATA, reinterpret_cast<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>void</span> <span class="token attr-name">*</span><span class="token punctuation">&gt;</span></span>(m_conn_handle) );
+    netlib_option(handle, NETLIB_OPT_GET_REMOTE_IP, (void*)&amp;m_peer_ip);
+}
+</code></pre><p>httpconn_callback&#x4E2D;&#x5904;&#x7406;http&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#x51FA;&#x9519;&#x4E8B;&#x4EF6;&#xFF1A;</p>
+<pre class="language-"><code>void httpconn_callback(void* callback_data, uint8_t msg, uint32_t handle, uint32_t uParam, void* pParam)
+{
+    NOTUSED_ARG(uParam);
+    NOTUSED_ARG(pParam);
+
+    // convert void* to uint32_t, oops
+    uint32_t conn_handle = *((uint32_t*)(&amp;callback_data));
+    CHttpConn* pConn = FindHttpConnByHandle(conn_handle);
+    if (!pConn) {
+        return;
+    }
+
+    switch (msg)
+    {
+    case NETLIB_MSG_READ:
+        pConn-&gt;OnRead();
+        break;
+    case NETLIB_MSG_WRITE:
+        pConn-&gt;OnWrite();
+        break;
+    case NETLIB_MSG_CLOSE:
+        pConn-&gt;OnClose();
+        break;
+    default:
+        log(&quot;!!!httpconn_callback error msg: %d &quot;, msg);
+        break;
+    }
+}
+</code></pre><p>&#x6B65;&#x9AA4;4&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x4EE5;&#x540E;&#xFF0C;&#x53D1;&#x9001;http&#x8BF7;&#x6C42;&#xFF0C;&#x65B9;&#x6CD5;&#x662F;get&#xFF0C;&#x8BF7;&#x6C42;url&#xFF1A;<a href="http://192.168.226.128:8080/msg_server&#x3002;&#xFF08;&#x5177;&#x4F53;&#x7F51;&#x5740;&#x4E0E;&#x4F60;&#x7684;&#x673A;&#x5668;&#x914D;&#x7F6E;&#x7684;&#x7F51;&#x5740;&#x6709;&#x5173;&#xFF09;" target="_blank">http://192.168.226.128:8080/msg_server&#x3002;&#xFF08;&#x5177;&#x4F53;&#x7F51;&#x5740;&#x4E0E;&#x4F60;&#x7684;&#x673A;&#x5668;&#x914D;&#x7F6E;&#x7684;&#x7F51;&#x5740;&#x6709;&#x5173;&#xFF09;</a></p>
+<p>&#x6B65;&#x9AA4;5&#xFF1A;login_server&#x68C0;&#x6D4B;&#x5230;&#x8BE5;socket&#x53EF;&#x8BFB;&#xFF0C;&#x8C03;&#x7528;pConn-&gt;OnRead()&#x65B9;&#x6CD5;&#x3002;</p>
+<pre class="language-"><code>void CHttpConn::OnRead()
+{
+    for (;;)
+    {
+        uint32_t free_buf_len = m_in_buf.GetAllocSize() - m_in_buf.GetWriteOffset();
+        if (free_buf_len &lt; READ_BUF_SIZE + 1)
+            m_in_buf.Extend(READ_BUF_SIZE + 1);
+
+        int ret = netlib_recv(m_sock_handle, m_in_buf.GetBuffer() + m_in_buf.GetWriteOffset(), READ_BUF_SIZE);
+        if (ret &lt;= 0)
+            break;
+
+        m_in_buf.IncWriteOffset(ret);
+
+        m_last_recv_tick = get_tick_count();
+    }
+
+    // &#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;HTTP&#x8FDE;&#x63A5;&#xFF0C;&#x6240;&#x4EE5;&#x8BFB;&#x5B8C;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x4E0D;&#x7528;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x91CC;&#x9762;&#x51C6;&#x5907;&#x8BFB;&#x53D6;&#x4E0B;&#x4E2A;&#x8BF7;&#x6C42;
+    char* in_buf = (char*)m_in_buf.GetBuffer();
+    uint32_t buf_len = m_in_buf.GetWriteOffset();
+    in_buf[buf_len] = &apos;\0&apos;;
+
+    // &#x5982;&#x679C;buf_len &#x8FC7;&#x957F;&#x53EF;&#x80FD;&#x662F;&#x53D7;&#x5230;&#x653B;&#x51FB;&#xFF0C;&#x5219;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;
+    // &#x6B63;&#x5E38;&#x7684;url&#x6700;&#x5927;&#x957F;&#x5EA6;&#x4E3A;2048&#xFF0C;&#x6211;&#x4EEC;&#x63A5;&#x53D7;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x957F;&#x5EA6;&#x4E0D;&#x5F97;&#x5927;&#x4E8E;1K
+    if(buf_len &gt; 1024)
+    {
+        log(&quot;get too much data:%s &quot;, in_buf);
+        Close();
+        return;
+    }
+
+    //log(&quot;OnRead, buf_len=%u, conn_handle=%u\n&quot;, buf_len, m_conn_handle); // for debug
+
+
+    m_cHttpParser.ParseHttpContent(in_buf, buf_len);
+
+    if (m_cHttpParser.IsReadAll()) {
+        string url =  m_cHttpParser.GetUrl();
+        if (strncmp(url.c_str(), &quot;/msg_server&quot;, 11) == 0) {
+            string content = m_cHttpParser.GetBodyContent();
+            _HandleMsgServRequest(url, content);
+        } else {
+            log(&quot;url unknown, url=%s &quot;, url.c_str());
+            Close();
+        }
+    }
+}
+</code></pre><p>CHttpConn::OnRead()&#x5148;&#x7528;recv&#x6536;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x63A5;&#x7740;&#x89E3;&#x6790;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x9519;&#x6216;&#x8005;&#x975E;&#x6CD5;&#x6570;&#x636E;&#x5C31;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#x3002;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;&#x8BF7;&#x6C42;&#x7684;http object&#x6B63;&#x597D;&#x662F;/msg_server&#xFF0C;&#x5219;&#x8C03;&#x7528;_HandleMsgServRequest(url, content);&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;</p>
+<pre class="language-"><code>void CHttpConn::_HandleMsgServRequest(string&amp; url, string&amp; post_data)
+{
+    msg_serv_info_t* pMsgServInfo;
+    uint32_t min_user_cnt = (uint32_t)-1;
+    map<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uint32_t,</span> <span class="token attr-name">msg_serv_info_t*</span><span class="token punctuation">&gt;</span></span>::iterator it_min_conn = g_msg_serv_info.end();
+    map<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uint32_t,</span> <span class="token attr-name">msg_serv_info_t*</span><span class="token punctuation">&gt;</span></span>::iterator it;
+    if(g_msg_serv_info.size() &lt;= 0)
+    {
+        Json::Value value;
+        value[&quot;code&quot;] = 1;
+        value[&quot;msg&quot;] = &quot;&#x6CA1;&#x6709;msg_server&quot;;
+        string strContent = value.toStyledString();
+        char* szContent = new char[HTTP_RESPONSE_HTML_MAX];
+        snprintf(szContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, strContent.length(), strContent.c_str());
+        Send((void*)szContent, strlen(szContent));
+        delete [] szContent;
+        return ;
+    }
+
+    for (it = g_msg_serv_info.begin() ; it != g_msg_serv_info.end(); it++) {
+        pMsgServInfo = it-&gt;second;
+        if ( (pMsgServInfo-&gt;cur_conn_cnt &lt; pMsgServInfo-&gt;max_conn_cnt) &amp;&amp;
+            (pMsgServInfo-&gt;cur_conn_cnt &lt; min_user_cnt)) {
+            it_min_conn = it;
+            min_user_cnt = pMsgServInfo-&gt;cur_conn_cnt;
+        }
+    }
+
+    if (it_min_conn == g_msg_serv_info.end()) {
+        log(&quot;All TCP MsgServer are full &quot;);
+        Json::Value value;
+        value[&quot;code&quot;] = 2;
+        value[&quot;msg&quot;] = &quot;&#x8D1F;&#x8F7D;&#x8FC7;&#x9AD8;&quot;;
+        string strContent = value.toStyledString();
+        char* szContent = new char[HTTP_RESPONSE_HTML_MAX];
+        snprintf(szContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, strContent.length(), strContent.c_str());
+        Send((void*)szContent, strlen(szContent));
+        delete [] szContent;
+        return;
+    } else {
+        Json::Value value;
+        value[&quot;code&quot;] = 0;
+        value[&quot;msg&quot;] = &quot;&quot;;
+        if(pIpParser-&gt;isTelcome(GetPeerIP()))
+        {
+            value[&quot;priorIP&quot;] = string(it_min_conn-&gt;second-&gt;ip_addr1);
+            value[&quot;backupIP&quot;] = string(it_min_conn-&gt;second-&gt;ip_addr2);
+            value[&quot;msfsPrior&quot;] = strMsfsUrl;
+            value[&quot;msfsBackup&quot;] = strMsfsUrl;
+        }
+        else
+        {
+            value[&quot;priorIP&quot;] = string(it_min_conn-&gt;second-&gt;ip_addr2);
+            value[&quot;backupIP&quot;] = string(it_min_conn-&gt;second-&gt;ip_addr1);
+            value[&quot;msfsPrior&quot;] = strMsfsUrl;
+            value[&quot;msfsBackup&quot;] = strMsfsUrl;
+        }
+        value[&quot;discovery&quot;] = strDiscovery;
+        value[&quot;port&quot;] = int2string(it_min_conn-&gt;second-&gt;port);
+        string strContent = value.toStyledString();
+        char* szContent = new char[HTTP_RESPONSE_HTML_MAX];
+        uint32_t nLen = strContent.length();
+        snprintf(szContent, HTTP_RESPONSE_HTML_MAX, HTTP_RESPONSE_HTML, nLen, strContent.c_str());
+        Send((void*)szContent, strlen(szContent));
+        delete [] szContent;
+        return;
+    }
+}
+</code></pre><p>&#x8BE5;&#x65B9;&#x6CD5;&#x6839;&#x636E;&#x5BA2;&#x6237;&#x7AEF;ip&#x5730;&#x5740;&#x5C06;msg_server&#x7684;&#x5730;&#x5740;&#x7EC4;&#x88C5;&#x6210;json&#x683C;&#x5F0F;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;json&#x683C;&#x5F0F;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>{
+    &quot;backupIP&quot; : &quot;localhost&quot;,
+    &quot;code&quot; : 0,
+    &quot;discovery&quot; : &quot;http://192.168.226.128/api/discovery&quot;,
+    &quot;msfsBackup&quot; : &quot;http://192.168.226.128:8700/&quot;,
+    &quot;msfsPrior&quot; : &quot;http://192.168.226.128:8700/&quot;,
+    &quot;msg&quot; : &quot;&quot;,
+    &quot;port&quot; : &quot;8000&quot;,
+    &quot;priorIP&quot; : &quot;localhost&quot;
+}
+</code></pre><p>&#x6CE8;&#x610F;&#xFF0C;&#x53D1;&#x9001;&#x6570;&#x636E;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528;&#x7684;&#x662F;Send&#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x5148;&#x5C1D;&#x8BD5;&#x7740;&#x8C03;&#x7528;&#x5E95;&#x5C42;&#x7684;send()&#x51FD;&#x6570;&#x53BB;&#x53D1;&#x9001;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x80FD;&#x5168;&#x90E8;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x5219;&#x5C06;&#x5269;&#x4F59;&#x6570;&#x636E;&#x52A0;&#x5165;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5199;&#x6570;&#x636E;&#x7F13;&#x51B2;&#x533A;&#x5185;&#x3002;&#x8FD9;&#x6837;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x4F1A;&#x5728;&#x8BE5;socket&#x53EF;&#x5199;&#x65F6;&#x518D;&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x3002;&#x8FD9;&#x662F;&#x4E5F;&#x662F;&#x8BBE;&#x8BA1;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x5E93;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x6280;&#x5DE7;&#xFF0C;&#x5373;&#x5148;&#x8BD5;&#x7740;&#x53BB;send&#xFF0C;&#x5982;&#x679C;send&#x4E0D;&#x4E86;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x653E;&#x5165;&#x5F85;&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x5185;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x68C0;&#x6D4B;&#x53EF;&#x5199;&#x6807;&#x8BC6;&#x4F4D;&#xFF0C;&#x5F53;socket&#x53EF;&#x5199;&#x65F6;&#xFF0C;&#x4ECE;&#x5F85;&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x53D6;&#x51FA;&#x6570;&#x636E;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#x3002;&#x5982;&#x679C;&#x8FD8;&#x662F;&#x4E0D;&#x80FD;&#x5168;&#x90E8;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;&#x7EE7;&#x7EED;&#x8BBE;&#x7F6E;&#x68C0;&#x6D4B;&#x53EF;&#x5199;&#x6807;&#x8BC6;&#x4F4D;&#xFF0C;&#x4E0B;&#x6B21;&#x518D;&#x6B21;&#x53D1;&#x9001;&#xFF0C;&#x5982;&#x6B64;&#x5FAA;&#x73AF;&#x4E00;&#x76F4;&#x5230;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#x4E3A;&#x6B62;&#x3002;</p>
+<pre class="language-"><code>int CHttpConn::Send(void* data, int len)
+{
+    m_last_send_tick = get_tick_count();
+
+    if (m_busy)
+    {
+        m_out_buf.Write(data, len);
+        return len;
+    }
+
+    int ret = netlib_send(m_sock_handle, data, len);
+    if (ret &lt; 0)
+        ret = 0;
+
+    if (ret &lt; len)
+    {
+        m_out_buf.Write((char*)data + ret, len - ret);
+        m_busy = true;
+        //log(&quot;not send all, remain=%d\n&quot;, m_out_buf.GetWriteOffset());
+    }
+    else
+    {
+        OnWriteComlete();
+    }
+
+    return len;
+}
+</code></pre><p>&#x5F53;&#x7136;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x91CC;http&#x8BBE;&#x7F6E;&#x6210;&#x4E86;&#x77ED;&#x8FDE;&#x63A5;&#xFF0C;&#x6BCF;&#x6B21;&#x5E94;&#x7B54;&#x5B8C;&#x5BA2;&#x6237;&#x5EA6;&#x4E4B;&#x540E;&#x7ACB;&#x5373;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF0C;&#x5728;OnWriteComplete()&#x91CC;&#x9762;&#xFF1A;</p>
+<pre class="language-"><code>void CHttpConn::OnWriteComlete()
+{
+    log(&quot;write complete &quot;);
+    Close();
+}
+</code></pre><p>&#x6B65;&#x9AA4;6&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;http&#x8BF7;&#x6C42;&#x7684;&#x5E94;&#x7B54;&#x540E;&#xFF0C;&#x6839;&#x636E;&#x6536;&#x5230;&#x7684;json&#x5F97;&#x5230;msg_server&#x7684;ip&#x5730;&#x5740;&#xFF0C;&#x8FD9;&#x91CC;&#x662F;ip&#x5730;&#x5740;&#x662F;192.168.226.128&#xFF0C;&#x7AEF;&#x53E3;&#x53F7;&#x662F;8000&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x5F00;&#x59CB;&#x8FDE;&#x63A5;&#x8FD9;&#x4E2A;ip&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x8FDE;&#x63A5;&#x8FC7;&#x7A0B;&#x4E0E;msg_server&#x63A5;&#x6536;&#x8FDE;&#x63A5;&#x8FC7;&#x7A0B;&#x4E0E;&#x4E0A;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#x76F8;&#x540C;&#x3002;&#x63A5;&#x7740;&#x5BA2;&#x6237;&#x7AEF;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x767B;&#x5F55;&#x6570;&#x636E;&#x5305;&#x3002;</p>
+<p>&#x6B65;&#x9AA4;7&#xFF1A;msg_server&#x6536;&#x5230;&#x767B;&#x5F55;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x5728;CImConn::OnRead()&#x6536;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x89E3;&#x5305;&#xFF0C;&#x8C03;&#x7528;&#x5B50;&#x7C7B;CMsgConn&#x91CD;&#x5199;&#x7684;HandlePdu&#xFF0C;&#x5904;&#x7406;&#x767B;&#x5F55;&#x8BF7;&#x6C42;&#xFF0C;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5462;&#xFF1F;&#x5904;&#x7406;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>//MsgConn.cpp
+void CMsgConn::HandlePdu(CImPdu* pPdu)
+{
+    // request authorization check
+    if (pPdu-&gt;GetCommandId() != CID_LOGIN_REQ_USERLOGIN &amp;&amp; !IsOpen() &amp;&amp; IsKickOff()) {
+        log(&quot;HandlePdu, wrong msg. &quot;);
+        throw CPduException(pPdu-&gt;GetServiceId(), pPdu-&gt;GetCommandId(), ERROR_CODE_WRONG_SERVICE_ID, &quot;HandlePdu error, user not login. &quot;);
+        return;
+    }
+    switch (pPdu-&gt;GetCommandId()) {
+        case CID_OTHER_HEARTBEAT:
+            _HandleHeartBeat(pPdu);
+            break;
+        case CID_LOGIN_REQ_USERLOGIN:
+            _HandleLoginRequest(pPdu );
+            break;
+        case CID_LOGIN_REQ_LOGINOUT:
+            _HandleLoginOutRequest(pPdu);
+            break;
+        case CID_LOGIN_REQ_DEVICETOKEN:
+            _HandleClientDeviceToken(pPdu);
+            break;
+        case CID_LOGIN_REQ_KICKPCCLIENT:
+            _HandleKickPCClient(pPdu);
+            break;
+        case CID_LOGIN_REQ_PUSH_SHIELD:
+            _HandlePushShieldRequest(pPdu);
+            break;
+
+        case CID_LOGIN_REQ_QUERY_PUSH_SHIELD:
+            _HandleQueryPushShieldRequest(pPdu);
+            break;
+        case CID_MSG_DATA:
+            _HandleClientMsgData(pPdu);
+            break;
+        case CID_MSG_DATA_ACK:
+            _HandleClientMsgDataAck(pPdu);
+            break;
+        case CID_MSG_TIME_REQUEST:
+            _HandleClientTimeRequest(pPdu);
+            break;
+        case CID_MSG_LIST_REQUEST:
+            _HandleClientGetMsgListRequest(pPdu);
+            break;
+        case CID_MSG_GET_BY_MSG_ID_REQ:
+            _HandleClientGetMsgByMsgIdRequest(pPdu);
+            break;
+        case CID_MSG_UNREAD_CNT_REQUEST:
+            _HandleClientUnreadMsgCntRequest(pPdu );
+            break;
+        case CID_MSG_READ_ACK:
+            _HandleClientMsgReadAck(pPdu);
+            break;
+        case CID_MSG_GET_LATEST_MSG_ID_REQ:
+            _HandleClientGetLatestMsgIDReq(pPdu);
+            break;
+        case CID_SWITCH_P2P_CMD:
+            _HandleClientP2PCmdMsg(pPdu );
+            break;
+        case CID_BUDDY_LIST_RECENT_CONTACT_SESSION_REQUEST:
+            _HandleClientRecentContactSessionRequest(pPdu);
+            break;
+        case CID_BUDDY_LIST_USER_INFO_REQUEST:
+            _HandleClientUserInfoRequest( pPdu );
+            break;
+        case CID_BUDDY_LIST_REMOVE_SESSION_REQ:
+            _HandleClientRemoveSessionRequest( pPdu );
+            break;
+        case CID_BUDDY_LIST_ALL_USER_REQUEST:
+            _HandleClientAllUserRequest(pPdu );
+            break;
+        case CID_BUDDY_LIST_CHANGE_AVATAR_REQUEST:
+            _HandleChangeAvatarRequest(pPdu);
+            break;
+        case CID_BUDDY_LIST_CHANGE_SIGN_INFO_REQUEST:
+            _HandleChangeSignInfoRequest(pPdu);
+            break;
+
+        case CID_BUDDY_LIST_USERS_STATUS_REQUEST:
+            _HandleClientUsersStatusRequest(pPdu);
+            break;
+        case CID_BUDDY_LIST_DEPARTMENT_REQUEST:
+            _HandleClientDepartmentRequest(pPdu);
+            break;
+        // for group process
+        case CID_GROUP_NORMAL_LIST_REQUEST:
+            s_group_chat-&gt;HandleClientGroupNormalRequest(pPdu, this);
+            break;
+        case CID_GROUP_INFO_REQUEST:
+            s_group_chat-&gt;HandleClientGroupInfoRequest(pPdu, this);
+            break;
+        case CID_GROUP_CREATE_REQUEST:
+            s_group_chat-&gt;HandleClientGroupCreateRequest(pPdu, this);
+            break;
+        case CID_GROUP_CHANGE_MEMBER_REQUEST:
+            s_group_chat-&gt;HandleClientGroupChangeMemberRequest(pPdu, this);
+            break;
+        case CID_GROUP_SHIELD_GROUP_REQUEST:
+            s_group_chat-&gt;HandleClientGroupShieldGroupRequest(pPdu, this);
+            break;
+
+        case CID_FILE_REQUEST:
+            s_file_handler-&gt;HandleClientFileRequest(this, pPdu);
+            break;
+        case CID_FILE_HAS_OFFLINE_REQ:
+            s_file_handler-&gt;HandleClientFileHasOfflineReq(this, pPdu);
+            break;
+        case CID_FILE_ADD_OFFLINE_REQ:
+            s_file_handler-&gt;HandleClientFileAddOfflineReq(this, pPdu);
+            break;
+        case CID_FILE_DEL_OFFLINE_REQ:
+            s_file_handler-&gt;HandleClientFileDelOfflineReq(this, pPdu);
+            break;
+        default:
+            log(&quot;wrong msg, cmd id=%d, user id=%u. &quot;, pPdu-&gt;GetCommandId(), GetUserId());
+            break;
+    }
+}
+</code></pre><p>&#x5206;&#x652F;case CID_LOGIN_REQ_USERLOGIN&#x5373;&#x5904;&#x7406;&#x767B;&#x5F55;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre class="language-"><code>//&#x5728;MsgConn.cpp&#x4E2D;
+void CMsgConn::_HandleLoginRequest(CImPdu* pPdu)
+{
+    // refuse second validate request
+    if (m_login_name.length() != 0) {
+        log(&quot;duplicate LoginRequest in the same conn &quot;);
+        return;
+    }
+
+    // check if all server connection are OK
+    uint32_t result = 0;
+    string result_string = &quot;&quot;;
+    CDBServConn* pDbConn = get_db_serv_conn_for_login();
+    if (!pDbConn) {
+        result = IM::BaseDefine::REFUSE_REASON_NO_DB_SERVER;
+        result_string = &quot;&#x670D;&#x52A1;&#x7AEF;&#x5F02;&#x5E38;&quot;;
+    }
+    else if (!is_login_server_available()) {
+        result = IM::BaseDefine::REFUSE_REASON_NO_LOGIN_SERVER;
+        result_string = &quot;&#x670D;&#x52A1;&#x7AEF;&#x5F02;&#x5E38;&quot;;
+    }
+    else if (!is_route_server_available()) {
+        result = IM::BaseDefine::REFUSE_REASON_NO_ROUTE_SERVER;
+        result_string = &quot;&#x670D;&#x52A1;&#x7AEF;&#x5F02;&#x5E38;&quot;;
+
+}
+    if (result) {
+        IM::Login::IMLoginRes msg;
+        msg.set_server_time(time(NULL));
+        msg.set_result_code((IM::BaseDefine::ResultType)result);
+        msg.set_result_string(result_string);
+        CImPdu pdu;
+        pdu.SetPBMsg(&amp;msg);
+        pdu.SetServiceId(SID_LOGIN);
+        pdu.SetCommandId(CID_LOGIN_RES_USERLOGIN);
+        pdu.SetSeqNum(pPdu-&gt;GetSeqNum());
+        SendPdu(&amp;pdu);
+        Close();
+        return;
+    }
+    IM::Login::IMLoginReq msg;
+    CHECK_PB_PARSE_MSG(msg.ParseFromArray(pPdu-&gt;GetBodyData(), pPdu-&gt;GetBodyLength()));
+    //&#x5047;&#x5982;&#x662F;&#x6C49;&#x5B57;&#xFF0C;&#x5219;&#x8F6C;&#x6210;&#x62FC;&#x97F3;
+    m_login_name = msg.user_name();
+    string password = msg.password();
+    uint32_t online_status = msg.online_status();
+    if (online_status &lt; IM::BaseDefine::USER_STATUS_ONLINE || online_status &gt; IM::BaseDefine::USER_STATUS_LEAVE) {
+        log(&quot;HandleLoginReq, online status wrong: %u &quot;, online_status);
+        online_status = IM::BaseDefine::USER_STATUS_ONLINE;
+    }
+    m_client_version = msg.client_version();
+    m_client_type = msg.client_type();
+    m_online_status = online_status;
+    log(&quot;HandleLoginReq, user_name=%s, status=%u, client_type=%u, client=%s, &quot;,
+        m_login_name.c_str(), online_status, m_client_type, m_client_version.c_str());
+    CImUser* pImUser = CImUserManager::GetInstance()-&gt;GetImUserByLoginName(GetLoginName());
+    if (!pImUser) {
+        pImUser = new CImUser(GetLoginName());
+        CImUserManager::GetInstance()-&gt;AddImUserByLoginName(GetLoginName(), pImUser);
+    }
+    pImUser-&gt;AddUnValidateMsgConn(this);
+
+    CDbAttachData attach_data(ATTACH_TYPE_HANDLE, m_handle, 0);
+    // continue to validate if the user is OK
+
+    IM::Server::IMValidateReq msg2;
+    msg2.set_user_name(msg.user_name());
+    msg2.set_password(password);
+    msg2.set_attach_data(attach_data.GetBuffer(), attach_data.GetLength());
+    CImPdu pdu;
+    pdu.SetPBMsg(&amp;msg2);
+    pdu.SetServiceId(SID_OTHER);
+    pdu.SetCommandId(CID_OTHER_VALIDATE_REQ);
+    pdu.SetSeqNum(pPdu-&gt;GetSeqNum());
+    pDbConn-&gt;SendPdu(&amp;pdu);
+}
+</code></pre><footer class="page-footer"><span class="copyright">&#x5982;&#x9700;&#x4E0B;&#x8F7D;&#x672C;&#x7AD9;&#x5168;&#x90E8;&#x6280;&#x672F;&#x6587;&#x7AE0;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x3010;&#x9AD8;&#x6027;&#x80FD;&#x670D;&#x52A1;&#x5668;&#x5F00;&#x53D1;&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x5173;&#x952E;&#x5B57;&#x201C;&#x6587;&#x7AE0;&#x4E0B;&#x8F7D;&#x201D;&#x5373;&#x53EF;&#x3002;</span><span class="footer-modification">&#x6700;&#x8FD1;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2020-10-04 15:33:21
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+						
+					</section>
+					
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+		
+		<a href="02服务器端的程序的编译与部署.html" class="navigation navigation-prev " aria-label="Previous page: 02 服务器端的程序的编译与部署">
+			<i class="fa fa-angle-left"></i>
+		</a>
+		
+		
+		<a href="04服务器端db_proxy_server源码分析.html" class="navigation navigation-next " aria-label="Next page: 04 服务器端db_proxy_server源码分析">
+			<i class="fa fa-angle-right"></i>
+		</a>
+		
+		
+		
+	</div>
+	<script>
+		var gitbook = gitbook || [];
+		gitbook.push(function() {
+			gitbook.page.hasChanged({"page":{"title":"03 服务器端的程序架构介绍","level":"6.1.3","depth":2,"next":{"title":"04 服务器端db_proxy_server源码分析","level":"6.1.4","depth":2,"path":"articles/TeamTalk源码解析/04服务器端db_proxy_server源码分析.md","ref":"articles/TeamTalk源码解析/04服务器端db_proxy_server源码分析.md","articles":[]},"previous":{"title":"02 服务器端的程序的编译与部署","level":"6.1.2","depth":2,"path":"articles/TeamTalk源码解析/02服务器端的程序的编译与部署.md","ref":"articles/TeamTalk源码解析/02服务器端的程序的编译与部署.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","-lunr","-search","search-pro","splitter","popup","back-to-top-button","hide-element","prism","-highlight","tbfed-pagefooter","code","anchor-navigation-ex","theme-fexa","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"如需下载本站全部技术文章，可以在【高性能服务器开发】公众号回复关键字“文章下载”即可。","modify_label":"最近更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{},"livereload":{},"splitter":{},"search-pro":{},"popup":{},"theme-fexa":{"search-placeholder":"输入关键字搜索","logo":"./logo.png","favicon":"./favicon.ico"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":false,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"easy_coder","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"高性能服务器开发 技术专栏","links":{},"gitbook":"*","description":"","theme-default":{"showLevel":true},"extension":null},"file":{"path":"articles/TeamTalk源码解析/03服务器端的程序架构介绍.md","mtime":"2020-10-04T07:33:21.769Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T15:31:57.905Z"},"basePath":"../..","book":{"language":""}});
+		});
+	</script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-fexa/fexa.js"></script>
+        
+    
+
+    </body>
+</html>
+

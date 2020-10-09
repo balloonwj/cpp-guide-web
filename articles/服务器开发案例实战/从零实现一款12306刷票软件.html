@@ -1,0 +1,3746 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>从零实现一款12306刷票软件 · 高性能服务器开发 技术专栏</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="easy_coder">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-fexa/fexa.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="从零实现一个邮件收发客户端.html" />
+    
+    
+    <link rel="prev" href="从零实现一个http服务器.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+	<div class="header-inner">
+		<!-- LOGO -->
+		<div class="logo"></div>
+		<span class="title"></span>
+
+		<!-- Search -->
+		
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+		<!-- Nav -->
+		<ul class="header-nav">
+			
+		</ul>
+	</div>
+
+	<div class="book-summary">
+		<div class="book-summary-title">文档目录</div>
+		
+		
+		<nav role="navigation">
+			
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Part I</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../C++必知必会的知识点/">
+            
+                <a href="../C++必知必会的知识点/">
+            
+                    
+                    C++必知必会的知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../C++必知必会的知识点/如何成为一名合格的CC++开发者？.html">
+            
+                <a href="../C++必知必会的知识点/如何成为一名合格的CC++开发者？.html">
+            
+                    
+                    如何成为一名合格的C/C++开发者？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../C++必知必会的知识点/不定参数函数实现var_arg系列的宏.html">
+            
+                <a href="../C++必知必会的知识点/不定参数函数实现var_arg系列的宏.html">
+            
+                    
+                    不定参数函数实现var_arg系列的宏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../C++必知必会的知识点/你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                <a href="../C++必知必会的知识点/你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                    
+                    你一定要搞明白的C函数调用方式与栈原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../C++必知必会的知识点/深入理解CC++中的指针.html">
+            
+                <a href="../C++必知必会的知识点/深入理解CC++中的指针.html">
+            
+                    
+                    深入理解C/C++中的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../C++必知必会的知识点/详解C++11中的智能指针.html">
+            
+                <a href="../C++必知必会的知识点/详解C++11中的智能指针.html">
+            
+                    
+                    详解C++11中的智能指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../C++必知必会的知识点/C++17结构化绑定.html">
+            
+                <a href="../C++必知必会的知识点/C++17结构化绑定.html">
+            
+                    
+                    C++17结构化绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../C++必知必会的知识点/C++必须掌握的pimpl惯用法.html">
+            
+                <a href="../C++必知必会的知识点/C++必须掌握的pimpl惯用法.html">
+            
+                    
+                    C++必须掌握的pimpl惯用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../C++必知必会的知识点/用VisualStudio调试Linux程序.html">
+            
+                <a href="../C++必知必会的知识点/用VisualStudio调试Linux程序.html">
+            
+                    
+                    用Visual Studio调试Linux程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../C++必知必会的知识点/如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                <a href="../C++必知必会的知识点/如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                    
+                    如何使用Visual Studio管理和阅读开源项目代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../C++必知必会的知识点/利用cmake工具生成VisualStudio工程文件.html">
+            
+                <a href="../C++必知必会的知识点/利用cmake工具生成VisualStudio工程文件.html">
+            
+                    
+                    利用cmake工具生成Visual Studio工程文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../多线程/">
+            
+                <a href="../多线程/">
+            
+                    
+                    多线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                <a href="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                    
+                    后台C++开发你一定要知道的条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                <a href="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                    
+                    整型变量赋值是原子操作吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../网络编程/">
+            
+                <a href="../网络编程/">
+            
+                    
+                    网络编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../网络编程/bind函数重难点解析.html">
+            
+                <a href="../网络编程/bind函数重难点解析.html">
+            
+                    
+                    bind 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                <a href="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                    
+                    connect 函数在阻塞和非阻塞模式下的行为
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../网络编程/select函数重难点解析.html">
+            
+                <a href="../网络编程/select函数重难点解析.html">
+            
+                    
+                    select 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                <a href="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                    
+                    Linux epoll 模型（含LT 模式和 ET 模式详解）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                <a href="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                    
+                    socket 的阻塞模式和非阻塞模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                <a href="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                    
+                    非阻塞模式下 send 和 recv 函数的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                <a href="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                    
+                    服务器开发通信协议设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                <a href="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                    
+                    TCP 协议如何解决粘包、半包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                <a href="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                    
+                    网络通信中收发数据的正确姿势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                <a href="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                    
+                    服务器端发数据时，如果对端一直不收，怎么办？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../程序员必知必会的网络命令/">
+            
+                <a href="../程序员必知必会的网络命令/">
+            
+                    
+                    程序员必知必会的网络命令
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                <a href="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                    
+                    利用telnet命令发电子邮件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                <a href="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                    
+                    做Java或者C++开发都应该知道的lsof命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                <a href="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                    
+                    Linux网络故障排查的瑞士军刀nc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                <a href="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                    
+                    Linux tcpdump使用详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                <a href="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                    
+                    从抓包的角度分析connect函数的连接过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                <a href="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                    
+                    服务器开发中网络数据分析与故障排查经验漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part II</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../高性能服务器框架设计/">
+            
+                <a href="../高性能服务器框架设计/">
+            
+                    
+                    高性能服务器框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                <a href="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                    
+                    主线程与工作线程的分工
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../高性能服务器框架设计/Reactor模式.html">
+            
+                <a href="../高性能服务器框架设计/Reactor模式.html">
+            
+                    
+                    Reactor模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                <a href="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                    
+                    实例：一个服务器程序的架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                    
+                    错误码系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../高性能服务器框架设计/日志系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/日志系统的设计.html">
+            
+                    
+                    日志系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                <a href="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                    
+                    如何设计断线自动重连机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                <a href="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                    
+                    心跳包机制设计详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                <a href="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                    
+                    业务数据处理一定要单独开线程吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                <a href="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                    
+                    C++ 高性能服务器网络框架设计细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    服务器开发案例实战
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="从零实现一个http服务器.html">
+            
+                <a href="从零实现一个http服务器.html">
+            
+                    
+                    从零实现一个http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.1.2" data-path="从零实现一款12306刷票软件.html">
+            
+                <a href="从零实现一款12306刷票软件.html">
+            
+                    
+                    从零实现一款12306刷票软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="从零实现一个邮件收发客户端.html">
+            
+                <a href="从零实现一个邮件收发客户端.html">
+            
+                    
+                    从零实现一个邮件收发客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="从零开发一个WebSocket服务器.html">
+            
+                <a href="从零开发一个WebSocket服务器.html">
+            
+                    
+                    从零开发一个WebSocket服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="1从一款多人联机实时对战游戏开始.html">
+            
+                <a href="1从一款多人联机实时对战游戏开始.html">
+            
+                    
+                    从零学习开源项目系列（一） 从一款多人联机实时对战游戏开始
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="2最后一战概况.html">
+            
+                <a href="2最后一战概况.html">
+            
+                    
+                    从零学习开源项目系列（二） 最后一战概况
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="3CSBattleMgr服务源码研究.html">
+            
+                <a href="3CSBattleMgr服务源码研究.html">
+            
+                    
+                    从零学习开源项目系列（三） CSBattleMgr服务源码研究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="4LogServer源码探究.html">
+            
+                <a href="4LogServer源码探究.html">
+            
+                    
+                    从零学习开源项目系列（四）LogServer源码探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part III</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../TeamTalk源码解析/">
+            
+                <a href="../TeamTalk源码解析/">
+            
+                    
+                    TeamTalk IM源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../TeamTalk源码解析/01TeamTalk介绍.html">
+            
+                <a href="../TeamTalk源码解析/01TeamTalk介绍.html">
+            
+                    
+                    01 TeamTalk介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../TeamTalk源码解析/02服务器端的程序的编译与部署.html">
+            
+                <a href="../TeamTalk源码解析/02服务器端的程序的编译与部署.html">
+            
+                    
+                    02 服务器端的程序的编译与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../TeamTalk源码解析/03服务器端的程序架构介绍.html">
+            
+                <a href="../TeamTalk源码解析/03服务器端的程序架构介绍.html">
+            
+                    
+                    03 服务器端的程序架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../TeamTalk源码解析/04服务器端db_proxy_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/04服务器端db_proxy_server源码分析.html">
+            
+                    
+                    04 服务器端db_proxy_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../TeamTalk源码解析/05服务器端msg_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/05服务器端msg_server源码分析.html">
+            
+                    
+                    05 服务器端msg_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../TeamTalk源码解析/06服务器端login_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/06服务器端login_server源码分析.html">
+            
+                    
+                    06 服务器端login_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../TeamTalk源码解析/07服务器端msfs源码分析.html">
+            
+                <a href="../TeamTalk源码解析/07服务器端msfs源码分析.html">
+            
+                    
+                    07 服务器端msfs源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.8" data-path="../TeamTalk源码解析/08服务器端file_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/08服务器端file_server源码分析.html">
+            
+                    
+                    08 服务器端file_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.9" data-path="../TeamTalk源码解析/09服务器端route_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/09服务器端route_server源码分析.html">
+            
+                    
+                    09 服务器端route_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.10" data-path="../TeamTalk源码解析/10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                <a href="../TeamTalk源码解析/10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                    
+                    10 开放一个TeamTalk测试服务器地址和几个测试账号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.11" data-path="../TeamTalk源码解析/11pc客户端源码分析.html">
+            
+                <a href="../TeamTalk源码解析/11pc客户端源码分析.html">
+            
+                    
+                    11 pc客户端源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../libevent源码深度剖析/">
+            
+                <a href="../libevent源码深度剖析/">
+            
+                    
+                    libevent源码深度剖析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                    
+                    libevent源码深度剖析01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                    
+                    libevent源码深度剖析02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                    
+                    libevent源码深度剖析03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                    
+                    libevent源码深度剖析04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.5" data-path="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                    
+                    libevent源码深度剖析05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.6" data-path="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                    
+                    libevent源码深度剖析06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.7" data-path="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                    
+                    libevent源码深度剖析07
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.8" data-path="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                    
+                    libevent源码深度剖析08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.9" data-path="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                    
+                    libevent源码深度剖析09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.10" data-path="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                    
+                    libevent源码深度剖析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.11" data-path="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                    
+                    libevent源码深度剖析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.12" data-path="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                    
+                    libevent源码深度剖析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.13" data-path="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                    
+                    libevent源码深度剖析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../leveldb源码分析/">
+            
+                <a href="../leveldb源码分析/">
+            
+                    
+                    leveldb源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../leveldb源码分析/leveldb源码分析1.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析1.html">
+            
+                    
+                    leveldb源码分析1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../leveldb源码分析/leveldb源码分析2.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析2.html">
+            
+                    
+                    leveldb源码分析2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../leveldb源码分析/leveldb源码分析3.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析3.html">
+            
+                    
+                    leveldb源码分析3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../leveldb源码分析/leveldb源码分析4.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析4.html">
+            
+                    
+                    leveldb源码分析4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.5" data-path="../leveldb源码分析/leveldb源码分析5.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析5.html">
+            
+                    
+                    leveldb源码分析5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.6" data-path="../leveldb源码分析/leveldb源码分析6.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析6.html">
+            
+                    
+                    leveldb源码分析6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.7" data-path="../leveldb源码分析/leveldb源码分析7.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析7.html">
+            
+                    
+                    leveldb源码分析7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.8" data-path="../leveldb源码分析/leveldb源码分析8.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析8.html">
+            
+                    
+                    leveldb源码分析8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.9" data-path="../leveldb源码分析/leveldb源码分析9.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析9.html">
+            
+                    
+                    leveldb源码分析9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.10" data-path="../leveldb源码分析/leveldb源码分析10.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析10.html">
+            
+                    
+                    leveldb源码分析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.11" data-path="../leveldb源码分析/leveldb源码分析11.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析11.html">
+            
+                    
+                    leveldb源码分析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.12" data-path="../leveldb源码分析/leveldb源码分析12.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析12.html">
+            
+                    
+                    leveldb源码分析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.13" data-path="../leveldb源码分析/leveldb源码分析13.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析13.html">
+            
+                    
+                    leveldb源码分析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.14" data-path="../leveldb源码分析/leveldb源码分析14.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析14.html">
+            
+                    
+                    leveldb源码分析14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.15" data-path="../leveldb源码分析/leveldb源码分析15.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析15.html">
+            
+                    
+                    leveldb源码分析15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.16" data-path="../leveldb源码分析/leveldb源码分析16.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析16.html">
+            
+                    
+                    leveldb源码分析16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.17" data-path="../leveldb源码分析/leveldb源码分析17.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析17.html">
+            
+                    
+                    leveldb源码分析17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.18" data-path="../leveldb源码分析/leveldb源码分析18.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析18.html">
+            
+                    
+                    leveldb源码分析18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.19" data-path="../leveldb源码分析/leveldb源码分析19.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析19.html">
+            
+                    
+                    leveldb源码分析19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.20" data-path="../leveldb源码分析/leveldb源码分析20.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析20.html">
+            
+                    
+                    leveldb源码分析20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.21" data-path="../leveldb源码分析/leveldb源码分析21.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析21.html">
+            
+                    
+                    leveldb源码分析21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.22" data-path="../leveldb源码分析/leveldb源码分析22.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析22.html">
+            
+                    
+                    leveldb源码分析22
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Memcached源码分析/">
+            
+                <a href="../Memcached源码分析/">
+            
+                    
+                    Memcached源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Memcached源码分析/00服务器资源调整.html">
+            
+                <a href="../Memcached源码分析/00服务器资源调整.html">
+            
+                    
+                    00 服务器资源调整
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Memcached源码分析/01初始化参数解析.html">
+            
+                <a href="../Memcached源码分析/01初始化参数解析.html">
+            
+                    
+                    01 初始化参数解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../Memcached源码分析/02网络监听的建立.html">
+            
+                <a href="../Memcached源码分析/02网络监听的建立.html">
+            
+                    
+                    02 网络监听的建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../Memcached源码分析/03网络连接建立.html">
+            
+                <a href="../Memcached源码分析/03网络连接建立.html">
+            
+                    
+                    03 网络连接建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.5" data-path="../Memcached源码分析/04内存初始化.html">
+            
+                <a href="../Memcached源码分析/04内存初始化.html">
+            
+                    
+                    04 内存初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.6" data-path="../Memcached源码分析/05资源初始化.html">
+            
+                <a href="../Memcached源码分析/05资源初始化.html">
+            
+                    
+                    05 资源初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.7" data-path="../Memcached源码分析/06get过程.html">
+            
+                <a href="../Memcached源码分析/06get过程.html">
+            
+                    
+                    06 get过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.8" data-path="../Memcached源码分析/07cas属性.html">
+            
+                <a href="../Memcached源码分析/07cas属性.html">
+            
+                    
+                    07 cas属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.9" data-path="../Memcached源码分析/08内存池.html">
+            
+                <a href="../Memcached源码分析/08内存池.html">
+            
+                    
+                    08 内存池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.10" data-path="../Memcached源码分析/09连接队列.html">
+            
+                <a href="../Memcached源码分析/09连接队列.html">
+            
+                    
+                    09 连接队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.11" data-path="../Memcached源码分析/10Hash表操作.html">
+            
+                <a href="../Memcached源码分析/10Hash表操作.html">
+            
+                    
+                    10 Hash表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.12" data-path="../Memcached源码分析/12set操作.html">
+            
+                <a href="../Memcached源码分析/12set操作.html">
+            
+                    
+                    12 set操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.13" data-path="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                <a href="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                    
+                    13 do_item_alloc操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.14" data-path="../Memcached源码分析/14item结构.html">
+            
+                <a href="../Memcached源码分析/14item结构.html">
+            
+                    
+                    14 item结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.15" data-path="../Memcached源码分析/15Hash表扩容.html">
+            
+                <a href="../Memcached源码分析/15Hash表扩容.html">
+            
+                    
+                    15 Hash表扩容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.16" data-path="../Memcached源码分析/16线程交互.html">
+            
+                <a href="../Memcached源码分析/16线程交互.html">
+            
+                    
+                    16 线程交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.17" data-path="../Memcached源码分析/17状态机.html">
+            
+                <a href="../Memcached源码分析/17状态机.html">
+            
+                    
+                    17 状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../游戏开发专题/">
+            
+                <a href="../游戏开发专题/">
+            
+                    
+                    游戏开发专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                <a href="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                    
+                    1 游戏服务器开发的基本体系与服务器端开发的一些建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                <a href="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                    
+                    2 网络游戏服务器开发框架设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                <a href="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                    
+                    3 游戏后端开发需要掌握的知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                <a href="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                    
+                    4 关于游戏服务端架构的整理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                <a href="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                    
+                    5 各类游戏对应的服务端架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                <a href="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                    
+                    6 从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                <a href="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                    
+                    7 QQ游戏百万人同时在线服务器架构实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                    
+                    8 大型多人在线游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                    
+                    9 百万用户级游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                <a href="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                    
+                    10 十万在线的WebGame的数据库设计思路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                    
+                    11 一种高性能网络游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                <a href="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                    
+                    12 经典游戏服务器端架构概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                <a href="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                    
+                    13 游戏跨服架构进化之路
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part IV</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../程序员面试题精讲/">
+            
+                <a href="../程序员面试题精讲/">
+            
+                    
+                    程序员面试题精讲
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                <a href="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                    
+                    腾讯后台开发实习生技能要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                <a href="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                    
+                    聊聊如何拿大厂的 offer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                <a href="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                    
+                    网络通信题目集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                <a href="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                    
+                    我面试后端开发经理的经历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                <a href="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                    
+                    Linux C/C++后端开发面试问哪些问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../职业规划/">
+            
+                <a href="../职业规划/">
+            
+                    
+                    职业规划
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.2.1" data-path="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                <a href="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                    
+                    给工作 4 年迷茫的程序员们的一点建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.2" data-path="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                <a href="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                    
+                    聊聊技术人员的常见的职业问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.3" data-path="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                <a href="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                    
+                    写给那些傻傻想做服务器开发的朋友
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../自我提升与开源代码/">
+            
+                <a href="../自我提升与开源代码/">
+            
+                    
+                    自我提升与开源代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.3.1" data-path="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                <a href="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                    
+                    2020 年好好读一读开源代码吧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../后端开发相关的书籍/">
+            
+                <a href="../后端开发相关的书籍/">
+            
+                    
+                    后端开发相关的书籍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.4.1" data-path="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                <a href="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                    
+                    后台开发应该读的书
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="../程序员的简历/">
+            
+                <a href="../程序员的简历/">
+            
+                    
+                    程序员的简历
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.5.1" data-path="../程序员的简历/程序员如何写简历.html">
+            
+                <a href="../程序员的简历/程序员如何写简历.html">
+            
+                    
+                    程序员如何写简历
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="../程序员的薪资与年终奖那些事儿/">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/">
+            
+                    
+                    程序员的薪资与年终奖那些事儿
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.6.1" data-path="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                    
+                    技术面试与HR谈薪资技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.2" data-path="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                    
+                    聊一聊程序员如何增加收入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.3" data-path="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                    
+                    谈一谈年终奖
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="../程序员的烦心事/">
+            
+                <a href="../程序员的烦心事/">
+            
+                    
+                    程序员的烦心事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.7.1" data-path="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                <a href="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                    
+                    拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7.2" data-path="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                <a href="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                    
+                    我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="../作者的故事/">
+            
+                <a href="../作者的故事/">
+            
+                    
+                    作者的故事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.8.1" data-path="../作者的故事/我的2019.html">
+            
+                <a href="../作者的故事/我的2019.html">
+            
+                    
+                    我的 2019
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8.2" data-path="../作者的故事/我是如何年薪五十万的.html">
+            
+                <a href="../作者的故事/我是如何年薪五十万的.html">
+            
+                    
+                    我是如何年薪五十万的
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+		</nav>
+		
+		
+	</div>
+
+	<!-- Content nav -->
+	<div class="book-anchor">
+		<div class="book-anchor-title">在这篇文章中:</div>
+		<div class="book-anchor-body">
+
+		</div>
+	</div>
+
+	<div class="book-body">
+		
+		<div class="body-inner">
+			
+			
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >从零实现一款12306刷票软件</a>
+    </h1>
+</div>
+
+
+
+
+			<div class="page-wrapper" tabindex="-1" role="main">
+				<div class="page-inner">
+					
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+					<section class="normal markdown-section">
+						
+						<div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;"><b></b>&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;</a></li></ul></ul></div><h2 id="&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;"><a name="&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;</h2>
+<p>&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x8BDD;</p>
+<p>&#x6BCF;&#x5E74;&#x9022;&#x5E74;&#x8FC7;&#x8282;&#xFF0C;&#x4E00;&#x7968;&#x96BE;&#x6C42;&#x8BFB;&#x8005;&#x80AF;&#x5B9A;&#x4E0D;&#x964C;&#x751F;&#x3002;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5E26;&#x9886;&#x8BFB;&#x8005;&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x6B3E;12306&#x5237;&#x7968;&#x8F6F;&#x4EF6;&#xFF0C;&#x5176;&#x6838;&#x5FC3;&#x539F;&#x7406;&#x662F;<strong>&#x901A;&#x8FC7;&#x53D1;&#x9001;http&#x8BF7;&#x6C42;&#x6A21;&#x62DF;&#x767B;&#x5F55;12306&#x7F51;&#x7AD9;&#x7684;&#x8D2D;&#x7968;</strong>&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6700;&#x540E;&#x4E70;&#x5230;&#x7968;&#x3002;</p>
+<p>&#x5173;&#x4E8E;http&#x8BF7;&#x6C42;&#x7684;&#x683C;&#x5F0F;&#x548C;&#x5982;&#x4F55;&#x7EC4;&#x88C5;http&#x6570;&#x636E;&#x5305;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x300A;<a href="http://mp.weixin.qq.com/s?__biz=MzU2MTQ1MzI3NQ==&amp;mid=2247484692&amp;idx=1&amp;sn=346d0a16db724a575947562282f7c621&amp;chksm=fc79c4a0cb0e4db62bc1f2a4f9489cd5d0cf8dd4c3363fcdd76bb65543e372b780b0895711a7&amp;scene=21#wechat_redirect" target="_blank">&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;http&#x670D;&#x52A1;&#x5668;</a>&#x300B;&#x4E2D;&#x5DF2;&#x7ECF;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x8FC7;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x4E0D;&#x660E;&#x767D;&#x7684;&#x670B;&#x53CB;&#x53EF;&#x4EE5;&#x53BB;&#x90A3;&#x7BC7;&#x6587;&#x7AE0;&#x770B;&#x4E0B;&#x3002;</p>
+<p><strong>&#x90D1;&#x91CD;&#x7533;&#x660E;&#x4E00;&#x4E0B;&#xFF1A;&#x8FD9;&#x91CC;&#x4ECB;&#x7ECD;&#x7684;&#x6280;&#x672F;&#x4EC5;&#x4F9B;&#x7528;&#x4E8E;&#x5B66;&#x4E60;&#xFF0C;&#x4E0D;&#x53EF;&#x7528;&#x4E8E;&#x6076;&#x610F;&#x653B;&#x51FB;12306&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8BF7;&#x52FF;&#x6EE5;&#x7528;&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x7684;&#x6280;&#x672F;&#x3002;&#x5BF9;12306&#x670D;&#x52A1;&#x5668;&#x9020;&#x6210;&#x7684;&#x4EFB;&#x4F55;&#x635F;&#x5931;&#xFF0C;&#x540E;&#x679C;&#x81EA;&#x8D1F;&#x3002;</strong></p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x7531;&#x4E8E;12306&#x670D;&#x52A1;&#x5668;&#x7528;&#x6237;&#x91CF;&#x5DE8;&#x5927;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x9EC4;&#x725B;&#x548C;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x975E;&#x6CD5;&#x653B;&#x51FB;&#x8005;&#xFF0C;12306&#x7684;&#x5F88;&#x591A;url&#x548C;&#x5728;&#x8D2D;&#x7968;&#x8FC7;&#x7A0B;&#x4E2D;&#x5404;&#x4E2A;&#x6B65;&#x9AA4;&#x7684;&#x534F;&#x8BAE;&#x7EC6;&#x8282;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x672C;&#x6587;&#x4E2D;&#x4ECB;&#x7ECD;&#x7684;&#x4E00;&#x4E9B;&#x5177;&#x4F53;&#x7684;url&#xFF0C;&#x53EF;&#x80FD;&#x5728;&#x4F60;&#x770B;&#x5230;&#x672C;&#x6587;&#x65F6;&#x5DF2;&#x7ECF;&#x5931;&#x6548;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x5E76;&#x6CA1;&#x6709;&#x5173;&#x7CFB;&#xFF0C;&#x53EA;&#x8981;&#x4F60;&#x638C;&#x63E1;&#x4E86;&#x672C;&#x6587;&#x4E2D;&#x4ECB;&#x7ECD;&#x7684;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#xFF0C;&#x60A8;&#x5C31;&#x53EF;&#x4EE5;&#x7075;&#x6D3B;&#x5730;&#x4FEE;&#x6539;&#x60A8;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4EE5;&#x9002;&#x5E94;&#x6700;&#x65B0;&#x7684;12306&#x670D;&#x52A1;&#x5668;&#x7684;&#x8981;&#x6C42;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;12306&#x7684;&#x67E5;&#x7968;&#x63A5;&#x53E3;&#x76EE;&#x524D;&#x7684;url&#x662F;&#xFF1A;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/leftTicket/query
+</code></pre><p>&#x53EF;&#x80FD;&#x8FC7;&#x51E0;&#x5929;&#x5C31;&#x53D8;&#x6210;&#x4E86;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/leftTicket/queryX
+</code></pre><p>&#x518D;&#x8FC7;&#x51E0;&#x5929;&#x53C8;&#x53EF;&#x80FD;&#x53D8;&#x6210;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/leftTicket/queryY
+</code></pre><p>&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x661F;&#x671F;&#x540E;&#x53C8;&#x53EF;&#x80FD;&#x53D8;&#x6210;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/leftTicket/queryZ
+</code></pre><p>&#x8FD9;&#x4E9B;&#x7B14;&#x8005;&#x90FD;&#x89C1;&#x8FC7;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x91CD;&#x5728;&#x539F;&#x7406;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x638C;&#x63E1;&#x4E86;&#x539F;&#x7406;&#xFF0C;&#x4E0D;&#x7BA1;12306&#x7684;&#x76F8;&#x5173;url&#x53D8;&#x6210;&#x4EC0;&#x4E48;&#x6837;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x4EE5;&#x4E0D;&#x53D8;&#x5E94;&#x4E07;&#x53D8;&#x3002;&#x54CE;&#xFF0C;12306&#x5728;&#x4E0E;&#x9EC4;&#x725B;&#x7684;&#x6597;&#x4E89;&#x4E2D;&#x8D8A;&#x8D70;&#x8D8A;&#x8FDC;&#x554A;T_T</p>
+<p>&#x672C;&#x6587;&#x5C06;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x5DE5;&#x5177;&#x6765;&#x5206;&#x6790;12306&#x8D2D;&#x7968;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;C++&#x8BED;&#x8A00;&#xFF0C;&#x6A21;&#x62DF;&#x76F8;&#x5173;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6700;&#x7EC8;&#x8D2D;&#x7968;&#x3002;</p>
+<ol>
+<li>Chrome&#x6D4F;&#x89C8;&#x5668;&#xFF08;&#x5176;&#x4ED6;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#xFF0C;&#x90FD;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x754C;&#x9762;&#xFF0C;&#x5982;Chrome&#xFF0C;&#x88C5;&#x4E86;httpwatch&#x7684;IE&#x6D4F;&#x89C8;&#x5668;&#x7B49;&#xFF09;</li>
+<li>&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x767B;&#x5F55;12306&#x7F51;&#x5740;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x8D2D;&#x7968;&#x7684;12306&#x8D26;&#x53F7;</li>
+<li>Visual Studio&#xFF08;&#x7248;&#x672C;&#x968F;&#x610F;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x7528;&#x7684;&#x662F;VS 2013&#xFF09;</li>
+</ol>
+<p>&#x4E00;&#x3001;&#x67E5;&#x7968;&#x4E0E;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x63A5;&#x53E3;</p>
+<p>&#x4E4B;&#x6240;&#x4EE5;&#x5148;&#x5206;&#x6790;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x67E5;&#x7968;&#x4E0D;&#x9700;&#x8981;&#x7528;&#x6237;&#x767B;&#x5F55;&#x7684;&#xFF0C;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x6700;&#x7B80;&#x5355;&#x3002;&#x6211;&#x4EEC;&#x5728;Chrome&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6253;&#x5F00;12306&#x4F59;&#x7968;&#x67E5;&#x8BE2;&#x9875;&#x9762;&#xFF0C;&#x7F51;&#x5740;&#x662F;&#xFF1A;<a href="https://kyfw.12306.cn/otn/leftTicket/init&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;" target="_blank">https://kyfw.12306.cn/otn/leftTicket/init&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</a></p>
+<p><img src="../imgs/12306-1.webp" alt=""></p>
+<p>&#x7136;&#x540E;&#x5728;&#x9875;&#x9762;&#x4E2D;&#x53F3;&#x952E;&#x83DC;&#x5355;&#x4E2D;&#x9009;&#x62E9;&#x3010;<strong>&#x68C0;&#x67E5;</strong>&#x3011;&#x83DC;&#x5355;&#xFF0C;&#x6253;&#x5F00;&#x540E;&#xFF0C;&#x9009;&#x62E9;&#x3010;<strong>&#x7F51;&#x7EDC;</strong>&#x3011;&#x9009;&#x9879;&#x5361;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../imgs/12306-2.webp" alt=""></p>
+<p><img src="../imgs/12306-3.webp" alt=""></p>
+<p>&#x6253;&#x5F00;&#x540E;&#x9875;&#x9762;&#x53D8;&#x6210;&#x4E8C;&#x5206;&#x7A97;&#x53E3;&#x4E86;&#xFF0C;&#x5DE6;&#x4FA7;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x7F51;&#x9875;&#x9875;&#x9762;&#xFF0C;&#x53F3;&#x4FA7;&#x662F;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x5E26;&#x7684;&#x63A7;&#x5236;&#x53F0;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x5DE6;&#x4FA7;&#x9875;&#x9762;&#x4E2D;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x53F3;&#x4FA7;&#x4F1A;&#x663E;&#x793A;&#x6211;&#x4EEC;&#x6D4F;&#x89C8;&#x5668;&#x53D1;&#x9001;&#x7684;&#x5404;&#x79CD;http&#x8BF7;&#x6C42;&#x548C;&#x5E94;&#x7B54;&#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x968F;&#x4FBF;&#x67E5;&#x4E00;&#x4E2A;&#x7968;&#x5427;&#xFF0C;&#x5982;&#x67E5;<strong>2018&#x5E74;5&#x6708;20</strong>&#x65E5;&#x4ECE;<strong>&#x4E0A;&#x6D77;&#x5230;&#x5317;&#x4EAC;</strong>&#x7684;&#x7968;&#xFF0C;&#x70B9;&#x51FB;12306&#x7F51;&#x9875;&#x4E2D;&#x3010;&#x67E5;&#x8BE2;&#x3011;&#x6309;&#x94AE;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x53F3;&#x4FA7;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<p><img src="../imgs/12306-4.webp" alt=""></p>
+<p>&#x901A;&#x8FC7;&#x56FE;&#x4E2D;&#x5217;&#x8868;&#x7684;type&#x503C;&#x662F;<strong>xhr</strong>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;<strong>ajax</strong>&#x8BF7;&#x6C42;&#xFF08;ajax&#x662F;&#x4E00;&#x79CD;&#x6D4F;&#x89C8;&#x5668;&#x539F;&#x751F;&#x652F;&#x6301;&#x7684;&#x5F02;&#x6B65;&#x6280;&#x672F;&#xFF0C;&#x5177;&#x4F53;&#x7EC6;&#x8282;&#x8BF7;&#x8BFB;&#x8005;&#x81EA;&#x884C;&#x641C;&#x7D22;&#xFF09;&#x3002;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#xFF0C;&#x4F60;&#x80FD;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x7EC6;&#x8282;&#x2014;&#x2014;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../imgs/12306-5.webp" alt=""></p>
+<p>&#x5728;reponse&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x8FD9;&#x4E2A;http&#x7684;&#x53BB;&#x9664;http&#x5934;&#x7684;&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#xFF08;&#x5305;&#x4F53;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x89E3;&#x538B;&#x7F29;&#x6216;&#x8005;&#x89E3;&#x7801;&#x540E;&#x7684;&#xFF09;&#xFF1A;</p>
+<p><img src="../imgs/12306-6.webp" alt=""></p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;json&#x683C;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x627E;&#x4E2A;json&#x683C;&#x5F0F;&#x5316;&#x5DE5;&#x5177;&#xFF0C;&#x628A;&#x8FD9;&#x4E2A;json&#x683C;&#x5F0F;&#x5316;&#x540E;&#x8D34;&#x51FA;&#x6765;&#x7ED9;&#x5927;&#x5BB6;&#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x5176;&#x5B9E;&#x60A8;&#x540E;&#x9762;&#x4F1A;&#x53D1;&#x73B0;12306&#x7684;http&#x8BF7;&#x6C42;&#x7ED3;&#x679C;&#x4E2D;&#x4E0E;&#x8D2D;&#x7968;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x57FA;&#x672C;&#x4E0A;&#x90FD;&#x662F;json&#x683C;&#x5F0F;&#x3002;&#x8FD9;&#x91CC;&#x7684;json&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>{  
+    &quot;validateMessagesShowId&quot;: &quot;_validatorMessage&quot;,  
+    &quot;status&quot;: true,  
+    &quot;httpstatus&quot;: 200,  
+    &quot;data&quot;: {  
+        &quot;result&quot;: [&quot;null|23:00-06:00&#x7CFB;&#x7EDF;&#x7EF4;&#x62A4;&#x65F6;&#x95F4;|5l0000G10270|G102|AOH|VNP|AOH|VNP|06:26|12:29|06:03|IS_TIME_NOT_BUY|RLVVIt093U2EZuy2NE+VQyRloXyqTzFp6YyNk6J52QcHEA01|20180520|3|HZ|01|11|1|0|||||||||||1|&#x6709;|13||O090M0|O9M|0&quot;,(&#x5185;&#x5BB9;&#x592A;&#x957F;&#xFF0C;&#x8FD9;&#x91CC;&#x7701;&#x7565;) &quot;],  
+        &quot;flag&quot;: &quot;1&quot;,  
+        &quot;map&quot;: {  
+            &quot;AOH&quot;: &quot;&#x4E0A;&#x6D77;&#x8679;&#x6865;&quot;,  
+            &quot;BJP&quot;: &quot;&#x5317;&#x4EAC;&quot;,  
+            &quot;VNP&quot;: &quot;&#x5317;&#x4EAC;&#x5357;&quot;,  
+            &quot;SHH&quot;: &quot;&#x4E0A;&#x6D77;&quot;  
+        }  
+    },  
+    &quot;messages&quot;: [],  
+    &quot;validateMessages&quot;: {}  
+}
+</code></pre><p>&#x5176;&#x4E2D;&#x542B;&#x6709;&#x7684;<strong>&#x4F59;&#x7968;&#x4FE1;&#x606F;&#x5728;result&#x8282;&#x70B9;</strong>&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x3002;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4EE5;|&#x5206;&#x5272;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x683C;&#x5F0F;&#x5316;&#x540E;&#x663E;&#x793A;&#x5728;&#x81EA;&#x5DF1;&#x7684;&#x754C;&#x9762;&#x4E0A;&#xFF1A;</p>
+<p><img src="../imgs/12306-7.webp" alt=""></p>
+<p>&#x6211;&#x8FD9;&#x91CC;&#x505A;&#x7684;&#x754C;&#x9762;&#x6BD4;&#x8F83;&#x7B80;&#x964B;&#xFF0C;&#x8BFB;&#x8005;&#x5982;&#x679C;&#x6709;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x505A;&#x66F4;&#x7CBE;&#x7F8E;&#x7684;&#x754C;&#x9762;&#x3002;&#x6211;&#x4EEC;&#x5217;&#x4E0B;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x7684;http&#x6570;&#x636E;&#x5305;&#x548C;&#x5E94;&#x7B54;&#x5305;&#xFF1A;</p>
+<p>&#x8BF7;&#x6C42;&#x5305;&#xFF1A;</p>
+<pre class="language-"><code>GET /otn/leftTicket/query?leftTicketDTO.train_date=2018-05-20&amp;leftTicketDTO.from_station=SHH&amp;leftTicketDTO.to_station=BJP&amp;purpose_codes=ADULT HTTP/1.1  
+Host: kyfw.12306.cn  
+Connection: keep-alive  
+Cache-Control: no-cache  
+Accept: */*  
+X-Requested-With: XMLHttpRequest  
+If-Modified-Since: 0  
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36  
+Referer: https://kyfw.12306.cn/otn/leftTicket/init  
+Accept-Encoding: gzip, deflate, br  
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8  
+Cookie: RAIL_EXPIRATION=1526978933395; RAIL_DEVICEID=WKxIYg-q1zjIPVu7VjulZ9PqEGvW2gUB9LvoM1Vx8fa7l3SUwnO_BVSatbTq506c6VYNOaxAiRaUcGFTMjCz9cPayEIc9vJ0pHaXdSqDlujJP8YrIoXbpAAs60l99z8bEtnHgAJzxLzKiv2nka5nmLY_BMNur8b8; _jc_save_fromStation=%u4E0A%u6D77%2CSHH; _jc_save_toStation=%u5317%u4EAC%2CBJP; _jc_save_fromDate=2018-05-20; _jc_save_toDate=2018-05-19; _jc_save_wfdc_flag=dc
+</code></pre><p>&#x5E94;&#x7B54;&#x5305;&#xFF1A;</p>
+<pre class="language-"><code>HTTP/1.1 200 OK
+Date: Sat, 19 May 2018 15:23:58 GMT
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+ct: C1_217_85_8
+Content-Encoding: gzip
+Age: 1
+X-Via: 1.1 houdianxin183:6 (Cdn Cache Server V2.0)
+Connection: keep-alive
+X-Dscp-Value: 0
+X-Cdn-Src-Port: 33963
+Cache-Control: no-cache, no-store
+</code></pre><p>&#x901A;&#x8FC7;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x300A;<a href="http://mp.weixin.qq.com/s?__biz=MzU2MTQ1MzI3NQ==&amp;mid=2247484692&amp;idx=1&amp;sn=346d0a16db724a575947562282f7c621&amp;chksm=fc79c4a0cb0e4db62bc1f2a4f9489cd5d0cf8dd4c3363fcdd76bb65543e372b780b0895711a7&amp;scene=21#wechat_redirect" target="_blank">&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;http&#x670D;&#x52A1;&#x5668;</a>&#x300B;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;http GET&#x8BF7;&#x6C42;&#xFF0C;&#x5176;&#x4E2D;&#x5728;url&#x540E;&#x9762;&#x662F;&#x8BF7;&#x6C42;&#x9644;&#x5E26;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre class="language-"><code>leftTicketDTO.train_date: 2018-05-20  
+leftTicketDTO.from_station: SHH  
+leftTicketDTO.to_station: BJP  
+purpose_codes: ADULT
+</code></pre><p>&#x8FD9;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x5206;&#x522B;&#x662F;<strong>&#x8D2D;&#x7968;&#x65E5;&#x671F;</strong>&#x3001;<strong>&#x51FA;&#x53D1;&#x7AD9;</strong>&#x3001;<strong>&#x5230;&#x8FBE;&#x7AD9;</strong>&#x548C;<strong>&#x7968;&#x7C7B;&#x578B;</strong>&#xFF08;&#x8FD9;&#x91CC;&#x662F;&#x6210;&#x4EBA;&#x7968;&#xFF08;&#x5373;&#x666E;&#x901A;&#x7968;&#xFF09;&#xFF09;&#xFF0C;&#x6B63;&#x597D;&#x5BF9;&#x5E94;&#x6211;&#x4EEC;&#x754C;&#x9762;&#x4E0A;&#x7684;&#x67E5;&#x8BE2;&#x4FE1;&#x606F;&#xFF1A;</p>
+<p><img src="../imgs/12306-8.webp" alt=""></p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x80FD;&#x4F1A;&#x95EE;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x51FA;&#x53D1;&#x7AD9;&#x548C;&#x5230;&#x8FBE;&#x7AD9;&#x5206;&#x522B;&#x662F;SHH&#x548C;BJP&#xFF0C;&#x8FD9;&#x4E9B;&#x7AD9;&#x70B9;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x5982;&#x4F55;&#x83B7;&#x5F97;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;&#x53EA;&#x6709;&#x77E5;&#x9053;&#x8FD9;&#x4E9B;&#x7AD9;&#x70B9;&#x7F16;&#x7801;&#x6211;&#x624D;&#x80FD;&#x81EA;&#x5DF1;&#x8D2D;&#x4E70;&#x6307;&#x5B9A;&#x51FA;&#x53D1;&#x7AD9;&#x548C;&#x5230;&#x8FBE;&#x7AD9;&#x7684;&#x706B;&#x8F66;&#x7968;&#x554A;&#x3002;&#x5982;&#x679C;&#x60A8;&#x662F;&#x4E00;&#x4F4D;&#x7EC6;&#x5FC3;&#x7684;&#x4EBA;&#xFF0C;&#x60A8;&#x80AF;&#x5B9A;&#x4F1A;&#x60F3;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x7968;&#x7684;&#x65F6;&#x5019;&#x518D;&#x8FDB;&#x5165;&#x67E5;&#x7968;&#x9875;&#x9762;&#xFF0C;&#x8FD9;&#x4E9B;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x5C31;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x80FD;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x67E5;&#x7968;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x65F6;&#xFF0C;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x8BF7;&#x6C42;&#x7684;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5237;&#x65B0;&#x4E0B;&#x67E5;&#x7968;&#x9875;&#x9762;&#xFF0C;&#x53D1;&#x73B0;&#x679C;&#x7136;&#x662F;&#x8FD9;&#x6837;&#xFF1A;</p>
+<p><img src="../imgs/12306-9.webp" alt=""></p>
+<p>&#x8FDB;&#x5165;&#x67E5;&#x7968;&#x9875;&#x9762;&#x4E4B;&#x524D;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x4ECE; <a href="https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.9053" target="_blank">https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.9053</a> &#x4E0B;&#x8F7D;&#x4E00;&#x4E2A;&#x53EB; <strong>station.name.js</strong> &#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;javascript&#x811A;&#x672C;&#xFF0C;&#x91CC;&#x9762;&#x53EA;&#x6709;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;station_names&#x7684;js&#x53D8;&#x91CF;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;url&#x5730;&#x5740;&#x540E;&#x9762;&#x52A0;&#x4E00;&#x4E2A;<strong>station_version=1.9053</strong>&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x4F46;&#x662F;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x503C;1.9053&#xFF0C;&#x8BA9;&#x6D4F;&#x89C8;&#x5668;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x4E2D;&#x7684;station_name.js&#xFF0C;&#x800C;&#x662F;&#x6BCF;&#x6B21;&#x90FD;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x4E0B;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x5982;&#x679C;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x6709;&#x66F4;&#x65B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x56E0;&#x4E3A;&#x7F13;&#x5B58;&#x95EE;&#x9898;&#xFF0C;&#x5BFC;&#x81F4;&#x672C;&#x5730;&#x7684;&#x7F13;&#x5B58;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x4E0D;&#x4E00;&#x81F4;&#x3002;&#x7531;&#x4E8E;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x6211;&#x4EEC;&#x622A;&#x4E2A;&#x56FE;&#x628A;&#xFF1A;</p>
+<p><img src="../imgs/12306-10.webp" alt=""></p>
+<p>&#x770B;&#x4E0A;&#x56FE;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x6BCF;&#x4E2A;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x90FD;&#x662F;&#x901A;&#x8FC7;<strong>@</strong>&#x7B26;&#x53F7;&#x5206;&#x5272;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<strong>|</strong>&#x5206;&#x5272;&#x6BCF;&#x4E00;&#x4E2A;&#x7AD9;&#x70B9;&#x7684;&#x5404;&#x79CD;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#xFF0C;&#x6839;&#x636E;&#x4E0A;&#x6587;&#x7684;&#x683C;&#x5F0F;&#x5047;&#x5982;&#x6211;&#x4EEC;&#x8981;&#x67E5;&#x8BE2;<strong>2018&#x5E74;5&#x6708;30&#x65E5;&#x4ECE;&#x957F;&#x6625;&#x5230;&#x5357;&#x4EAC;</strong>&#x7684;&#x706B;&#x8F66;&#x666E;&#x901A;&#x7968;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F51;&#x5740;&#xFF1A;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-05-30&amp;leftTicketDTO.from_station=CCT&amp;leftTicketDTO.to_station=NJH&amp;purpose_codes=ADULT
+</code></pre><p>&#x5F53;&#x7136;&#xFF0C;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x7684;&#x5C31;&#x662F;&#xFF0C;&#x7531;&#x4E8E;&#x5168;&#x56FD;&#x7684;&#x706B;&#x8F66;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x6587;&#x4EF6;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x89E3;&#x6790;&#x8D77;&#x6765;&#x65F6;&#x95F4;&#x8F83;&#x957F;&#xFF0C;&#x52A0;&#x4E0A;&#x706B;&#x8F66;&#x7AD9;&#x7F16;&#x7801;&#x4FE1;&#x606F;&#x5E76;&#x4E0D;&#x662F;&#x7ECF;&#x5E38;&#x53D8;&#x52A8;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x6211;&#x4EEC;&#x6CA1;&#x5FC5;&#x8981;&#x6BCF;&#x6B21;&#x90FD;&#x4E0B;&#x8F7D;&#x8FD9;&#x4E2A;station_name.js&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5728;&#x5199;&#x7A0B;&#x5E8F;&#x6A21;&#x62DF;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x4E00;&#x822C;&#x5148;&#x770B;&#x672C;&#x5730;&#x6709;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x624D;&#x53D1;http&#x8BF7;&#x6C42;&#x5411;12306&#x670D;&#x52A1;&#x5668;&#x8BF7;&#x6C42;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x8D34;&#x4E0B;&#x6211;&#x8BF7;&#x6C42;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x7684;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#xFF08;C++&#x4EE3;&#x7801;&#xFF09;&#xFF1A;</p>
+<pre class="language-"><code>/**  
+ * &#x83B7;&#x53D6;&#x5168;&#x56FD;&#x8F66;&#x7AD9;&#x4FE1;&#x606F; 
+ * @param si &#x8FD4;&#x56DE;&#x7684;&#x8F66;&#x7AD9;&#x4FE1;&#x606F; 
+ * @param bForceDownload &#x5F3A;&#x5236;&#x4ECE;&#x7F51;&#x7EDC;&#x4E0A;&#x4E0B;&#x8F7D;&#xFF0C;&#x5373;&#x4E0D;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x526F;&#x672C; 
+ */  
+bool GetStationInfo(vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>stationinfo</span><span class="token punctuation">&gt;</span></span>&amp; si, bool bForceDownload = false);
+</code></pre><pre class="language-"><code>#define URL_STATION_NAMES   &quot;https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.9053&quot;
+</code></pre><pre class="language-"><code>bool Client12306::GetStationInfo(vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>stationinfo</span><span class="token punctuation">&gt;</span></span>&amp; si, bool bForceDownload/* = false*/)  
+{    
+    FILE* pfile;  
+    pfile = fopen(&quot;station_name.js&quot;, &quot;rt+&quot;);  
+    //&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x4E0B;&#x8F7D;  
+    if (pfile == NULL)  
+    {  
+        bForceDownload = true;  
+    }  
+    string strResponse;  
+    if (bForceDownload)  
+    {  
+        if (pfile != NULL)  
+            fclose(pfile);  
+        pfile = fopen(&quot;station_name.js&quot;, &quot;wt+&quot;);  
+        if (pfile == NULL)  
+        {  
+            LogError(&quot;Unable to create station_name.js&quot;);  
+            return false;  
+        }  
+        CURLcode res;  
+        CURL* curl = curl_easy_init();  
+        if (NULL == curl)  
+        {  
+            fclose(pfile);  
+            return false;  
+        }  
+        //URL_STATION_NAMES  
+        curl_easy_setopt(curl, CURLOPT_URL, URL_STATION_NAMES);  
+        //&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#x4E2D;&#x4FDD;&#x7559;&#x5934;&#x90E8;&#x4FE1;&#x606F;  
+        //curl_easy_setopt(curl, CURLOPT_HEADER, 1);  
+        curl_easy_setopt(curl, CURLOPT_COOKIEFILE, &quot;&quot;);  
+        curl_easy_setopt(curl, CURLOPT_READFUNCTION, NULL);  
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, OnWriteData);  
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&amp;strResponse);  
+        curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);  
+        //&#x8BBE;&#x5B9A;&#x4E3A;&#x4E0D;&#x9A8C;&#x8BC1;&#x8BC1;&#x4E66;&#x548C;HOST  
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);  
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, false);  
+        curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 10);  
+        curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10);  
+        res = curl_easy_perform(curl);  
+        bool bError = false;  
+        if (res == CURLE_OK)  
+        {  
+            int code;  
+            res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &amp;code);  
+            if (code != 200)  
+            {  
+                bError = true;  
+                LogError(&quot;http response code is not 200, code=%d&quot;, code);  
+            }  
+        }  
+        else  
+        {  
+            LogError(&quot;http request error, error code = %d&quot;, res);  
+            bError = true;  
+        }  
+        curl_easy_cleanup(curl);  
+        if (bError)  
+        {  
+            fclose(pfile);  
+            return !bError;  
+        }  
+        if (fwrite(strResponse.data(), strResponse.length(), 1, pfile) != 1)  
+        {  
+            LogError(&quot;Write data to station_name.js error&quot;);              
+            return false;  
+        }  
+        fclose(pfile);  
+    }  
+    //&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;  
+    else  
+    {  
+        //&#x5F97;&#x5230;&#x6587;&#x4EF6;&#x5927;&#x5C0F;  
+        fseek(pfile, 0, SEEK_END);  
+        int length = ftell(pfile);  
+        if (length &lt; 0)  
+        {  
+            LogError(&quot;invalid station_name.js file&quot;);  
+            fclose(pfile);  
+        }  
+        fseek(pfile, 0, SEEK_SET);  
+        length++;  
+        char* buf = new char[length];  
+        memset(buf, 0, length*sizeof(char));  
+        if (fread(buf, length-1, 1, pfile) != 1)  
+        {  
+            LogError(&quot;read station_name.js file error&quot;);  
+            fclose(pfile);  
+            return false;  
+        }  
+        strResponse = buf;  
+        fclose(pfile);  
+    }  
+    /* 
+    &#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4E3A;&#x4E00;&#x4E2A;js&#x6587;&#x4EF6;&#xFF0C; 
+    var station_names = &apos;@bjb|&#x5317;&#x4EAC;&#x5317;|VAP|beijingbei|bjb|0@bjd|&#x5317;&#x4EAC;&#x4E1C;|BOP|beijingdong|bjd|1@bji|&#x5317;&#x4EAC;|BJP|beijing|bj|2&quot; 
+    */  
+    //LogInfo(&quot;recv json = %s&quot;, strResponse.c_str());  
+    OutputDebugStringA(strResponse.c_str());  
+    vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span> singleStation;  
+    split(strResponse, &quot;@&quot;, singleStation);  
+    size_t size = singleStation.size();  
+    for (size_t i = 1; i &lt; size; ++i)  
+    {  
+        vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span> v;  
+        split(singleStation[i], &quot;|&quot;, v);  
+        if (v.size() &lt; 6)  
+            continue;  
+        stationinfo st;  
+        st.code1 = v[0];  
+        st.hanzi = v[1];  
+        st.code2 = v[2];  
+        st.pingyin = v[3];  
+        st.simplepingyin = v[4];  
+        st.no = atol(v[5].c_str());  
+        si.push_back(st);  
+    }  
+    return true;  
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x7ED3;&#x6784;&#x4F53;<strong>stationinfo</strong>&#xFF0C;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>//var station_names = &apos;@bjb|&#x5317;&#x4EAC;&#x5317;|VAP|beijingbei|bjb|0@bjd|&#x5317;&#x4EAC;&#x4E1C;|BOP|beijingdong|bjd|1@bji|&#x5317;&#x4EAC;|BJP|beijing|bj|2  
+struct stationinfo  
+{  
+    string code1;  
+    string hanzi;  
+    string code2;  
+    string pingyin;  
+    string simplepingyin;  
+    int no;  
+};
+</code></pre><p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x6A21;&#x62DF;http&#x8BF7;&#x6C42;&#x505A;&#x4E70;&#x706B;&#x8F66;&#x7968;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6280;&#x672F;&#x65B9;&#x9762;&#x672C;&#x8EAB;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x5FEB;&#x901F;&#x5B9E;&#x73B0;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4F7F;&#x7528;curl&#x5E93;&#x3002;&#x8FD9;&#x4E2A;&#x5E93;&#x662F;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x7684;http&#x76F8;&#x5173;&#x7684;&#x5E93;&#xFF0C;&#x4F8B;&#x5982;12306&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x662F;&#x5206;&#x5757;&#x7684;&#xFF08;chunked&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x5E93;&#x4E5F;&#x80FD;&#x5E2E;&#x6211;&#x4EEC;&#x7EC4;&#x88C5;&#x597D;&#xFF1B;&#x518D;&#x4F8B;&#x5982;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x662F;&#x4F7F;&#x7528;gzip&#x683C;&#x5F0F;&#x538B;&#x7F29;&#x7684;&#xFF0C;curl&#x4E5F;&#x4F1A;&#x5E2E;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x89E3;&#x538B;&#x597D;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6240;&#x6709;12306&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x90FD;&#x57FA;&#x4E8E;&#x6211;&#x5C01;&#x88C5;&#x7684;curl&#x5E93;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF1A;</p>
+<pre class="language-"><code>/** 
+ * &#x53D1;&#x9001;&#x4E00;&#x4E2A;http&#x8BF7;&#x6C42; 
+ *@param url &#x8BF7;&#x6C42;&#x7684;url 
+ *@param strResponse http&#x54CD;&#x5E94;&#x7ED3;&#x679C; 
+ *@param get true&#x4E3A;GET&#xFF0C;false&#x4E3A;POST 
+ *@param headers &#x9644;&#x5E26;&#x53D1;&#x9001;&#x7684;http&#x5934;&#x4FE1;&#x606F; 
+ *@param postdata post&#x9644;&#x5E26;&#x7684;&#x6570;&#x636E;     
+ *@param bReserveHeaders http&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x4FDD;&#x7559;&#x5934;&#x90E8;&#x4FE1;&#x606F; 
+ *@param timeout http&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x65F6;&#x95F4; 
+ */  
+bool HttpRequest(const char* url, string&amp; strResponse, bool get = true, const char* headers = NULL, const char* postdata = NULL, bool bReserveHeaders = false, int timeout = );
+</code></pre><p>&#x51FD;&#x6570;&#x5404;&#x79CD;&#x53C2;&#x6570;&#x5DF2;&#x7ECF;&#x5728;&#x51FD;&#x6570;&#x6CE8;&#x91CA;&#x4E2D;&#x5199;&#x7684;&#x6E05;&#x6E05;&#x695A;&#x695A;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x4E00;&#x4E00;&#x89E3;&#x91CA;&#x4E86;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>bool Client12306::HttpRequest(const char* url,   
+                              string&amp; strResponse,   
+                              bool get/* = true*/,   
+                              const char* headers/* = NULL*/,   
+                              const char* postdata/* = NULL*/,   
+                              bool bReserveHeaders/* = false*/,   
+                              int timeout/* = 10*/)  
+{  
+    CURLcode res;  
+    CURL* curl = curl_easy_init();  
+    if (NULL == curl)  
+    {  
+        LogError(&quot;curl lib init error&quot;);  
+        return false;  
+    }  
+    curl_easy_setopt(curl, CURLOPT_URL, url);  
+    //&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#x4E2D;&#x4FDD;&#x7559;&#x5934;&#x90E8;&#x4FE1;&#x606F;  
+    if (bReserveHeaders)  
+       curl_easy_setopt(curl, CURLOPT_HEADER, 1);  
+    curl_easy_setopt(curl, CURLOPT_COOKIEFILE, &quot;&quot;);  
+    curl_easy_setopt(curl, CURLOPT_READFUNCTION, NULL);  
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, OnWriteData);  
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&amp;strResponse);  
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);  
+    //&#x8BBE;&#x5B9A;&#x4E3A;&#x4E0D;&#x9A8C;&#x8BC1;&#x8BC1;&#x4E66;&#x548C;HOST  
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, false);  
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, false);  
+    //&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;  
+    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, timeout);  
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, timeout);  
+    curl_easy_setopt(curl, CURLOPT_REFERER, URL_REFERER);  
+    //12306&#x65E9;&#x671F;&#x7248;&#x672C;&#x662F;&#x4E0D;&#x9700;&#x8981;USERAGENT&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x5FC5;&#x987B;&#x4E86;&#xFF0C;&#x4F30;&#x8BA1;&#x662F;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x4E00;&#x4E9B;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x975E;&#x6CD5;&#x523A;&#x63A2;&#x5427;&#x3002;  
+    //&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;  
+    /* 
+        HTTP/1.0 302 Moved Temporarily 
+        Location: http://www.12306.cn/mormhweb/logFiles/error.html 
+        Server: Cdn Cache Server V2.0 
+        Mime-Version: 1.0 
+        Date: Fri, 18 May 2018 02:52:05 GMT 
+        Content-Type: text/html 
+        Content-Length: 0 
+        Expires: Fri, 18 May 2018 02:52:05 GMT 
+        X-Via: 1.0 PSshgqdxxx63:10 (Cdn Cache Server V2.0) 
+        Connection: keep-alive 
+        X-Dscp-Value: 0 
+     */  
+    curl_easy_setopt(curl, CURLOPT_USERAGENT, &quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36&quot;);  
+    //&#x4E0D;&#x8BBE;&#x7F6E;&#x63A5;&#x6536;&#x7684;&#x7F16;&#x7801;&#x683C;&#x5F0F;&#x6216;&#x8005;&#x8BBE;&#x7F6E;&#x4E3A;&#x7A7A;&#xFF0C;libcurl&#x4F1A;&#x81EA;&#x52A8;&#x89E3;&#x538B;&#x538B;&#x7F29;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x5982;gzip  
+    //curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, &quot;gzip, deflate, br&quot;);  
+    //&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x5934;&#x4FE1;&#x606F;  
+    if (headers != NULL)  
+    {  
+        //LogInfo(&quot;http custom header: %s&quot;, headers);  
+        struct curl_slist *chunk = NULL;          
+        chunk = curl_slist_append(chunk, headers);        
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);  
+    }  
+    if (!get &amp;&amp; postdata != NULL)  
+    {  
+        //LogInfo(&quot;http post data: %s&quot;, postdata);  
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postdata);  
+    }  
+    LogInfo(&quot;http %s: url=%s, headers=%s, postdata=%s&quot;, get ? &quot;get&quot; : &quot;post&quot;, url, headers != NULL ? headers : &quot;&quot;, postdata!=NULL?postdata : &quot;&quot;);  
+    res = curl_easy_perform(curl);  
+    bool bError = false;  
+    if (res == CURLE_OK)  
+    {  
+        int code;  
+        res = curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &amp;code);  
+        if (code != 200 &amp;&amp; code != 302)  
+        {  
+            bError = true;  
+            LogError(&quot;http response code is not 200 or 302, code=%d&quot;, code);  
+        }  
+    }  
+    else  
+    {  
+        LogError(&quot;http request error, error code = %d&quot;, res);  
+        bError = true;  
+    }  
+    curl_easy_cleanup(curl);  
+    LogInfo(&quot;http response: %s&quot;, strResponse.c_str());  
+   return !bError;  
+}
+</code></pre><p>&#x6B63;&#x5982;&#x4E0A;&#x9762;&#x6CE8;&#x91CA;&#x4E2D;&#x6240;&#x63D0;&#x5230;&#x7684;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5728;&#x53D1;&#x9001;http&#x8BF7;&#x6C42;&#x65F6;&#x5E26;&#x7684;&#x67D0;&#x4E9B;&#x5B57;&#x6BB5;&#xFF0C;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x6A21;&#x62DF;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#x65F6;&#x53EF;&#x4EE5;&#x4E0D;&#x6DFB;&#x52A0;&#xFF0C;&#x5982;&#x67E5;&#x7968;&#x63A5;&#x53E3;&#x6D4F;&#x89C8;&#x5668;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x4EE5;&#x4E0B;http&#x6570;&#x636E;&#x5305;&#xFF1A;</p>
+<pre class="language-"><code>GET /otn/leftTicket/query?leftTicketDTO.train_date=2018-05-30&amp;leftTicketDTO.from_station=SHH&amp;leftTicketDTO.to_station=BJP&amp;purpose_codes=ADULT HTTP/1.1  
+Host: kyfw.12306.cn  
+Connection: keep-alive  
+Cache-Control: no-cache  
+Accept: */*  
+X-Requested-With: XMLHttpRequest  
+If-Modified-Since: 0  
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36  
+Referer: https://kyfw.12306.cn/otn/leftTicket/init  
+Accept-Encoding: gzip, deflate, br  
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8  
+Cookie: JSESSIONID=ACD9CB098169C4D73CDE80D6F6C38E5A; RAIL_EXPIRATION=1526978933395; RAIL_DEVICEID=WKxIYg-q1zjIPVu7VjulZ9PqEGvW2gUB9LvoM1Vx8fa7l3SUwnO_BVSatbTq506c6VYNOaxAiRaUcGFTMjCz9cPayEIc9vJ0pHaXdSqDlujJP8YrIoXbpAAs60l99z8bEtnHgAJzxLzKiv2nka5nmLY_BMNur8b8; _jc_save_fromStation=%u4E0A%u6D77%2CSHH; _jc_save_toStation=%u5317%u4EAC%2CBJP; _jc_save_wfdc_flag=dc; route=c5c62a339e7744272a54643b3be5bf64; BIGipServerotn=1708720394.50210.0000; _jc_save_fromDate=2018-05-30; _jc_save_toDate=2018-05-20
+</code></pre><p>&#x5176;&#x4E2D;&#x50CF;<strong>Connection</strong>&#x3001;<strong>Cache-Control</strong>&#x3001;<strong>Accept</strong>&#x3001;<strong>If-Modified-Since</strong>&#x7B49;&#x5B57;&#x6BB5;&#x90FD;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5728;&#x6A21;&#x62DF;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;http&#x8BF7;&#x6C42;&#x65F6;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#xFF0C;&#x5F53;&#x7136;&#x636E;&#x6211;&#x89C2;&#x5BDF;&#xFF0C;12306&#x670D;&#x52A1;&#x5668;&#x73B0;&#x5728;&#x5BF9;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;http&#x6570;&#x636E;&#x5305;&#x8981;&#x6C42;&#x8D8A;&#x6765;&#x8D8A;&#x4E25;&#x683C;&#x4E86;&#xFF0C;&#x5982;&#x53BB;&#x5E74;&#x7684;&#x65F6;&#x5019;&#xFF0C;User-Agent&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x8FD8;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x5E26;&#x4E0A;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x53EF;&#x80FD;12306&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x5C31;&#x4E0D;&#x4E00;&#x5B9A;&#x6B63;&#x786E;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4E0D;&#x6B63;&#x786E;&#x7684;&#x7ED3;&#x679C;&#x4E2D;&#x4E00;&#x5B9A;&#x4E0D;&#x4F1A;&#x6709;&#x660E;&#x786E;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x5145;&#x5176;&#x91CF;&#x53EF;&#x80FD;&#x4F1A;&#x544A;&#x8BC9;&#x4F60;&#x9875;&#x9762;&#x4E0D;&#x5B58;&#x5728;&#x6216;&#x8005;&#x7CFB;&#x7EDF;&#x7E41;&#x5FD9;&#x8BF7;&#x7A0D;&#x540E;&#x518D;&#x8BD5;&#xFF0C;&#x8FD9;&#x662F;&#x670D;&#x52A1;&#x5668;&#x81EA;&#x6211;&#x4FDD;&#x62A4;&#x7684;&#x4E00;&#x79CD;&#x91CD;&#x8981;&#x7684;&#x63AA;&#x65BD;&#xFF0C;&#x8BD5;&#x60F3;&#x4F60;&#x505A;&#x670D;&#x52A1;&#x5668;&#x7A0B;&#x5E8F;&#xFF0C;&#x4F1A;&#x544A;&#x8BC9;&#x975E;&#x6CD5;&#x7528;&#x6237;&#x660E;&#x786E;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x5417;&#xFF1F;&#x90A3;&#x6837;&#x4E0D;&#x5C31;&#x7ED9;&#x4E86;&#x975E;&#x6CD5;&#x653B;&#x51FB;&#x670D;&#x52A1;&#x5668;&#x7684;&#x4EBA;&#x4E0D;&#x65AD;&#x91CD;&#x8BD5;&#x7684;&#x673A;&#x4F1A;&#x4E86;&#x561B;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;&#x67E5;&#x7968;&#x63A5;&#x53E3;&#x53D1;&#x9001;&#x7684;http&#x534F;&#x8BAE;&#x7684;&#x5934;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x53EB;Cookie&#xFF0C;&#x5176;&#x503C;&#x662F;&#x4E00;&#x4E32;&#x975E;&#x5E38;&#x5947;&#x602A;&#x7684;&#x4E1C;&#x897F;&#xFF1A;</p>
+<pre class="language-"><code>JSESSIONID=ACD9CB098169C4D73CDE80D6F6C38E5A; 
+RAIL_EXPIRATION=1526978933395; 
+RAIL_DEVICEID=WKxIYg-q1zjIPVu7VjulZ9PqEGvW2gUB9LvoM1Vx8fa7l3SUwnO_BVSatbTq506c6VYNOaxAiRaUcGFTMjCz9cPayEIc9vJ0pHaXdSqDlujJP8YrIoXbpAAs60l99z8bEtnHgAJzxLzKiv2nka5nmLY_BMNur8b8; 
+_jc_save_fromStation=%u4E0A%u6D77%2CSHH;
+_jc_save_toStation=%u5317%u4EAC%2CBJP;
+_jc_save_wfdc_flag=dc;
+route=c5c62a339e7744272a54643b3be5bf64;
+BIGipServerotn=1708720394.50210.0000;
+_jc_save_fromDate=2018-05-30;
+_jc_save_toDate=2018-05-2
+</code></pre><p>&#x6CE8;&#x610F;&#xFF1A;&#x539F;&#x4EE3;&#x7801;&#x4E2D;&#x5404;&#x4E2A;&#x5B57;&#x6BB5;&#x90FD;&#x662F;&#x8FDE;&#x5728;&#x4E00;&#x8D77;&#x7684;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x4E3A;&#x4E86;&#x8BFB;&#x8005;&#x65B9;&#x4FBF;&#x9605;&#x8BFB;&#xFF0C;&#x5C06;&#x5404;&#x4E2A;&#x5B57;&#x6BB5;&#x5355;&#x72EC;&#x653E;&#x5728;&#x4E00;&#x884C;&#x3002;&#x5728;&#x8FD9;&#x4E32;&#x5B57;&#x7B26;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;<strong>JSESSIONID</strong>&#xFF0C;&#x5728;&#x4E0D;&#x9700;&#x8981;&#x767B;&#x5F55;&#x7684;&#x67E5;&#x7968;&#x63A5;&#x53E3;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F20;&#x6216;&#x8005;&#x4E0D;&#x4F20;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x503C;&#x3002;&#x4F46;&#x662F;&#x5728;&#x8D2D;&#x7968;&#x4EE5;&#x53CA;&#x67E5;&#x8BE2;&#x5E38;&#x7528;&#x8054;&#x7CFB;&#x4EBA;&#x8FD9;&#x4E9B;&#x9700;&#x8981;&#x5728;&#x5DF2;&#x7ECF;&#x767B;&#x5F55;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5E26;&#x4E0A;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x662F;&#x670D;&#x52A1;&#x5668;&#x7ED9;&#x4F60;&#x7684;token&#xFF08;&#x9A8C;&#x8BC1;&#x4EE4;&#x724C;&#xFF09;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x4EE4;&#x724C;&#x662F;&#x5728;&#x521A;&#x8FDB;&#x5165;12306&#x7AD9;&#x70B9;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x4F60;&#x540E;&#x9762;&#x7684;&#x767B;&#x5F55;&#x7B49;&#x64CD;&#x4F5C;&#x5FC5;&#x987B;&#x5E26;&#x4E0A;&#x8FD9;&#x4E2A;token&#xFF0C;&#x5426;&#x5219;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x8BA4;&#x4E3A;&#x60A8;&#x7684;&#x8BF7;&#x6C42;&#x662F;&#x975E;&#x6CD5;&#x8BF7;&#x6C42;&#x3002;&#x6211;&#x7B2C;&#x4E00;&#x6B21;&#x53BB;&#x7814;&#x7A76;12306&#x7684;&#x4E70;&#x7968;&#x6D41;&#x7A0B;&#x65F6;&#xFF0C;&#x5373;&#x4F7F;&#x5728;&#x7528;&#x6237;&#x540D;&#x3001;&#x5BC6;&#x7801;&#x548C;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x6B63;&#x786E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E5F;&#x65E0;&#x6CD5;&#x767B;&#x5F55;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x539F;&#x56E0;&#x3002;&#x8FD9;&#x662F;12306&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x975E;&#x6CD5;&#x767B;&#x5F55;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x5B89;&#x5168;&#x63AA;&#x65BD;&#x3002;</p>
+<p><strong>&#x4E8C;&#x3001;&#x767B;&#x5F55;&#x4E0E;&#x62C9;&#x53D6;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x63A5;&#x53E3;</strong></p>
+<p>&#x6211;&#x7684;&#x767B;&#x5F55;&#x9875;&#x9762;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../imgs/12306-12.jpeg" alt=""></p>
+<p>12306&#x7684;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x4E00;&#x822C;&#x7531;&#x516B;&#x4E2A;&#x56FE;&#x7247;&#x7EC4;&#x6210;&#xFF0C;&#x50CF;&#x4E0A;&#x9762;&#x7684;&#x201C;&#x9F99;&#x821F;&#x201D;&#x6587;&#x5B57;&#xFF0C;&#x4E5F;&#x662F;&#x56FE;&#x7247;&#xFF0C;&#x8FD9;&#x4E24;&#x5904;&#x7684;&#x56FE;&#x7247;&#xFF08;&#x6587;&#x5B57;&#x56FE;&#x7247;&#x548C;&#x9A8C;&#x8BC1;&#x7801;&#xFF09;&#x90FD;&#x662F;&#x5728;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x62FC;&#x88C5;&#x540E;&#xFF0C;&#x53D1;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#xFF0C;12306&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5C0F;&#x56FE;&#x7247;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x867D;&#x7136;&#x6570;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x662F;&#x6709;&#x9650;&#x7684;&#x3002;&#x5982;&#x679C;&#x4F60;&#x8981;&#x505A;&#x9A8C;&#x8BC1;&#x7801;&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x7740;&#x4E0B;&#x8F7D;&#x5927;&#x90E8;&#x5206;&#x56FE;&#x7247;&#xFF0C;&#x7136;&#x540E;&#x505A;&#x7EDF;&#x8BA1;&#x89C4;&#x5F8B;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x505A;&#x56FE;&#x7247;&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#x529F;&#x80FD;&#x3002;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x8BFB;&#x8005;&#x53EF;&#x81EA;&#x884C;&#x5C1D;&#x8BD5;&#x3002;</p>
+<p>&#x5148;&#x8BF4;&#x4E0B;&#xFF0C;&#x62C9;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x6211;&#x4EEC;&#x6253;&#x5F00;Chrome&#x6D4F;&#x89C8;&#x5668;12306&#x7684;&#x767B;&#x5F55;&#x754C;&#x9762;&#xFF1A;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/login/init
+</code></pre><p>&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../imgs/12306-13.webp" alt=""></p>
+<p>&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x62C9;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#x7684;&#x63A5;&#x53E3;&#xFF1A;</p>
+<p><img src="../imgs/12306-14.webp" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x53D1;&#x9001;&#x7684;http&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x5305;&#x683C;&#x5F0F;&#x662F;&#xFF1A;</p>
+<pre class="language-"><code>GET /passport/captcha/captcha-image?login_site=E&amp;module=login&amp;rand=sjrand&amp;0.7520968747611347 HTTP/1.1  
+Host: kyfw.12306.cn  
+Connection: keep-alive  
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36  
+Accept: image/webp,image/apng,image/*,*/*;q=0.8  
+Referer: https://kyfw.12306.cn/otn/login/init  
+Accept-Encoding: gzip, deflate, br  
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8  
+Cookie: _passport_session=badc97f6a852499297796ee852515f957153; _passport_ct=9cf4ea17c0dc47b6980cac161483f522t9022; RAIL_EXPIRATION=1526978933395; RAIL_DEVICEID=WKxIYg-q1zjIPVu7VjulZ9PqEGvW2gUB9LvoM1Vx8fa7l3SUwnO_BVSatbTq506c6VYNOaxAiRaUcGFTMjCz9cPayEIc9vJ0pHaXdSqDlujJP8YrIoXbpAAs60l99z8bEtnHgAJzxLzKiv2nka5nmLY_BMNur8b8; _jc_save_fromStation=%u4E0A%u6D77%2CSHH; _jc_save_toStation=%u5317%u4EAC%2CBJP; _jc_save_wfdc_flag=dc; route=c5c62a339e7744272a54643b3be5bf64; BIGipServerotn=1708720394.50210.0000; _jc_save_fromDate=2018-05-30; _jc_save_toDate=2018-05-20; BIGipServerpassport=837288202.50215.0000
+</code></pre><p>&#x8FD9;&#x91CC;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;http GET&#x8BF7;&#x6C42;&#xFF0C;<strong>Host</strong>&#x3001;<strong>Referer</strong>&#x548C;<strong>Cookie</strong>&#x8FD9;&#x4E09;&#x4E2A;&#x5B57;&#x6BB5;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x4E14;Cookie&#x5B57;&#x6BB5;&#x5FC5;&#x987B;&#x5E26;&#x4E0A;&#x4E0A;&#x6587;&#x8BF4;&#x7684;<strong>JSESSIONID</strong>&#xFF0C;&#x4E0B;&#x8F7D;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x548C;&#x4E0B;&#x6587;&#x4E2D;&#x5404;&#x4E2A;&#x6B65;&#x9AA4;&#x4E5F;&#x5FC5;&#x987B;&#x5728;Cookie&#x5B57;&#x6BB5;&#x4E2D;&#x5E26;&#x4E0A;&#x8FD9;&#x4E2A;<strong>JSESSIONID</strong>&#x503C;&#xFF0C;&#x5426;&#x5219;&#x65E0;&#x6CD5;&#x4ECE;12306&#x670D;&#x52A1;&#x5668;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x7684;&#x5E94;&#x7B54;&#x3002;&#x540E;&#x9762;&#x4F1A;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x62FF;&#x5230;&#x8FD9;&#x4E2A;&#x8FD9;&#x3002;&#x8FD9;&#x4E2A;&#x62C9;&#x53D6;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x7684;http GET&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6BB5;&#x6240;&#x793A;&#xFF0C;&#x5373;<strong>login_site</strong>&#x3001;<strong>module</strong>&#x3001;rand&#x548C;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x4E8E;<strong>0.7520968747611347</strong>&#x7684;&#x968F;&#x673A;&#x503C;&#xFF0C;&#x524D;&#x4E09;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x90FD;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;module&#x5B57;&#x6BB5;&#x8868;&#x793A;&#x5F53;&#x524D;&#x662F;&#x54EA;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5F53;&#x524D;&#x662F;&#x767B;&#x5F55;&#x6A21;&#x5757;&#xFF0C;&#x6240;&#x4EE5;&#x503C;&#x662F;login&#xFF0C;&#x540E;&#x9762;&#x83B7;&#x53D6;&#x6700;&#x8FD1;&#x8054;&#x7CFB;&#x4EBA;&#x65F6;&#x53D6;&#x503C;&#x662F;<strong>passenger</strong>&#x3002;&#x8FD9;&#x91CC;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x9A8C;&#x8BC1;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x91CD;&#x65B0;&#x8BF7;&#x6C42;&#x56FE;&#x7247;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x4E5F;&#x91CD;&#x65B0;&#x8BF7;&#x6C42;&#x4E0B;<strong>JSESSIONID</strong>&#x3002;&#x8FD9;&#x4E2A;url&#x662F;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/otn/login/init
+</code></pre><p>http&#x8BF7;&#x6C42;&#x548C;&#x5E94;&#x7B54;&#x5305;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x8BF7;&#x6C42;&#x5305;&#xFF1A;</p>
+<pre class="language-"><code>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8  
+Accept-Encoding: gzip, deflate, br  
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8  
+Cache-Control: max-age=0  
+Connection: keep-alive  
+Cookie: RAIL_EXPIRATION=1526978933395; RAIL_DEVICEID=WKxIYg-q1zjIPVu7VjulZ9PqEGvW2gUB9LvoM1Vx8fa7l3SUwnO_BVSatbTq506c6VYNOaxAiRaUcGFTMjCz9cPayEIc9vJ0pHaXdSqDlujJP8YrIoXbpAAs60l99z8bEtnHgAJzxLzKiv2nka5nmLY_BMNur8b8; _jc_save_fromStation=%u4E0A%u6D77%2CSHH; _jc_save_toStation=%u5317%u4EAC%2CBJP; _jc_save_wfdc_flag=dc; route=c5c62a339e7744272a54643b3be5bf64; BIGipServerotn=1708720394.50210.0000; _jc_save_fromDate=2018-05-30; _jc_save_toDate=2018-05-20; BIGipServerpassport=837288202.50215.0000  
+Host: kyfw.12306.cn  
+Referer: https://kyfw.12306.cn/otn/passport?redirect=/otn/login/loginOut  
+Upgrade-Insecure-Requests: 1  
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36
+</code></pre><p>&#x5E94;&#x7B54;&#x5305;&#xFF1A;</p>
+<pre class="language-"><code>HTTP/1.1 200 OK  
+Date: Sun, 20 May 2018 02:23:53 GMT  
+Content-Type: text/html;charset=utf-8  
+Transfer-Encoding: chunked  
+Set-Cookie: JSESSIONID=D5AE154D66F67DE53BF70420C772158F; Path=/otn  
+ct: C1_217_101_6  
+Content-Language: zh-CN  
+Content-Encoding: gzip  
+X-Via: 1.1 houdianxin184:4 (Cdn Cache Server V2.0)  
+Connection: keep-alive  
+X-Dscp-Value: 0  
+X-Cdn-Src-Port: 46480
+</code></pre><p>&#x8FD9;&#x4E2A;&#x503C;&#x5728;&#x5E94;&#x7B54;&#x5305;&#x5B57;&#x6BB5;Set-Cookie&#x4E2D;&#x62FF;&#x5230;&#xFF1A;</p>
+<pre class="language-"><code>Set-Cookie: JSESSIONID=D5AE154D66F67DE53BF70420C772158F; Path=/otn
+</code></pre><p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x65F6;&#xFF0C;&#x90FD;&#x91CD;&#x65B0;&#x8BF7;&#x6C42;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;JSESSIONID&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>#define URL_LOGIN_INIT      &quot;https://kyfw.12306.cn/otn/login/init&quot;
+</code></pre><pre class="language-"><code>bool Client12306::loginInit()  
+{     
+    string strResponse;  
+    if (!HttpRequest(URL_LOGIN_INIT, strResponse, true, &quot;Upgrade-Insecure-Requests: 1&quot;, NULL, true, 10))  
+    {  
+        LogError(&quot;loginInit failed&quot;);  
+        return false;  
+    }  
+    if (!GetCookies(strResponse))  
+    {  
+        LogError(&quot;parse login init cookie error, url=%s&quot;, URL_LOGIN_INIT);  
+        return false;  
+    }  
+    return true;  
+}  
+
+bool Client12306::GetCookies(const string&amp; data)  
+{  
+    if (data.empty())  
+    {  
+        LogError(&quot;http data is empty&quot;);  
+        return false;  
+    }  
+    //&#x89E3;&#x6790;http&#x5934;&#x90E8;  
+    string str;  
+    str.append(data.c_str(), data.length());  
+    size_t n = str.find(&quot;\r\n\r\n&quot;);  
+    string header = str.substr(0, n);  
+    str.erase(0, n + 4);  
+    //m_cookie.clear();  
+    //&#x83B7;&#x53D6;http&#x5934;&#x4E2D;&#x7684;JSESSIONID=21AC68643BBE893FBDF3DA9BCF654E98;  
+    vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span> v;  
+    while (true)  
+    {  
+        size_t index = header.find(&quot;\r\n&quot;);  
+        if (index == string::npos)  
+            break;  
+        string tmp = header.substr(0, index);  
+        v.push_back(tmp);  
+        header.erase(0, index + 2);  
+        if (header.empty())  
+            break;  
+    }  
+    string jsessionid;  
+    string BIGipServerotn;  
+    string BIGipServerportal;  
+    string current_captcha_type;  
+    size_t m;  
+    OutputDebugStringA(&quot;\nresponse http headers:\n&quot;);  
+    for (size_t i = 0; i &lt; v.size(); ++i)  
+    {  
+        OutputDebugStringA(v[i].c_str());  
+        OutputDebugStringA(&quot;\n&quot;);  
+        m = v[i].find(&quot;Set-Cookie: &quot;);  
+        if (m == string::npos)  
+            continue;  
+        string tmp = v[i].substr(11);  
+        Trim(tmp);  
+        m = tmp.find(&quot;JSESSIONID&quot;);  
+        if (m != string::npos)  
+        {  
+            size_t comma = tmp.find(&quot;;&quot;);  
+            if (comma != string::npos)  
+                jsessionid = tmp.substr(0, comma);  
+        }  
+        m = tmp.find(&quot;BIGipServerotn&quot;);  
+        if (m != string::npos)  
+        {  
+            size_t comma = tmp.find(&quot;;&quot;);  
+            if (comma != string::npos)  
+                BIGipServerotn = tmp.substr(m, comma);  
+            else  
+                BIGipServerotn = tmp;  
+        }  
+        m = tmp.find(&quot;BIGipServerportal&quot;);  
+        if (m != string::npos)  
+        {  
+            size_t comma = tmp.find(&quot;;&quot;);  
+            if (comma != string::npos)  
+                BIGipServerportal = tmp.substr(m, comma);  
+            else  
+                BIGipServerportal = tmp;  
+        }  
+        m = tmp.find(&quot;current_captcha_type&quot;);  
+        if (m != string::npos)  
+        {  
+            size_t comma = tmp.find(&quot;;&quot;);  
+            if (comma != string::npos)  
+                current_captcha_type = tmp.substr(m, comma);  
+            else  
+                current_captcha_type = tmp;             
+        }  
+    }  
+    if (!jsessionid.empty())  
+    {  
+        m_strCookies = jsessionid;  
+        m_strCookies += &quot;; &quot;;  
+        m_strCookies += BIGipServerotn;  
+        if (!BIGipServerportal.empty())  
+        {  
+            m_strCookies += &quot;; &quot;;  
+            m_strCookies += BIGipServerportal;  
+        }  
+        m_strCookies += &quot;; &quot;;  
+        m_strCookies += current_captcha_type;  
+        return true;  
+    }  
+    LogError(&quot;jsessionid is empty&quot;);  
+    return false;  
+}
+</code></pre><pre class="language-"><code>#define URL_GETPASSCODENEW  &quot;https://kyfw.12306.cn/passport/captcha/captcha-image&quot;
+</code></pre><pre class="language-"><code>bool Client12306::DownloadVCodeImage(const char* module)  
+{  
+    if (module == NULL)  
+    {  
+        LogError(&quot;module is invalid&quot;);  
+        return false;  
+    }  
+    //https://kyfw.12306.cn/passport/captcha/captcha-image?login_site=E&amp;module=login&amp;rand=sjrand&amp;0.06851784300754482  
+    ostringstream osUrl;  
+    osUrl &lt;&lt; URL_GETPASSCODENEW;  
+    osUrl &lt;&lt; &quot;?login_site=E&amp;module=&quot;;  
+    osUrl &lt;&lt; module;  
+    //&#x8D2D;&#x7968;&#x9A8C;&#x8BC1;&#x7801;  
+    if (strcmp(module, &quot;passenger&quot;) != 0)  
+    {  
+        osUrl &lt;&lt; &quot;&amp;rand=sjrand&amp;&quot;;  
+    }  
+    //&#x767B;&#x5F55;&#x9A8C;&#x8BC1;&#x7801;  
+    else  
+    {        
+        osUrl &lt;&lt; &quot;&amp;rand=randp&amp;&quot;;       
+    }  
+    double d = rand() * 1.000000 / RAND_MAX;  
+    osUrl.precision(17);  
+    osUrl &lt;&lt; d;  
+    string strResponse;  
+    string strCookie = &quot;Cookie: &quot;;  
+    strCookie += m_strCookies;  
+    if (!HttpRequest(osUrl.str().c_str(), strResponse, true, strCookie.c_str(), NULL, false, 10))  
+    {  
+        LogError(&quot;DownloadVCodeImage failed&quot;);  
+        return false;  
+    }  
+    //&#x5199;&#x5165;&#x6587;&#x4EF6;  
+    time_t now = time(NULL);  
+    struct tm* tblock = localtime(&amp;now);  
+    memset(m_szCurrVCodeName, 0, sizeof(m_szCurrVCodeName));  
+#ifdef _DEBUG  
+    sprintf(m_szCurrVCodeName, &quot;vcode%04d%02d%02d%02d%02d%02d.jpg&quot;,  
+        1900 + tblock-&gt;tm_year, 1 + tblock-&gt;tm_mon, tblock-&gt;tm_mday,  
+        tblock-&gt;tm_hour, tblock-&gt;tm_min, tblock-&gt;tm_sec);  
+#else  
+    sprintf(m_szCurrVCodeName, &quot;vcode%04d%02d%02d%02d%02d%02d.v&quot;,  
+        1900 + tblock-&gt;tm_year, 1 + tblock-&gt;tm_mon, tblock-&gt;tm_mday,  
+        tblock-&gt;tm_hour, tblock-&gt;tm_min, tblock-&gt;tm_sec);  
+#endif  
+    FILE* fp = fopen(m_szCurrVCodeName, &quot;wb&quot;);  
+    if (fp == NULL)  
+    {  
+        LogError(&quot;open file %s error&quot;, m_szCurrVCodeName);  
+        return false;  
+    }  
+    const char* p = strResponse.data();  
+    size_t count = fwrite(p, strResponse.length(), 1, fp);  
+    if (count != 1)  
+    {  
+        LogError(&quot;write file %s error&quot;, m_szCurrVCodeName);  
+        fclose(fp);  
+        return false;  
+    }  
+    fclose(fp);  
+    return true;  
+}
+</code></pre><p>&#x6211;&#x4EEC;&#x518D;&#x770B;&#x4E0B;&#x9A8C;&#x8BC1;&#x7801;&#x53BB;&#x670D;&#x52A1;&#x5668;&#x9A8C;&#x8BC1;&#x7684;&#x63A5;&#x53E3;</p>
+<pre class="language-"><code>https://kyfw.12306.cn/passport/captcha/captcha-check
+</code></pre><p>&#x8BF7;&#x6C42;&#x5934;&#xFF1A;</p>
+<pre class="language-"><code>POST /passport/captcha/captcha-check HTTP/1.1  
+Host: kyfw.12306.cn  
+Connection: keep-alive  
+Content-Length: 50  
+Accept: application/json, text/javascript, */*; q=0.01  
+Origin: https://kyfw.12306.cn  
+X-Requested-With: XMLHttpRequest  
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36  
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8  
+Referer: https://kyfw.12306.cn/otn/login/init  
+Accept-Encoding: gzip, deflate, br  
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8  
+Cookie: _passport_session=3e39a33a25bf4ea79146bd9362c11ad62327; _passport_ct=c5c7940e08ce44db9ad05d213c1296ddt4410; RAIL_EXPIRATION=1526978933395; RAIL_DEVICEID=WKxIYg-q1zjIPVu7VjulZ9PqEGvW2gUB9LvoM1Vx8fa7l3SUwnO_BVSatbTq506c6VYNOaxAiRaUcGFTMjCz9cPayEIc9vJ0pHaXdSqDlujJP8YrIoXbpAAs60l99z8bEtnHgAJzxLzKiv2nka5nmLY_BMNur8b8; _jc_save_fromStation=%u4E0A%u6D77%2CSHH; _jc_save_toStation=%u5317%u4EAC%2CBJP; _jc_save_wfdc_flag=dc; route=c5c62a339e7744272a54643b3be5bf64; BIGipServerotn=1708720394.50210.0000; _jc_save_fromDate=2018-05-30; _jc_save_toDate=2018-05-20; BIGipServerpassport=837288202.50215.0000
+</code></pre><p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;POST&#x8BF7;&#x6C42;&#xFF0C;&#x5176;&#x4E2D;POST&#x6570;&#x636E;&#x5E26;&#x4E0A;&#x7684;&#x8F93;&#x5165;&#x7684;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x9009;&#x62E9;&#x7684;&#x5750;&#x6807;X&#x548C;Y&#x503C;&#xFF1A;</p>
+<pre class="language-"><code>answer: 175,58,30,51  
+login_site: E  
+rand: sjrand
+</code></pre><p>&#x8FD9;&#x91CC;&#x6211;&#x9009;&#x62E9;&#x4E86;&#x4E24;&#x5F20;&#x56FE;&#x7247;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x4E24;&#x7EC4;&#x5750;&#x6807;&#x503C;&#xFF0C;&#xFF08;175&#xFF0C;58&#xFF09;&#x662F;&#x4E00;&#x7EC4;&#xFF0C;&#xFF08;30&#xFF0C;51&#xFF09;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x7EC4;&#xFF0C;&#x8FD9;&#x4E2A;&#x5750;&#x6807;&#x7CFB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="../imgs/12306-14.webp" alt=""></p>
+<p>&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x56FE;&#x7247;&#x7684;&#x5C3A;&#x5BF8;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x7ED9;&#x6BCF;&#x4E2A;&#x56FE;&#x7247;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5750;&#x6807;&#x8303;&#x56F4;&#xFF0C;&#x5F53;&#x9009;&#x62E9;&#x4E86;&#x4E00;&#x4E2A;&#x56FE;&#x7247;&#xFF0C;&#x7ED9;&#x4E00;&#x4E2A;&#x5728;&#x5176;&#x4E2D;&#x7684;&#x5750;&#x6807;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x65F6;&#x7684;&#x51C6;&#x786E;&#x4F4D;&#x7F6E;&#xFF1A;</p>
+<pre class="language-"><code>//&#x5237;&#x65B0;&#x9A8C;&#x8BC1;&#x7801; &#x767B;&#x5F55;&#x72B6;&#x6001;&#x4E0B;&#x7684;&#x9A8C;&#x8BC1;&#x7801;&#x4F20;&#x5165;&#x201D;randp&#x201C;&#xFF0C;&#x975E;&#x767B;&#x5F55;&#x4F20;&#x5165;&#x201D;sjrand&#x201C; &#x5177;&#x4F53;&#x53C2;&#x770B;&#x539F;otsweb&#x4E2D;&#x7684;&#x4F20;&#x5165;&#x53C2;&#x6570;  
+struct VCodePosition  
+{  
+    int x;  
+    int y;  
+};  
+const VCodePosition g_pos[] =  
+{  
+    { 39, 40 },  
+    { 114, 43 },  
+    { 186, 42 },  
+    { 252, 47 },  
+    { 36, 120 },  
+    { 115, 125 },  
+    { 194, 125 },  
+    { 256, 120 }  
+};  
+//&#x9A8C;&#x8BC1;&#x7801;&#x56FE;&#x7247;&#x516B;&#x4E2A;&#x533A;&#x5757;&#x7684;&#x4F4D;&#x7F6E;  
+struct VCODE_SLICE_POS  
+{  
+    int xLeft;  
+    int xRight;  
+    int yTop;  
+    int yBottom;  
+};  
+const VCODE_SLICE_POS g_VCodeSlicePos[] =   
+{  
+    {0,   70,  0,  70},  
+    {71,  140, 0,  70 },  
+    {141, 210, 0,  70 },  
+    {211, 280, 0,  70 },  
+    { 0,  70,  70, 140 },      
+    {71,  140, 70, 140 },  
+    {141, 210, 70, 140 },  
+    {211, 280, 70, 140 }  
+};  
+//8&#x4E2A;&#x9A8C;&#x8BC1;&#x7801;&#x533A;&#x5757;&#x7684;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x72B6;&#x6001;  
+bool g_bVodeSlice1Pressed[8] = { false, false, false, false, false, false, false, false};
+</code></pre><p>&#x9A8C;&#x8BC1;&#x7684;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x7684;&#x63A5;&#x53E3;&#x4EE3;&#x7801;&#x662F;&#xFF1A;</p>
+<pre class="language-"><code>int Client12306::checkRandCodeAnsyn(const char* vcode)  
+{  
+    string param;  
+    param = &quot;randCode=&quot;;  
+    param += vcode;  
+    param += &quot;&amp;rand=sjrand&quot;;    //passenger:randp  
+    string strResponse;  
+    string strCookie = &quot;Cookie: &quot;;  
+    strCookie += m_strCookies;  
+    if (!HttpRequest(URL_CHECKRANDCODEANSYN, strResponse, false, strCookie.c_str(), param.c_str(), false, 10))  
+    {  
+        LogError(&quot;checkRandCodeAnsyn failed&quot;);  
+        return -1;  
+    }  
+    ///** &#x6210;&#x529F;&#x8FD4;&#x56DE;  
+    //HTTP/1.1 200 OK  
+    //Date: Thu, 05 Jan 2017 07:44:16 GMT  
+    //Server: Apache-Coyote/1.1  
+    //X-Powered-By: Servlet 2.5; JBoss-5.0/JBossWeb-2.1  
+    //ct: c1_103  
+    //Content-Type: application/json;charset=UTF-8  
+    //Content-Length: 144  
+    //X-Via: 1.1 jiandianxin29:6 (Cdn Cache Server V2.0)  
+    //Connection: keep-alive  
+    //X-Cdn-Src-Port: 19153  
+    //&#x53C2;&#x6570;&#x65E0;&#x6548;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;result&quot;:&quot;0&quot;,&quot;msg&quot;:&quot;&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}}  
+    //&#x9A8C;&#x8BC1;&#x7801;&#x8FC7;&#x671F;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;result&quot;:&quot;0&quot;,&quot;msg&quot;:&quot;EXPIRED&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}}  
+    //&#x9A8C;&#x8BC1;&#x7801;&#x9519;&#x8BEF;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;result&quot;:&quot;1&quot;,&quot;msg&quot;:&quot;FALSE&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}}  
+    //&#x9A8C;&#x8BC1;&#x7801;&#x6B63;&#x786E;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;result&quot;:&quot;1&quot;,&quot;msg&quot;:&quot;TRUE&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}}  
+    Json::Reader JsonReader;  
+    Json::Value JsonRoot;  
+    if (!JsonReader.parse(strResponse, JsonRoot))  
+        return -1;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;, &quot;status&quot; : true, &quot;httpstatus&quot; : 200, &quot;data&quot; : {&quot;result&quot;:&quot;1&quot;, &quot;msg&quot; : &quot;TRUE&quot;}, &quot;messages&quot; : [], &quot;validateMessages&quot; : {}}  
+    if (JsonRoot[&quot;status&quot;].isNull() || JsonRoot[&quot;status&quot;].asBool() != true)  
+        return -1;  
+    if (JsonRoot[&quot;httpstatus&quot;].isNull() || JsonRoot[&quot;httpstatus&quot;].asInt() != 200)  
+        return -1;  
+    if (JsonRoot[&quot;data&quot;].isNull() || !JsonRoot[&quot;data&quot;].isObject())  
+        return -1;  
+    if (JsonRoot[&quot;data&quot;][&quot;result&quot;].isNull())  
+        return -1;  
+    if (JsonRoot[&quot;data&quot;][&quot;result&quot;].asString() != &quot;1&quot; &amp;&amp; JsonRoot[&quot;data&quot;][&quot;result&quot;].asString() != &quot;0&quot;)  
+        return -1;  
+    if (JsonRoot[&quot;data&quot;][&quot;msg&quot;].isNull())  
+        return -1;  
+    //if (JsonRoot[&quot;data&quot;][&quot;msg&quot;].asString().empty())         
+    //  return -1;  
+    if (JsonRoot[&quot;data&quot;][&quot;msg&quot;].asString() == &quot;&quot;)  
+        return 0;  
+    else if (JsonRoot[&quot;data&quot;][&quot;msg&quot;].asString() == &quot;FALSE&quot;)  
+        return 1;  
+    return 1;  
+}
+</code></pre><p>&#x540C;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x7ED9;&#x51FA;&#x9A8C;&#x8BC1;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>int Client12306::loginAysnSuggest(const char* user, const char* pass, const char* vcode)  
+{  
+    string param = &quot;loginUserDTO.user_name=&quot;;  
+    param += user;  
+    param += &quot;&amp;userDTO.password=&quot;;  
+    param += pass;  
+    param += &quot;&amp;randCode=&quot;;  
+    param += vcode;  
+    string strResponse;  
+    string strCookie = &quot;Cookie: &quot;;  
+    strCookie += m_strCookies;  
+    if (!HttpRequest(URL_LOGINAYSNSUGGEST, strResponse, false, strCookie.c_str(), param.c_str(), false, 10))  
+    {  
+        LogError(&quot;loginAysnSuggest failed&quot;);  
+        return 2;  
+    }  
+    ///** &#x6210;&#x529F;&#x8FD4;&#x56DE;  
+    //HTTP/1.1 200 OK  
+    //Date: Thu, 05 Jan 2017 07:49:53 GMT  
+    //Server: Apache-Coyote/1.1  
+    //X-Powered-By: Servlet 2.5; JBoss-5.0/JBossWeb-2.1  
+    //ct: c1_103  
+    //Content-Type: application/json;charset=UTF-8  
+    //Content-Length: 146  
+    //X-Via: 1.1 f186:10 (Cdn Cache Server V2.0)  
+    //Connection: keep-alive  
+    //X-Cdn-Src-Port: 48361  
+    //&#x90AE;&#x7BB1;&#x4E0D;&#x5B58;&#x5728;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{},&quot;messages&quot;:[&quot;&#x8BE5;&#x90AE;&#x7BB1;&#x4E0D;&#x5B58;&#x5728;&#x3002;&quot;],&quot;validateMessages&quot;:{}}  
+    //&#x5BC6;&#x7801;&#x9519;&#x8BEF;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{},&quot;messages&quot;:[&quot;&#x5BC6;&#x7801;&#x8F93;&#x5165;&#x9519;&#x8BEF;&#x3002;&#x5982;&#x679C;&#x8F93;&#x9519;&#x6B21;&#x6570;&#x8D85;&#x8FC7;4&#x6B21;&#xFF0C;&#x7528;&#x6237;&#x5C06;&#x88AB;&#x9501;&#x5B9A;&#x3002;&quot;],&quot;validateMessages&quot;:{}}  
+    //&#x767B;&#x5F55;&#x6210;&#x529F;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;otherMsg&quot;:&quot;&quot;,loginCheck:&quot;Y&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}}  
+    //WCHAR* psz1 = Utf8ToAnsi(strResponse.c_str());  
+    //wstring str = psz1;  
+    //delete[] psz1;  
+    Json::Reader JsonReader;  
+    Json::Value JsonRoot;  
+    if (!JsonReader.parse(strResponse, JsonRoot))  
+        return 2;  
+    //{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;, &quot;status&quot; : true,   
+    //&quot;httpstatus&quot; : 200, &quot;data&quot; : {&quot;otherMsg&quot;:&quot;&quot;, loginCheck : &quot;Y&quot;}, &quot;messages&quot; : [], &quot;validateMessages&quot; : {}}  
+    if (JsonRoot[&quot;status&quot;].isNull())  
+        return -1;  
+    bool bStatus = JsonRoot[&quot;status&quot;].asBool();  
+    if (!bStatus)  
+        return -1;  
+    if (JsonRoot[&quot;httpstatus&quot;].isNull() || JsonRoot[&quot;httpstatus&quot;].asInt() != 200)  
+        return 2;  
+    if (JsonRoot[&quot;data&quot;].isNull() || !JsonRoot[&quot;data&quot;].isObject())  
+        return 2;  
+    if (JsonRoot[&quot;data&quot;][&quot;otherMsg&quot;].isNull() || JsonRoot[&quot;data&quot;][&quot;otherMsg&quot;].asString() != &quot;&quot;)  
+        return 2;  
+    if (JsonRoot[&quot;data&quot;][&quot;loginCheck&quot;].isNull() || JsonRoot[&quot;data&quot;][&quot;loginCheck&quot;].asString() != &quot;Y&quot;)  
+        return 1;  
+    return 0;  
+}
+</code></pre><p>&#x8FD9;&#x91CC;&#x8FD8;&#x6709;&#x4E2A;&#x6CE8;&#x610F;&#x7EC6;&#x8282;&#xFF0C;&#x5C31;&#x662F;&#x901A;&#x8FC7;POST&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;&#x9700;&#x8981;&#x5BF9;&#x4E00;&#x4E9B;&#x7B26;&#x53F7;&#x505A;URL Encode&#xFF0C;&#x8FD9;&#x4E2A;&#x6211;&#x5728;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x300A;<a href="http://mp.weixin.qq.com/s?__biz=MzU2MTQ1MzI3NQ==&amp;mid=2247484692&amp;idx=1&amp;sn=346d0a16db724a575947562282f7c621&amp;chksm=fc79c4a0cb0e4db62bc1f2a4f9489cd5d0cf8dd4c3363fcdd76bb65543e372b780b0895711a7&amp;scene=21#wechat_redirect" target="_blank">&#x4ECE;&#x96F6;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;http&#x670D;&#x52A1;&#x5668;</a>&#x300B;&#x4E5F;&#x8BE6;&#x7EC6;&#x505A;&#x4E86;&#x4ECB;&#x7ECD;&#xFF0C;&#x8FD8;&#x4E0D;&#x6E05;&#x695A;&#x7684;&#x53EF;&#x4EE5;&#x53C2;&#x89C1;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x3002;&#x6240;&#x4EE5;&#x5BF9;&#x4E8E;&#x5411;&#x56FE;&#x7247;&#x9A8C;&#x8BC1;&#x7801;&#x5750;&#x6807;&#x4FE1;&#x606F;&#x4E2D;&#x542B;&#x6709;&#x7684;&#x9017;&#x53F7;&#x4FE1;&#x606F;&#x5C31;&#x8981;&#x8FDB;&#x884C;URL&#x7F16;&#x7801;&#xFF0C;&#x4ECE;</p>
+<pre class="language-"><code>answer=114,54,44,46&amp;login_site=E&amp;rand=sjrand
+</code></pre><p>&#x53D8;&#x6210;</p>
+<pre class="language-"><code>answer=114%2C54%2C44%2C46&amp;login_site=E&amp;rand=sjrand
+</code></pre><p>&#x6240;&#x4EE5;&#xFF0C;&#x5728;http&#x5305;&#x5934;&#x4E2D;&#x6307;&#x5B9A;&#x7684;<strong>Content-Length</strong>&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x5E94;&#x8BE5;&#x662F;&#x7F16;&#x7801;&#x540E;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x539F;&#x59CB;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x7279;&#x522B;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x3002;</p>
+<p><img src="../imgs/12306-15.webp" alt=""></p>
+<p>&#x5982;&#x679C;&#x9A8C;&#x8BC1;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x67E5;&#x7968;&#x548C;&#x8D2D;&#x7968;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x4E00;&#x4E00;&#x4ECB;&#x7ECD;&#x4E86;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x539F;&#x7406;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4F5C;&#x8005;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x63A2;&#x7D22;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x6211;&#x5DF2;&#x7ECF;&#x5C06;&#x5927;&#x591A;&#x6570;&#x7684;&#x63A5;&#x53E3;&#x90FD;&#x63A2;&#x7D22;&#x5B8C;&#x4E86;&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x4E86;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x8D34;&#x4E00;&#x4E0B;&#x5427;&#xFF1A;</p>
+<pre class="language-"><code>/** 
+ *@desc:    &#x5C01;&#x88C5;&#x83B7;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#x3001;&#x6821;&#x9A8C;&#x9A8C;&#x8BC1;&#x7801;&#x3001;&#x767B;&#x5F55;&#x7B49;12306&#x5404;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x7C7B;&#xFF0C;Client12306.h&#x6587;&#x4EF6; 
+ *@author:      zhangyl 
+ *@date:    2017.01.17 
+ */  
+#ifndef __CLIENT_12306_H__  
+#define __CLIENT_12306_H__  
+
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vector</span><span class="token punctuation">&gt;</span></span>  
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>  
+
+using namespace std;  
+
+//&#x8F66;&#x6B21;&#x7C7B;&#x578B;  
+#define TRAIN_GC     0x00000001  
+#define TRAIN_D      (0x00000001 &lt;&lt; 1)  
+#define TRAIN_Z      (0x00000001 &lt;&lt; 2)  
+#define TRAIN_T      (0x00000001 &lt;&lt; 3)  
+#define TRAIN_K      (0x00000001 &lt;&lt; 4)  
+#define TRAIN_OTHER  (0x00000001 &lt;&lt; 5)  
+#define TRAIN_ALL    (TRAIN_GC | TRAIN_D | TRAIN_Z | TRAIN_T | TRAIN_K | TRAIN_OTHER)  
+
+//&#x7968;&#x4FE1;&#x606F;  
+struct queryLeftNewDTO  
+{  
+    string  train_no;  
+    string  station_train_code;  
+    string  start_station_telecode;     //&#x59CB;&#x53D1;&#x7AD9;  
+    string  start_station_name;       
+    string  end_station_telecode;       //&#x7EC8;&#x70B9;&#x7AD9;  
+    string  end_station_name;  
+    string  from_station_telecode;      //&#x51FA;&#x53D1;&#x7AD9;  
+    string  from_station_name;          //&#x5230;&#x8FBE;&#x7AD9;  
+    string  to_station_telecode;  
+    string  to_station_name;  
+    string  start_time;  
+    string  arrive_time;  
+    string  day_difference;  
+    string  train_class_name;  
+    string  lishi;  
+    string  canWebBuy;  
+    string  lishiValue;  
+    string  yp_info;  
+    string  control_train_day;  
+    string  start_train_date;  
+    string  seat_feature;  
+    string  yp_ex;  
+    string  train_seat_feature;  
+    string  seat_types;  
+    string  location_code;  
+    string  from_station_no;  
+    string  to_station_no;  
+    string  control_day;  
+    string  sale_time;  
+    string  is_support_card;  
+    string  controlled_train_flag;  
+    string  controlled_train_message;  
+    string  train_type_code;  
+    string  start_province_code;  
+    string  start_city_code;  
+    string  end_province_code;  
+    string  end_city_code;  
+    string  swz_num;    //&#x5546;&#x52A1;&#x5EA7;     
+    string  rz_num;     //&#x8F6F;&#x5EA7;  
+    string  yz_num;     //&#x786C;&#x5EA7;  
+    string  gr_num;     //&#x9AD8;&#x7EA7;&#x8F6F;&#x5367;  
+    string  rw_num;     //&#x8F6F;&#x5367;  
+    string  yw_num;     //&#x786C;&#x5367;  
+    string  tz_num;     //&#x7279;&#x7B49;&#x5EA7;  
+    string  zy_num;     //&#x4E00;&#x7B49;&#x5EA7;  
+    string  ze_num;     //&#x4E8C;&#x7B49;&#x5EA7;     
+    string  wz_num;     //&#x65E0;&#x5EA7;  
+    string  gg_num;  
+    string  yb_num;   
+    string  qt_num;  
+};  
+
+struct ticketinfo  
+{  
+    queryLeftNewDTO DTO;  
+    string secretStr;  
+    string buttonTextInfo;  
+};  
+
+//var station_names = &apos;@bjb|&#x5317;&#x4EAC;&#x5317;|VAP|beijingbei|bjb|0@bjd|&#x5317;&#x4EAC;&#x4E1C;|BOP|beijingdong|bjd|1@bji|&#x5317;&#x4EAC;|BJP|beijing|bj|2  
+struct stationinfo  
+{  
+    string code1;  
+    string hanzi;  
+    string code2;  
+    string pingyin;  
+    string simplepingyin;  
+    int no;  
+};  
+
+struct passenager  
+{  
+    string code;  //&quot;8&quot;  
+    string passenger_name;  //&quot;&#x8303;&#x8821;&quot;  
+    string sex_code;// &quot;M&quot;  
+    string sex_name; // &quot;&#x7537;&quot;  
+    string born_date; //&quot;1989-12-08 00:00:00&quot;  
+    string country_code;// &quot;CN&quot;  
+    string passenger_id_type_code;//  &quot;1&quot;  
+    string passenger_id_type_name; // &quot;&#x4E8C;&#x4EE3;&#x8EAB;&#x4EFD;&#x8BC1;&quot;  
+    string passenger_id_no; // &quot;34262319781108812X&quot;  
+    string passenger_type; // &quot;1&quot;  
+    string passenger_flag; // &quot;0&quot;  
+    string passenger_type_name; // &quot;&#x6210;&#x4EBA;&quot;  
+    string mobile_no; // &quot;13917043320&quot;  
+    string phone_no;  
+    string email; // &quot;balloonwj@qq.com&quot;  
+    string address; //  &quot;&quot;  
+    string postalcode; // &quot;&quot;  
+    string first_letter;// &quot;&quot;  
+    string recordCount;// &quot;13&quot;  
+    string total_times;// &quot;99&quot;  
+    string index_id;// &quot;0&quot;  
+};  
+
+class Client12306  
+{  
+public:  
+    static Client12306&amp; GetInstance();  
+private:  
+    Client12306();  
+    ~Client12306();  
+private:  
+    Client12306(const Client12306&amp;);  
+    Client12306&amp; operator=(const Client12306&amp;);  
+public:  
+    bool ReloadVCodeImage();  
+    /** 
+     * &#x6E38;&#x5BA2;&#x67E5;&#x7968; 
+     * https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2017-05-24&amp;leftTicketDTO.from_station=BJP&amp;leftTicketDTO.to_station=SHH&amp;purpose_codes=ADULT 
+     * &#x5E94;&#x7B54;&#xFF1A;{&#x201C;validateMessagesShowId&#x201D;:&#x201D;_validatorMessage&#x201D;,&#x201D;status&#x201D;:true,&#x201D;httpstatus&#x201D;:200,&#x201D;messages&#x201D;:[],&#x201D;validateMessages&#x201D;:{}} 
+     *@param: train_date&#x5217;&#x8F66;&#x53D1;&#x8F66;&#x65E5;&#x671F;&#xFF0C;&#x683C;&#x5F0F;&#xFF1A;2017-01-28 
+     *@param: from_station&#x51FA;&#x53D1;&#x7AD9;&#xFF0C;&#x683C;&#x5F0F;&#xFF1A;SHH &#x5BF9;&#x5E94;&#x4E0A;&#x6D77; 
+     *@parma: to_station&#x5230;&#x7AD9;,&#x683C;&#x5F0F;&#xFF1A;BJP &#x5BF9;&#x5E94;&#x5317;&#x4EAC; 
+     *@param: purpose_codes &#x7968;&#x7C7B;&#x578B;&#xFF0C;&#x6210;&#x4EBA;&#x7968;&#xFF1A;ADULT &#x5B66;&#x751F;&#x7968;&#xFF1A;0X00 
+     *@param: v &#x67E5;&#x7968;&#x7ED3;&#x679C; 
+     */  
+    bool GuestQueryTicket(const char* train_date, const char* from_station, const char* to_station, const char* purpose_codes, vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ticketinfo</span><span class="token punctuation">&gt;</span></span>&amp; v);  
+    /** 
+    * &#x521D;&#x59CB;&#x5316;session&#xFF0C;&#x83B7;&#x53D6;JSESSIONID 
+    */  
+    bool loginInit();  
+    bool DownloadVCodeImage(const char* module = &quot;login&quot;);  
+    /** 
+    *@return 0&#x6821;&#x9A8C;&#x6210;&#x529F;&#xFF1B;1&#x6821;&#x9A8C;&#x5931;&#x8D25;&#xFF1B;2&#x6821;&#x9A8C;&#x51FA;&#x9519; 
+    */  
+    int checkRandCodeAnsyn(const char* vcode);  
+    /** 
+    *@return 0&#x6821;&#x9A8C;&#x6210;&#x529F;&#xFF1B;1&#x6821;&#x9A8C;&#x5931;&#x8D25;&#xFF1B;2&#x6821;&#x9A8C;&#x51FA;&#x9519; 
+    */  
+    int loginAysnSuggest(const char* user, const char* pass, const char* vcode);  
+    /**  
+     * &#x6B63;&#x5F0F;&#x767B;&#x5F55; 
+     */  
+    bool userLogin();  
+    /**  
+     * &#x6A21;&#x62DF;12306&#x8DF3;&#x8F6C; 
+     */  
+    bool initMy12306();  
+    /** 
+     * &#x62C9;&#x53D6;&#x4E58;&#x5BA2;&#x4E70;&#x7968;&#x9A8C;&#x8BC1;&#x7801; 
+     */  
+    //bool GetVCodeImage();  
+    /** 
+     * &#x62C9;&#x53D6;&#x4E58;&#x5BA2;&#x4E70;&#x7968;&#x9A8C;&#x8BC1;&#x7801; 
+     */  
+    /**  
+     * &#x67E5;&#x8BE2;&#x4F59;&#x7968;&#x7B2C;&#x4E00;&#x6B65; 
+     * https://kyfw.12306.cn/otn/leftTicket/log?leftTicketDTO.train_date=2017-02-08&amp;leftTicketDTO.from_station=SHH&amp;leftTicketDTO.to_station=NJH&amp;purpose_codes=ADULT 
+     * &#x5E94;&#x7B54;&#xFF1A;{&#x201C;validateMessagesShowId&#x201D;:&#x201D;_validatorMessage&#x201D;,&#x201D;status&#x201D;:true,&#x201D;httpstatus&#x201D;:200,&#x201D;messages&#x201D;:[],&#x201D;validateMessages&#x201D;:{}} 
+     *@param: train_date&#x5217;&#x8F66;&#x53D1;&#x8F66;&#x65E5;&#x671F;&#xFF0C;&#x683C;&#x5F0F;&#xFF1A;2017-01-28 
+     *@param: from_station&#x51FA;&#x53D1;&#x7AD9;&#xFF0C;&#x683C;&#x5F0F;&#xFF1A;SHH &#x5BF9;&#x5E94;&#x4E0A;&#x6D77; 
+     *@parma: to_station&#x5230;&#x7AD9;,&#x683C;&#x5F0F;&#xFF1A;BJP &#x5BF9;&#x5E94;&#x5317;&#x4EAC; 
+     *@param: purpose_codes &#x7968;&#x7C7B;&#x578B;&#xFF0C;&#x6210;&#x4EBA;&#x7968;&#xFF1A;ADULT &#x5B66;&#x751F;&#x7968;&#xFF1A;0X00 
+     */  
+    bool QueryTickets1(const char* train_date, const char* from_station, const char* to_station, const char* purpose_codes);  
+    /** 
+     * &#x67E5;&#x8BE2;&#x4F59;&#x7968;&#x7B2C;&#x4E8C;&#x6B65; 
+     * &#x8FD9;&#x51E0;&#x79CD;&#x60C5;&#x5F62;&#x90FD;&#x6709;&#x53EF;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x5E94;&#x8BE5;&#x90FD;&#x5C1D;&#x8BD5;&#x4E00;&#x4E0B; 
+     * https://kyfw.12306.cn/otn/leftTicket/queryZ?leftTicketDTO.train_date=2017-02-08&amp;leftTicketDTO.from_station=SHH&amp;leftTicketDTO.to_station=NJH&amp;purpose_codes=ADULT 
+     * https://kyfw.12306.cn/otn/leftTicket/queryX?leftTicketDTO.train_date=2017-02-08&amp;leftTicketDTO.from_station=SHH&amp;leftTicketDTO.to_station=NJH&amp;purpose_codes=ADULT 
+     * https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2017-02-08&amp;leftTicketDTO.from_station=SHH&amp;leftTicketDTO.to_station=NJH&amp;purpose_codes=ADULT 
+     * {&quot;status&quot;:false,&quot;c_url&quot;:&quot;leftTicket/query&quot;,&quot;c_name&quot;:&quot;CLeftTicketUrl&quot;} 
+     * {&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;messages&quot;:[&quot;&#x975E;&#x6CD5;&#x8BF7;&#x6C42;&quot;],&quot;validateMessages&quot;:{}} 
+     * &#x5E94;&#x7B54;&#x4E2D;&#x542B;&#x6709;&#x5B9E;&#x9645;&#x4F59;&#x7968;&#x4FE1;&#x606F; 
+     *@param: train_date&#x5217;&#x8F66;&#x53D1;&#x8F66;&#x65E5;&#x671F;&#xFF0C;&#x683C;&#x5F0F;&#xFF1A;2017-01-28 
+     *@param: from_station&#x51FA;&#x53D1;&#x7AD9;&#xFF0C;&#x683C;&#x5F0F;&#xFF1A;SHH &#x5BF9;&#x5E94;&#x4E0A;&#x6D77; 
+     *@parma: to_station&#x5230;&#x7AD9;,&#x683C;&#x5F0F;&#xFF1A;BJP &#x5BF9;&#x5E94;&#x5317;&#x4EAC; 
+     *@param: purpose_codes &#x7968;&#x7C7B;&#x578B;&#xFF0C;&#x6210;&#x4EBA;&#x7968;&#xFF1A;ADULT &#x5B66;&#x751F;&#x7968;&#xFF1A;0X00 
+     */  
+    bool QueryTickets2(const char* train_date, const char* from_station, const char* to_station, const char* purpose_codes, vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ticketinfo</span><span class="token punctuation">&gt;</span></span>&amp; v);  
+    /**  
+     * &#x68C0;&#x6D4B;&#x7528;&#x6237;&#x662F;&#x5426;&#x767B;&#x5F55; 
+     * https://kyfw.12306.cn/otn/login/checkUser POST _json_att= 
+     * Cookie: JSESSIONID=0A01D967FCD9827FC664E43DEE3C7C6EF950F677C2; __NRF=86A7CBA739653C1CC2C3C3AA7C88A1E3; BIGipServerotn=1742274826.64545.0000; BIGipServerportal=3134456074.17695.0000; current_captcha_type=Z; _jc_save_fromStation=%u4E0A%u6D77%2CSHH; _jc_save_toStation=%u5357%u4EAC%2CNJH; _jc_save_fromDate=2017-01-22; _jc_save_toDate=2017-01-22; _jc_save_wfdc_flag=dc 
+     * {&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;flag&quot;:true},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}} 
+     */  
+    bool checkUser();  
+    /**  
+     * &#x9884;&#x63D0;&#x4EA4;&#x8BA2;&#x5355; POST 
+     * https://kyfw.12306.cn/otn/leftTicket/submitOrderRequest?secretStr=secretStr&amp;train_date=2017-01-21&amp;back_train_date=2016-12-23&amp;tour_flag=dc&amp;purpose_codes=ADULT&amp;query_from_station_name=&#x6DF1;&#x5733;&amp;query_to_station_name=&#x6B66;&#x6C49;&amp;undefined= 
+     */  
+    bool submitOrderRequest(const char* secretStr, const char* train_date, const char* back_train_date, const char* tour_flag, const char* purpose_codes, const char* query_from_station_name, const char* query_to_station_name);  
+    /**  
+     * &#x6A21;&#x62DF;&#x8DF3;&#x8F6C;&#x9875;&#x9762;InitDc&#xFF0C;Post 
+     */  
+    bool initDc();  
+    /** 
+     * &#x62C9;&#x53D6;&#x5E38;&#x7528;&#x8054;&#x7CFB;&#x4EBA; POST 
+     * https://kyfw.12306.cn/otn/confirmPassenger/getPassengerDTOs?_json_att=&amp;REPEAT_SUBMIT_TOKEN=SubmitToken 
+     */  
+    bool getPassengerDTOs(vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>passenager</span><span class="token punctuation">&gt;</span></span>&amp; v);  
+    /**  
+     * &#x8D2D;&#x7968;&#x4EBA;&#x786E;&#x5B9A; 
+     * https://kyfw.12306.cn/otn/confirmPassenger/checkOrderInfo 
+     @param oldPassengerStr oldPassengerStr&#x7EC4;&#x6210;&#x7684;&#x683C;&#x5F0F;&#xFF1A;&#x4E58;&#x5BA2;&#x540D;,passenger_id_type_code,passenger_id_no,passenger_type&#xFF0C;&#x2019;_&#x2019; 
+                            &#x793A;&#x4F8B;&#xFF1A; &#x5F20;&#x8FDC;&#x9F99;,1,342623198912088150,1_ 
+     @param passengerTicketStr  passengerTicketStr&#x7EC4;&#x6210;&#x7684;&#x683C;&#x5F0F;&#xFF1A;seatType,0,&#x7968;&#x7C7B;&#x578B;&#xFF08;&#x6210;&#x4EBA;&#x7968;&#x586B;1&#xFF09;,&#x4E58;&#x5BA2;&#x540D;,passenger_id_type_code,passenger_id_no,mobile_no,&#x2019;N&#x2019;  
+                            &#x793A;&#x4F8B;&#xFF1A; O,0,1,&#x5F20;&#x8FDC;&#x9F99;,1,342623198912088150,13917043320,N    101 
+     @tour_flag dc&#x8868;&#x793A;&#x5355;&#x7A0B;&#x7968; 
+     &#x5E94;&#x7B54;&#xFF1A;{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;ifShowPassCode&quot;:&quot;N&quot;,&quot;canChooseBeds&quot;:&quot;N&quot;,&quot;canChooseSeats&quot;:&quot;N&quot;,&quot;choose_Seats&quot;:&quot;MOP9&quot;,&quot;isCanChooseMid&quot;:&quot;N&quot;,&quot;ifShowPassCodeTime&quot;:&quot;1&quot;,&quot;submitStatus&quot;:true,&quot;smokeStr&quot;:&quot;&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}} 
+     */  
+    bool checkOrderInfo(const char* oldPassengerStr, const char* passengerTicketStr, const char* tour_flag, bool&amp; bVerifyVCode);  
+    /**  
+     * &#x51C6;&#x5907;&#x8FDB;&#x5165;&#x6392;&#x961F; 
+     * https://kyfw.12306.cn/otn/confirmPassenger/getQueueCount 
+     _json_att      10 
+     fromStationTelecode    VNP 23 
+     leftTicket enu80ehMzuVJlK2Q43c6kn5%2BzQF41LEI6Nr14JuzThrooN57  63 
+     purpose_codes  00  16 
+     REPEAT_SUBMIT_TOKEN    691c09b5605e46bfb2ec2380ee65de0e    52 
+     seatType   O   10 
+     stationTrainCode   G5  19 
+     toStationTelecode  AOH 21 
+     train_date Fri Feb 10 00:00:00 UTC+0800 2017   50 
+     train_location P2  17 
+     train_no   24000000G502    21 
+     &#x5E94;&#x7B54;&#xFF1A;{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;count&quot;:&quot;4&quot;,&quot;ticket&quot;:&quot;669&quot;,&quot;op_2&quot;:&quot;false&quot;,&quot;countT&quot;:&quot;0&quot;,&quot;op_1&quot;:&quot;true&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}} 
+     */  
+    bool getQueueCount(const char* fromStationTelecode, const char* leftTicket, const char* purpose_codes, const char* seatType, const char* stationTrainCode, const char* toStationTelecode, const char* train_date, const char* train_location, const char* train_no);  
+    /**  
+     * &#x786E;&#x8BA4;&#x8D2D;&#x4E70; 
+     * https://kyfw.12306.cn/otn/confirmPassenger/confirmSingleForQueue 
+     _json_att      10 
+     choose_seats       13 
+     dwAll  N   7 
+     key_check_isChange 7503FD317E01E290C3D95CAA1D26DD8CFA9470C3643BA9799D3FB753    75 
+     leftTicketStr  enu80ehMzuVJlK2Q43c6kn5%2BzQF41LEI6Nr14JuzThrooN57  66 
+     oldPassengerStr    &#x5F20;&#x8FDC;&#x9F99;,1,342623198912088150,1_ 73 
+     passengerTicketStr O,0,1,&#x5F20;&#x8FDC;&#x9F99;,1,342623198912088150,13917043320,N    101 
+     purpose_codes  00  16 
+     randCode       9 
+     REPEAT_SUBMIT_TOKEN    691c09b5605e46bfb2ec2380ee65de0e    52 
+     roomType   00  11 
+     seatDetailType 000 18 
+     train_location P2  17 
+     &#x5E94;&#x7B54;&#xFF1A;{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;submitStatus&quot;:true},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}} 
+     */  
+    bool confirmSingleForQueue(const char* leftTicketStr, const char* oldPassengerStr, const char* passengerTicketStr, const char* purpose_codes, const char* train_location);  
+    /**  
+     * &#x67E5;&#x8BE2;&#x8BA2;&#x5355;&#x72B6;&#x6001;&#xFF1A; https://kyfw.12306.cn/otn/confirmPassenger/queryOrderWaitTime?random=1486368851278&amp;tourFlag=dc&amp;_json_att=&amp;REPEAT_SUBMIT_TOKEN=691c09b5605e46bfb2ec2380ee65de0e 
+     GET 
+     _json_att 
+     random 1486368851278 
+     REPEAT_SUBMIT_TOKEN    691c09b5605e46bfb2ec2380ee65de0e 
+     tourFlag   dc 
+     &#x54CD;&#x5E94;&#xFF1A;{&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;queryOrderWaitTimeStatus&quot;:true,&quot;count&quot;:0,&quot;waitTime&quot;:-1,&quot;requestId&quot;:6234282826330508533,&quot;waitCount&quot;:0,&quot;tourFlag&quot;:&quot;dc&quot;,&quot;orderId&quot;:&quot;E061149209&quot;},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}} 
+     */  
+    bool queryOrderWaitTime(const char* tourflag, string&amp; orderId);  
+    /**  
+     * https://kyfw.12306.cn/otn/confirmPassenger/resultOrderForDcQueue POST 
+     _json_att      10 
+     orderSequence_no   E061149209  27 
+     REPEAT_SUBMIT_TOKEN    691c09b5605e46bfb2ec2380ee65de0e    52 
+     {&quot;validateMessagesShowId&quot;:&quot;_validatorMessage&quot;,&quot;status&quot;:true,&quot;httpstatus&quot;:200,&quot;data&quot;:{&quot;submitStatus&quot;:true},&quot;messages&quot;:[],&quot;validateMessages&quot;:{}} 
+     */  
+    //bool resultOrderForDcQueue();  
+    /**  
+     * &#x672A;&#x5B8C;&#x6210;&#x7684;&#x8BA2;&#x5355;&#x9875;&#x9762; https://kyfw.12306.cn/otn/queryOrder/initNoComplete GET 
+     * &#x83B7;&#x53D6;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x8BA2;&#x5355; https://kyfw.12306.cn/otn/queryOrder/queryMyOrderNoComplete POST _json_att= 
+     */  
+    /* 
+    { 
+    &quot;validateMessagesShowId&quot;: &quot;_validatorMessage&quot;, 
+    &quot;status&quot;: true, 
+    &quot;httpstatus&quot;: 200, 
+    &quot;data&quot;: { 
+        &quot;orderDBList&quot;: [ 
+            { 
+                &quot;sequence_no&quot;: &quot;E079331507&quot;, 
+                &quot;order_date&quot;: &quot;2017-02-09 10:10:55&quot;, 
+                &quot;ticket_totalnum&quot;: 1, 
+                &quot;ticket_price_all&quot;: 55300, 
+                &quot;cancel_flag&quot;: &quot;Y&quot;, 
+                &quot;resign_flag&quot;: &quot;4&quot;, 
+                &quot;return_flag&quot;: &quot;N&quot;, 
+                &quot;print_eticket_flag&quot;: &quot;N&quot;, 
+                &quot;pay_flag&quot;: &quot;Y&quot;, 
+                &quot;pay_resign_flag&quot;: &quot;N&quot;, 
+                &quot;confirm_flag&quot;: &quot;N&quot;, 
+                &quot;tickets&quot;: [ 
+                    { 
+                        &quot;stationTrainDTO&quot;: { 
+                            &quot;trainDTO&quot;: {}, 
+                            &quot;station_train_code&quot;: &quot;G41&quot;, 
+                            &quot;from_station_telecode&quot;: &quot;VNP&quot;, 
+                            &quot;from_station_name&quot;: &quot;&#x5317;&#x4EAC;&#x5357;&quot;, 
+                            &quot;start_time&quot;: &quot;1970-01-01 09:16:00&quot;, 
+                            &quot;to_station_telecode&quot;: &quot;AOH&quot;, 
+                            &quot;to_station_name&quot;: &quot;&#x4E0A;&#x6D77;&#x8679;&#x6865;&quot;, 
+                            &quot;arrive_time&quot;: &quot;1970-01-01 14:48:00&quot;, 
+                            &quot;distance&quot;: &quot;1318&quot; 
+                        }, 
+                        &quot;passengerDTO&quot;: { 
+                            &quot;passenger_name&quot;: &quot;&#x8303;&#x8821;&quot;, 
+                            &quot;passenger_id_type_code&quot;: &quot;1&quot;, 
+                            &quot;passenger_id_type_name&quot;: &quot;&#x4E8C;&#x4EE3;&#x8EAB;&#x4EFD;&#x8BC1;&quot;, 
+                            &quot;passenger_id_no&quot;: &quot;34262319781108815X&quot;, 
+                            &quot;total_times&quot;: &quot;98&quot; 
+                        }, 
+                        &quot;ticket_no&quot;: &quot;E079331507110008B&quot;, 
+                        &quot;sequence_no&quot;: &quot;E079331507&quot;, 
+                        &quot;batch_no&quot;: &quot;1&quot;, 
+                        &quot;train_date&quot;: &quot;2017-02-11 00:00:00&quot;, 
+                        &quot;coach_no&quot;: &quot;10&quot;, 
+                        &quot;coach_name&quot;: &quot;10&quot;, 
+                        &quot;seat_no&quot;: &quot;008B&quot;, 
+                        &quot;seat_name&quot;: &quot;08B&#x53F7;&quot;, 
+                        &quot;seat_flag&quot;: &quot;0&quot;, 
+                        &quot;seat_type_code&quot;: &quot;O&quot;, 
+                        &quot;seat_type_name&quot;: &quot;&#x4E8C;&#x7B49;&#x5EA7;&quot;, 
+                        &quot;ticket_type_code&quot;: &quot;1&quot;, 
+                        &quot;ticket_type_name&quot;: &quot;&#x6210;&#x4EBA;&#x7968;&quot;, 
+                        &quot;reserve_time&quot;: &quot;2017-02-09 10:10:55&quot;, 
+                        &quot;limit_time&quot;: &quot;2017-02-09 10:10:55&quot;, 
+                        &quot;lose_time&quot;: &quot;2017-02-09 10:40:55&quot;, 
+                        &quot;pay_limit_time&quot;: &quot;2017-02-09 10:40:55&quot;, 
+                        &quot;ticket_price&quot;: 55300, 
+                        &quot;print_eticket_flag&quot;: &quot;N&quot;, 
+                        &quot;resign_flag&quot;: &quot;4&quot;, 
+                        &quot;return_flag&quot;: &quot;N&quot;, 
+                        &quot;confirm_flag&quot;: &quot;N&quot;, 
+                        &quot;pay_mode_code&quot;: &quot;Y&quot;, 
+                        &quot;ticket_status_code&quot;: &quot;i&quot;, 
+                        &quot;ticket_status_name&quot;: &quot;&#x5F85;&#x652F;&#x4ED8;&quot;, 
+                        &quot;cancel_flag&quot;: &quot;Y&quot;, 
+                        &quot;amount_char&quot;: 0, 
+                        &quot;trade_mode&quot;: &quot;&quot;, 
+                        &quot;start_train_date_page&quot;: &quot;2017-02-11 09:16&quot;, 
+                        &quot;str_ticket_price_page&quot;: &quot;553.0&quot;, 
+                        &quot;come_go_traveller_ticket_page&quot;: &quot;N&quot;, 
+                        &quot;return_deliver_flag&quot;: &quot;N&quot;, 
+                        &quot;deliver_fee_char&quot;: &quot;&quot;, 
+                        &quot;is_need_alert_flag&quot;: false, 
+                        &quot;is_deliver&quot;: &quot;N&quot;, 
+                        &quot;dynamicProp&quot;: &quot;&quot;, 
+                        &quot;fee_char&quot;: &quot;&quot;, 
+                        &quot;insure_query_no&quot;: &quot;&quot; 
+                    } 
+                ], 
+                &quot;reserve_flag_query&quot;: &quot;p&quot;, 
+                &quot;if_show_resigning_info&quot;: &quot;N&quot;, 
+                &quot;recordCount&quot;: &quot;1&quot;, 
+                &quot;isNeedSendMailAndMsg&quot;: &quot;N&quot;, 
+                &quot;array_passser_name_page&quot;: [ 
+                    &quot;&#x5F20;&#x8FDC;&#x9F99;&quot; 
+                ], 
+                &quot;from_station_name_page&quot;: [ 
+                    &quot;&#x5317;&#x4EAC;&#x5357;&quot; 
+                ], 
+                &quot;to_station_name_page&quot;: [ 
+                    &quot;&#x4E0A;&#x6D77;&#x8679;&#x6865;&quot; 
+                ], 
+                &quot;start_train_date_page&quot;: &quot;2017-02-11 09:16&quot;, 
+                &quot;start_time_page&quot;: &quot;09:16&quot;, 
+                &quot;arrive_time_page&quot;: &quot;14:48&quot;, 
+                &quot;train_code_page&quot;: &quot;G41&quot;, 
+                &quot;ticket_total_price_page&quot;: &quot;553.0&quot;, 
+                &quot;come_go_traveller_order_page&quot;: &quot;N&quot;, 
+                &quot;canOffLinePay&quot;: &quot;N&quot;, 
+                &quot;if_deliver&quot;: &quot;N&quot;, 
+                &quot;insure_query_no&quot;: &quot;&quot; 
+            } 
+        ], 
+        &quot;to_page&quot;: &quot;db&quot; 
+    }, 
+    &quot;messages&quot;: [], 
+    &quot;validateMessages&quot;: {} 
+} 
+    */  
+    /**  
+     * &#x5DF2;&#x5B8C;&#x6210;&#x8BA2;&#x5355;&#xFF08;&#x6539;/&#x9000;&#xFF09; : https://kyfw.12306.cn/otn/queryOrder/queryMyOrder POST 
+     * queryType 1 &#x6309;&#x8BA2;&#x7968;&#x65E5;&#x671F; 2 &#x6309;&#x4E58;&#x8F66;&#x65E5;&#x671F; 
+     * &#x67E5;&#x8BE2;&#x65E5;&#x671F;queryStartDate=2017-02-09&amp;queryEndDate=2017-02-09 
+     * come_from_flag: my_order &#x5168;&#x90E8; my_resign &#x53EF;&#x6539;&#x7B7E; my_cs_resign &#x53EF;&#x53D8;&#x66F4;&#x5230;&#x7AD9; my_refund &#x53EF;&#x9000;&#x7968; 
+     * &amp;pageSize=8&amp;pageIndex=0&amp; 
+     * query_where G &#x672A;&#x51FA;&#x884C;&#x8BA2;&#x5355; H &#x5386;&#x53F2;&#x8BA2;&#x5355; 
+     * sequeue_train_name &#x8BA2;&#x5355;&#x53F7;/&#x8F66;&#x6B21;/&#x4E58;&#x5BA2;&#x59D3;&#x540D; 
+     */  
+    /* &#x5386;&#x53F2;&#x8BA2;&#x5355;&#x683C;&#x5F0F; 
+       &#x53C2;&#x89C1;[&#x5386;&#x53F2;&#x8BA2;&#x5355;.txt] 
+    */  
+    /**  
+     * &#x83B7;&#x53D6;&#x5168;&#x56FD;&#x8F66;&#x7AD9;&#x4FE1;&#x606F; 
+     *@param si &#x8FD4;&#x56DE;&#x7684;&#x8F66;&#x7AD9;&#x4FE1;&#x606F; 
+     *@param bForceDownload &#x5F3A;&#x5236;&#x4ECE;&#x7F51;&#x7EDC;&#x4E0A;&#x4E0B;&#x8F7D;&#xFF0C;&#x5373;&#x4E0D;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x526F;&#x672C; 
+     */  
+    bool GetStationInfo(vector<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>stationinfo</span><span class="token punctuation">&gt;</span></span>&amp; si, bool bForceDownload = false);  
+    /**  
+     * &#x83B7;&#x53D6;&#x6240;&#x6709;&#x9AD8;&#x6821;&#x4FE1;&#x606F; https://kyfw.12306.cn/otn/userCommon/schoolNames POST provinceCode=11&amp;_json_att= 
+     */  
+    /**  
+     * &#x83B7;&#x53D6;&#x6240;&#x6709;&#x57CE;&#x5E02;&#x4FE1;&#x606F; https://kyfw.12306.cn/otn/userCommon/allCitys POST station_name=&amp;_json_att= 
+     */  
+    /** 
+     * &#x67E5;&#x8BE2;&#x5E38;&#x7528;&#x8054;&#x7CFB;&#x4EBA; 
+     */  
+    bool QueryPassengers(int pageindex = 2, int pagesize = 10);  
+    bool GetVCodeFileName(char* pszDst, int nLength);  
+private:  
+    bool GetCookies(const string&amp; data);  
+    /** 
+     * &#x53D1;&#x9001;&#x4E00;&#x4E2A;http&#x8BF7;&#x6C42; 
+     *@param url &#x8BF7;&#x6C42;&#x7684;url 
+     *@param strResponse http&#x54CD;&#x5E94;&#x7ED3;&#x679C; 
+     *@param get true&#x4E3A;GET&#xFF0C;false&#x4E3A;POST 
+     *@param headers &#x9644;&#x5E26;&#x53D1;&#x9001;&#x7684;http&#x5934;&#x4FE1;&#x606F; 
+     *@param postdata post&#x9644;&#x5E26;&#x7684;&#x6570;&#x636E;     
+     *@param bReserveHeaders http&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x4FDD;&#x7559;&#x5934;&#x90E8;&#x4FE1;&#x606F; 
+     *@param timeout http&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x65F6;&#x95F4; 
+     */  
+    bool HttpRequest(const char* url, string&amp; strResponse, bool get = true, const char* headers = NULL, const char* postdata = NULL, bool bReserveHeaders = false, int timeout = 10);  
+private:  
+    char                m_szCurrVCodeName[256]; //&#x5F53;&#x524D;&#x9A8C;&#x8BC1;&#x7801;&#x56FE;&#x7247;&#x7684;&#x540D;&#x79F0;  
+    string              m_strCookies;  
+    string              m_strGlobalRepeatSubmitToken;  
+    string              m_strKeyCheckIsChange;  
+};  
+#endif //!__CLIENT_12306_H__
+</code></pre><p>&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5C31;&#x4E0D;&#x5728;&#x6587;&#x7AE0;&#x4E2D;&#x8D34;&#x51FA;&#x6765;&#x4E86;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4E0B;&#x8F7D;&#x6211;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#x5728;&#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7;&#x300E;<strong>easyserverdev</strong>&#x300F;&#x4E2D;&#x56DE;&#x590D;&#x300E;<strong>12306&#x6E90;&#x7801;</strong>&#x300F;&#x5373;&#x53EF;&#x5F97;&#x5230;&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x7531;&#x4E8E;12306&#x7684;&#x63A5;&#x53E3;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x5F53;&#x4F60;&#x62FF;&#x5230;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;12306&#x670D;&#x52A1;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x5DF2;&#x7ECF;&#x7A0D;&#x5FAE;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x6309;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x539F;&#x7406;&#x505A;&#x54CD;&#x5E94;&#x7684;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x5F53;&#x60A8;&#x5B9E;&#x73B0;&#x4E86;&#x57FA;&#x672C;&#x7684;&#x767B;&#x5F55;&#x548C;&#x8D2D;&#x7968;&#x529F;&#x80FD;&#x540E;&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x4E0D;&#x65AD;&#x6A21;&#x62DF;&#x67D0;&#x4E9B;&#x8BF7;&#x6C42;&#x53BB;&#x8FDB;&#x884C;&#x5237;&#x7968;&#x4E86;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x5237;&#x7968;&#x7684;&#x57FA;&#x672C;&#x539F;&#x7406;&#x3002;</p>
+<footer class="page-footer"><span class="copyright">&#x5982;&#x9700;&#x4E0B;&#x8F7D;&#x672C;&#x7AD9;&#x5168;&#x90E8;&#x6280;&#x672F;&#x6587;&#x7AE0;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x3010;&#x9AD8;&#x6027;&#x80FD;&#x670D;&#x52A1;&#x5668;&#x5F00;&#x53D1;&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x5173;&#x952E;&#x5B57;&#x201C;&#x6587;&#x7AE0;&#x4E0B;&#x8F7D;&#x201D;&#x5373;&#x53EF;&#x3002;</span><span class="footer-modification">&#x6700;&#x8FD1;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2020-10-02 17:25:49
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+						
+					</section>
+					
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+		
+		<a href="从零实现一个http服务器.html" class="navigation navigation-prev " aria-label="Previous page: 从零实现一个http服务器">
+			<i class="fa fa-angle-left"></i>
+		</a>
+		
+		
+		<a href="从零实现一个邮件收发客户端.html" class="navigation navigation-next " aria-label="Next page: 从零实现一个邮件收发客户端">
+			<i class="fa fa-angle-right"></i>
+		</a>
+		
+		
+		
+	</div>
+	<script>
+		var gitbook = gitbook || [];
+		gitbook.push(function() {
+			gitbook.page.hasChanged({"page":{"title":"从零实现一款12306刷票软件","level":"5.1.2","depth":2,"next":{"title":"从零实现一个邮件收发客户端","level":"5.1.3","depth":2,"path":"articles/服务器开发案例实战/从零实现一个邮件收发客户端.md","ref":"articles/服务器开发案例实战/从零实现一个邮件收发客户端.md","articles":[]},"previous":{"title":"从零实现一个http服务器","level":"5.1.1","depth":2,"path":"articles/服务器开发案例实战/从零实现一个http服务器.md","ref":"articles/服务器开发案例实战/从零实现一个http服务器.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","-lunr","-search","search-pro","splitter","popup","back-to-top-button","hide-element","prism","-highlight","tbfed-pagefooter","code","anchor-navigation-ex","theme-fexa","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"如需下载本站全部技术文章，可以在【高性能服务器开发】公众号回复关键字“文章下载”即可。","modify_label":"最近更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{},"livereload":{},"splitter":{},"search-pro":{},"popup":{},"theme-fexa":{"search-placeholder":"输入关键字搜索","logo":"./logo.png","favicon":"./favicon.ico"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":false,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"easy_coder","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"高性能服务器开发 技术专栏","links":{},"gitbook":"*","description":"","theme-default":{"showLevel":true},"extension":null},"file":{"path":"articles/服务器开发案例实战/从零实现一款12306刷票软件.md","mtime":"2020-10-02T09:25:49.405Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T15:31:57.905Z"},"basePath":"../..","book":{"language":""}});
+		});
+	</script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-fexa/fexa.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,3252 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>详解C++11中的智能指针 · 高性能服务器开发 技术专栏</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="easy_coder">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-fexa/fexa.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++17结构化绑定.html" />
+    
+    
+    <link rel="prev" href="深入理解CC++中的指针.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+	<div class="header-inner">
+		<!-- LOGO -->
+		<div class="logo"></div>
+		<span class="title"></span>
+
+		<!-- Search -->
+		
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+		<!-- Nav -->
+		<ul class="header-nav">
+			
+		</ul>
+	</div>
+
+	<div class="book-summary">
+		<div class="book-summary-title">文档目录</div>
+		
+		
+		<nav role="navigation">
+			
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Part I</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++必知必会的知识点
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="如何成为一名合格的CC++开发者？.html">
+            
+                <a href="如何成为一名合格的CC++开发者？.html">
+            
+                    
+                    如何成为一名合格的C/C++开发者？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="不定参数函数实现var_arg系列的宏.html">
+            
+                <a href="不定参数函数实现var_arg系列的宏.html">
+            
+                    
+                    不定参数函数实现var_arg系列的宏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                <a href="你一定要搞明白的C函数调用方式与栈原理.html">
+            
+                    
+                    你一定要搞明白的C函数调用方式与栈原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="深入理解CC++中的指针.html">
+            
+                <a href="深入理解CC++中的指针.html">
+            
+                    
+                    深入理解C/C++中的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.5" data-path="详解C++11中的智能指针.html">
+            
+                <a href="详解C++11中的智能指针.html">
+            
+                    
+                    详解C++11中的智能指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="C++17结构化绑定.html">
+            
+                <a href="C++17结构化绑定.html">
+            
+                    
+                    C++17结构化绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="C++必须掌握的pimpl惯用法.html">
+            
+                <a href="C++必须掌握的pimpl惯用法.html">
+            
+                    
+                    C++必须掌握的pimpl惯用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="用VisualStudio调试Linux程序.html">
+            
+                <a href="用VisualStudio调试Linux程序.html">
+            
+                    
+                    用Visual Studio调试Linux程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                <a href="如何使用VisualStudio管理和阅读开源项目代码.html">
+            
+                    
+                    如何使用Visual Studio管理和阅读开源项目代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="利用cmake工具生成VisualStudio工程文件.html">
+            
+                <a href="利用cmake工具生成VisualStudio工程文件.html">
+            
+                    
+                    利用cmake工具生成Visual Studio工程文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../多线程/">
+            
+                <a href="../多线程/">
+            
+                    
+                    多线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                <a href="../多线程/后台C++开发你一定要知道的条件变量.html">
+            
+                    
+                    后台C++开发你一定要知道的条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                <a href="../多线程/整型变量赋值是原子操作吗？.html">
+            
+                    
+                    整型变量赋值是原子操作吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../网络编程/">
+            
+                <a href="../网络编程/">
+            
+                    
+                    网络编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../网络编程/bind函数重难点解析.html">
+            
+                <a href="../网络编程/bind函数重难点解析.html">
+            
+                    
+                    bind 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                <a href="../网络编程/connect函数在阻塞和非阻塞模式下的行为.html">
+            
+                    
+                    connect 函数在阻塞和非阻塞模式下的行为
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../网络编程/select函数重难点解析.html">
+            
+                <a href="../网络编程/select函数重难点解析.html">
+            
+                    
+                    select 函数重难点解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                <a href="../网络编程/Linuxepoll模型（含LT模式和ET模式详解）.html">
+            
+                    
+                    Linux epoll 模型（含LT 模式和 ET 模式详解）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                <a href="../网络编程/socket的阻塞模式和非阻塞模式.html">
+            
+                    
+                    socket 的阻塞模式和非阻塞模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                <a href="../网络编程/非阻塞模式下send和recv函数的返回值.html">
+            
+                    
+                    非阻塞模式下 send 和 recv 函数的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                <a href="../网络编程/服务器开发通信协议设计介绍.html">
+            
+                    
+                    服务器开发通信协议设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                <a href="../网络编程/TCP协议如何解决粘包、半包问题.html">
+            
+                    
+                    TCP 协议如何解决粘包、半包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                <a href="../网络编程/网络通信中收发数据的正确姿势.html">
+            
+                    
+                    网络通信中收发数据的正确姿势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                <a href="../网络编程/服务器端发数据时，如果对端一直不收，怎么办？.html">
+            
+                    
+                    服务器端发数据时，如果对端一直不收，怎么办？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../程序员必知必会的网络命令/">
+            
+                <a href="../程序员必知必会的网络命令/">
+            
+                    
+                    程序员必知必会的网络命令
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                <a href="../程序员必知必会的网络命令/利用telnet命令发电子邮件.html">
+            
+                    
+                    利用telnet命令发电子邮件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                <a href="../程序员必知必会的网络命令/做Java或者C++开发都应该知道的lsof命令.html">
+            
+                    
+                    做Java或者C++开发都应该知道的lsof命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                <a href="../程序员必知必会的网络命令/Linux网络故障排查的瑞士军刀.html">
+            
+                    
+                    Linux网络故障排查的瑞士军刀nc命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                <a href="../程序员必知必会的网络命令/Linuxtcpdump使用介绍.html">
+            
+                    
+                    Linux tcpdump使用详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                <a href="../程序员必知必会的网络命令/从抓包的角度分析connect函数的连接过程.html">
+            
+                    
+                    从抓包的角度分析connect函数的连接过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                <a href="../程序员必知必会的网络命令/服务器开发中网络数据分析与故障排查经验漫谈.html">
+            
+                    
+                    服务器开发中网络数据分析与故障排查经验漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part II</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../高性能服务器框架设计/">
+            
+                <a href="../高性能服务器框架设计/">
+            
+                    
+                    高性能服务器框架设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                <a href="../高性能服务器框架设计/主线程与工作线程的分工.html">
+            
+                    
+                    主线程与工作线程的分工
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../高性能服务器框架设计/Reactor模式.html">
+            
+                <a href="../高性能服务器框架设计/Reactor模式.html">
+            
+                    
+                    Reactor模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                <a href="../高性能服务器框架设计/实例：一个服务器程序的架构介绍.html">
+            
+                    
+                    实例：一个服务器程序的架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/错误码系统的设计.html">
+            
+                    
+                    错误码系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../高性能服务器框架设计/日志系统的设计.html">
+            
+                <a href="../高性能服务器框架设计/日志系统的设计.html">
+            
+                    
+                    日志系统的设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                <a href="../高性能服务器框架设计/如何设计断线自动重连机制.html">
+            
+                    
+                    如何设计断线自动重连机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                <a href="../高性能服务器框架设计/心跳包机制设计详解.html">
+            
+                    
+                    心跳包机制设计详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.8" data-path="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                <a href="../高性能服务器框架设计/业务数据处理一定要单独开线程吗.html">
+            
+                    
+                    业务数据处理一定要单独开线程吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.9" data-path="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                <a href="../高性能服务器框架设计/C++高性能服务器网络框架设计细节.html">
+            
+                    
+                    C++ 高性能服务器网络框架设计细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../服务器开发案例实战/">
+            
+                <a href="../服务器开发案例实战/">
+            
+                    
+                    服务器开发案例实战
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="../服务器开发案例实战/从零实现一个http服务器.html">
+            
+                <a href="../服务器开发案例实战/从零实现一个http服务器.html">
+            
+                    
+                    从零实现一个http服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="../服务器开发案例实战/从零实现一款12306刷票软件.html">
+            
+                <a href="../服务器开发案例实战/从零实现一款12306刷票软件.html">
+            
+                    
+                    从零实现一款12306刷票软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="../服务器开发案例实战/从零实现一个邮件收发客户端.html">
+            
+                <a href="../服务器开发案例实战/从零实现一个邮件收发客户端.html">
+            
+                    
+                    从零实现一个邮件收发客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="../服务器开发案例实战/从零开发一个WebSocket服务器.html">
+            
+                <a href="../服务器开发案例实战/从零开发一个WebSocket服务器.html">
+            
+                    
+                    从零开发一个WebSocket服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="../服务器开发案例实战/1从一款多人联机实时对战游戏开始.html">
+            
+                <a href="../服务器开发案例实战/1从一款多人联机实时对战游戏开始.html">
+            
+                    
+                    从零学习开源项目系列（一） 从一款多人联机实时对战游戏开始
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="../服务器开发案例实战/2最后一战概况.html">
+            
+                <a href="../服务器开发案例实战/2最后一战概况.html">
+            
+                    
+                    从零学习开源项目系列（二） 最后一战概况
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="../服务器开发案例实战/3CSBattleMgr服务源码研究.html">
+            
+                <a href="../服务器开发案例实战/3CSBattleMgr服务源码研究.html">
+            
+                    
+                    从零学习开源项目系列（三） CSBattleMgr服务源码研究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="../服务器开发案例实战/4LogServer源码探究.html">
+            
+                <a href="../服务器开发案例实战/4LogServer源码探究.html">
+            
+                    
+                    从零学习开源项目系列（四）LogServer源码探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part III</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../TeamTalk源码解析/">
+            
+                <a href="../TeamTalk源码解析/">
+            
+                    
+                    TeamTalk IM源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../TeamTalk源码解析/01TeamTalk介绍.html">
+            
+                <a href="../TeamTalk源码解析/01TeamTalk介绍.html">
+            
+                    
+                    01 TeamTalk介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../TeamTalk源码解析/02服务器端的程序的编译与部署.html">
+            
+                <a href="../TeamTalk源码解析/02服务器端的程序的编译与部署.html">
+            
+                    
+                    02 服务器端的程序的编译与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../TeamTalk源码解析/03服务器端的程序架构介绍.html">
+            
+                <a href="../TeamTalk源码解析/03服务器端的程序架构介绍.html">
+            
+                    
+                    03 服务器端的程序架构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../TeamTalk源码解析/04服务器端db_proxy_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/04服务器端db_proxy_server源码分析.html">
+            
+                    
+                    04 服务器端db_proxy_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../TeamTalk源码解析/05服务器端msg_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/05服务器端msg_server源码分析.html">
+            
+                    
+                    05 服务器端msg_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../TeamTalk源码解析/06服务器端login_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/06服务器端login_server源码分析.html">
+            
+                    
+                    06 服务器端login_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../TeamTalk源码解析/07服务器端msfs源码分析.html">
+            
+                <a href="../TeamTalk源码解析/07服务器端msfs源码分析.html">
+            
+                    
+                    07 服务器端msfs源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.8" data-path="../TeamTalk源码解析/08服务器端file_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/08服务器端file_server源码分析.html">
+            
+                    
+                    08 服务器端file_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.9" data-path="../TeamTalk源码解析/09服务器端route_server源码分析.html">
+            
+                <a href="../TeamTalk源码解析/09服务器端route_server源码分析.html">
+            
+                    
+                    09 服务器端route_server源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.10" data-path="../TeamTalk源码解析/10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                <a href="../TeamTalk源码解析/10开放一个TeamTalk测试服务器地址和几个测试账号.html">
+            
+                    
+                    10 开放一个TeamTalk测试服务器地址和几个测试账号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.11" data-path="../TeamTalk源码解析/11pc客户端源码分析.html">
+            
+                <a href="../TeamTalk源码解析/11pc客户端源码分析.html">
+            
+                    
+                    11 pc客户端源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../libevent源码深度剖析/">
+            
+                <a href="../libevent源码深度剖析/">
+            
+                    
+                    libevent源码深度剖析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析01.html">
+            
+                    
+                    libevent源码深度剖析01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.2" data-path="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析02.html">
+            
+                    
+                    libevent源码深度剖析02
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.3" data-path="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析03.html">
+            
+                    
+                    libevent源码深度剖析03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.4" data-path="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析04.html">
+            
+                    
+                    libevent源码深度剖析04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.5" data-path="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析05.html">
+            
+                    
+                    libevent源码深度剖析05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.6" data-path="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析06.html">
+            
+                    
+                    libevent源码深度剖析06
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.7" data-path="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析07.html">
+            
+                    
+                    libevent源码深度剖析07
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.8" data-path="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析08.html">
+            
+                    
+                    libevent源码深度剖析08
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.9" data-path="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析09.html">
+            
+                    
+                    libevent源码深度剖析09
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.10" data-path="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析10.html">
+            
+                    
+                    libevent源码深度剖析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.11" data-path="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析11.html">
+            
+                    
+                    libevent源码深度剖析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.12" data-path="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析12.html">
+            
+                    
+                    libevent源码深度剖析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.1.13" data-path="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                <a href="../libevent源码深度剖析/libevent源码深度剖析13.html">
+            
+                    
+                    libevent源码深度剖析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../leveldb源码分析/">
+            
+                <a href="../leveldb源码分析/">
+            
+                    
+                    leveldb源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.2.1" data-path="../leveldb源码分析/leveldb源码分析1.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析1.html">
+            
+                    
+                    leveldb源码分析1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.2" data-path="../leveldb源码分析/leveldb源码分析2.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析2.html">
+            
+                    
+                    leveldb源码分析2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.3" data-path="../leveldb源码分析/leveldb源码分析3.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析3.html">
+            
+                    
+                    leveldb源码分析3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.4" data-path="../leveldb源码分析/leveldb源码分析4.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析4.html">
+            
+                    
+                    leveldb源码分析4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.5" data-path="../leveldb源码分析/leveldb源码分析5.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析5.html">
+            
+                    
+                    leveldb源码分析5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.6" data-path="../leveldb源码分析/leveldb源码分析6.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析6.html">
+            
+                    
+                    leveldb源码分析6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.7" data-path="../leveldb源码分析/leveldb源码分析7.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析7.html">
+            
+                    
+                    leveldb源码分析7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.8" data-path="../leveldb源码分析/leveldb源码分析8.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析8.html">
+            
+                    
+                    leveldb源码分析8
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.9" data-path="../leveldb源码分析/leveldb源码分析9.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析9.html">
+            
+                    
+                    leveldb源码分析9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.10" data-path="../leveldb源码分析/leveldb源码分析10.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析10.html">
+            
+                    
+                    leveldb源码分析10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.11" data-path="../leveldb源码分析/leveldb源码分析11.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析11.html">
+            
+                    
+                    leveldb源码分析11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.12" data-path="../leveldb源码分析/leveldb源码分析12.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析12.html">
+            
+                    
+                    leveldb源码分析12
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.13" data-path="../leveldb源码分析/leveldb源码分析13.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析13.html">
+            
+                    
+                    leveldb源码分析13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.14" data-path="../leveldb源码分析/leveldb源码分析14.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析14.html">
+            
+                    
+                    leveldb源码分析14
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.15" data-path="../leveldb源码分析/leveldb源码分析15.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析15.html">
+            
+                    
+                    leveldb源码分析15
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.16" data-path="../leveldb源码分析/leveldb源码分析16.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析16.html">
+            
+                    
+                    leveldb源码分析16
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.17" data-path="../leveldb源码分析/leveldb源码分析17.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析17.html">
+            
+                    
+                    leveldb源码分析17
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.18" data-path="../leveldb源码分析/leveldb源码分析18.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析18.html">
+            
+                    
+                    leveldb源码分析18
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.19" data-path="../leveldb源码分析/leveldb源码分析19.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析19.html">
+            
+                    
+                    leveldb源码分析19
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.20" data-path="../leveldb源码分析/leveldb源码分析20.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析20.html">
+            
+                    
+                    leveldb源码分析20
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.21" data-path="../leveldb源码分析/leveldb源码分析21.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析21.html">
+            
+                    
+                    leveldb源码分析21
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2.22" data-path="../leveldb源码分析/leveldb源码分析22.html">
+            
+                <a href="../leveldb源码分析/leveldb源码分析22.html">
+            
+                    
+                    leveldb源码分析22
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../Memcached源码分析/">
+            
+                <a href="../Memcached源码分析/">
+            
+                    
+                    Memcached源码分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1.1" data-path="../Memcached源码分析/00服务器资源调整.html">
+            
+                <a href="../Memcached源码分析/00服务器资源调整.html">
+            
+                    
+                    00 服务器资源调整
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.2" data-path="../Memcached源码分析/01初始化参数解析.html">
+            
+                <a href="../Memcached源码分析/01初始化参数解析.html">
+            
+                    
+                    01 初始化参数解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.3" data-path="../Memcached源码分析/02网络监听的建立.html">
+            
+                <a href="../Memcached源码分析/02网络监听的建立.html">
+            
+                    
+                    02 网络监听的建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.4" data-path="../Memcached源码分析/03网络连接建立.html">
+            
+                <a href="../Memcached源码分析/03网络连接建立.html">
+            
+                    
+                    03 网络连接建立
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.5" data-path="../Memcached源码分析/04内存初始化.html">
+            
+                <a href="../Memcached源码分析/04内存初始化.html">
+            
+                    
+                    04 内存初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.6" data-path="../Memcached源码分析/05资源初始化.html">
+            
+                <a href="../Memcached源码分析/05资源初始化.html">
+            
+                    
+                    05 资源初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.7" data-path="../Memcached源码分析/06get过程.html">
+            
+                <a href="../Memcached源码分析/06get过程.html">
+            
+                    
+                    06 get过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.8" data-path="../Memcached源码分析/07cas属性.html">
+            
+                <a href="../Memcached源码分析/07cas属性.html">
+            
+                    
+                    07 cas属性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.9" data-path="../Memcached源码分析/08内存池.html">
+            
+                <a href="../Memcached源码分析/08内存池.html">
+            
+                    
+                    08 内存池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.10" data-path="../Memcached源码分析/09连接队列.html">
+            
+                <a href="../Memcached源码分析/09连接队列.html">
+            
+                    
+                    09 连接队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.11" data-path="../Memcached源码分析/10Hash表操作.html">
+            
+                <a href="../Memcached源码分析/10Hash表操作.html">
+            
+                    
+                    10 Hash表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.12" data-path="../Memcached源码分析/12set操作.html">
+            
+                <a href="../Memcached源码分析/12set操作.html">
+            
+                    
+                    12 set操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.13" data-path="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                <a href="../Memcached源码分析/13do_item_alloc操作.html">
+            
+                    
+                    13 do_item_alloc操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.14" data-path="../Memcached源码分析/14item结构.html">
+            
+                <a href="../Memcached源码分析/14item结构.html">
+            
+                    
+                    14 item结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.15" data-path="../Memcached源码分析/15Hash表扩容.html">
+            
+                <a href="../Memcached源码分析/15Hash表扩容.html">
+            
+                    
+                    15 Hash表扩容
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.16" data-path="../Memcached源码分析/16线程交互.html">
+            
+                <a href="../Memcached源码分析/16线程交互.html">
+            
+                    
+                    16 线程交互
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.1.17" data-path="../Memcached源码分析/17状态机.html">
+            
+                <a href="../Memcached源码分析/17状态机.html">
+            
+                    
+                    17 状态机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../游戏开发专题/">
+            
+                <a href="../游戏开发专题/">
+            
+                    
+                    游戏开发专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1.1" data-path="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                <a href="../游戏开发专题/1游戏服务器开发的基本体系与服务器端开发的一些建议.html">
+            
+                    
+                    1 游戏服务器开发的基本体系与服务器端开发的一些建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.2" data-path="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                <a href="../游戏开发专题/2网络游戏服务器开发框架设计介绍.html">
+            
+                    
+                    2 网络游戏服务器开发框架设计介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.3" data-path="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                <a href="../游戏开发专题/3游戏后端开发需要掌握的知识.html">
+            
+                    
+                    3 游戏后端开发需要掌握的知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.4" data-path="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                <a href="../游戏开发专题/4关于游戏服务端架构的整理.html">
+            
+                    
+                    4 关于游戏服务端架构的整理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.5" data-path="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                <a href="../游戏开发专题/5各类游戏对应的服务端架构.html">
+            
+                    
+                    5 各类游戏对应的服务端架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.6" data-path="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                <a href="../游戏开发专题/6从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则.html">
+            
+                    
+                    6 从腾讯QQgame高性能服务器集群架构看“分而治之”与“自治”等分布式架构设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.7" data-path="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                <a href="../游戏开发专题/7QQ游戏百万人同时在线服务器架构实现.html">
+            
+                    
+                    7 QQ游戏百万人同时在线服务器架构实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.8" data-path="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/8大型多人在线游戏服务器架构设计.html">
+            
+                    
+                    8 大型多人在线游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.9" data-path="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/9百万用户级游戏服务器架构设计.html">
+            
+                    
+                    9 百万用户级游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.10" data-path="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                <a href="../游戏开发专题/10十万在线的WebGame的数据库设计思路.html">
+            
+                    
+                    10 十万在线的WebGame的数据库设计思路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.11" data-path="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                <a href="../游戏开发专题/11一种高性能网络游戏服务器架构设计.html">
+            
+                    
+                    11 一种高性能网络游戏服务器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.12" data-path="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                <a href="../游戏开发专题/12经典游戏服务器端架构概述.html">
+            
+                    
+                    12 经典游戏服务器端架构概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="9.1.13" data-path="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                <a href="../游戏开发专题/13游戏跨服架构进化之路.html">
+            
+                    
+                    13 游戏跨服架构进化之路
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Part IV</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../程序员面试题精讲/">
+            
+                <a href="../程序员面试题精讲/">
+            
+                    
+                    程序员面试题精讲
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1.1" data-path="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                <a href="../程序员面试题精讲/腾讯后台开发实习生技能要求.html">
+            
+                    
+                    腾讯后台开发实习生技能要求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.2" data-path="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                <a href="../程序员面试题精讲/聊聊如何拿大厂的offer.html">
+            
+                    
+                    聊聊如何拿大厂的 offer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.3" data-path="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                <a href="../程序员面试题精讲/网络通信题目集锦.html">
+            
+                    
+                    网络通信题目集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.4" data-path="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                <a href="../程序员面试题精讲/我面试后端开发经理的经历.html">
+            
+                    
+                    我面试后端开发经理的经历
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.1.5" data-path="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                <a href="../程序员面试题精讲/LinuxCC++后端开发面试问哪些问题.html">
+            
+                    
+                    Linux C/C++后端开发面试问哪些问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../职业规划/">
+            
+                <a href="../职业规划/">
+            
+                    
+                    职业规划
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.2.1" data-path="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                <a href="../职业规划/给工作4年迷茫的程序员们的一点建议.html">
+            
+                    
+                    给工作 4 年迷茫的程序员们的一点建议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.2" data-path="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                <a href="../职业规划/聊聊技术人员的常见的职业问题.html">
+            
+                    
+                    聊聊技术人员的常见的职业问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2.3" data-path="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                <a href="../职业规划/写给那些傻傻想做服务器开发的朋友.html">
+            
+                    
+                    写给那些傻傻想做服务器开发的朋友
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="../自我提升与开源代码/">
+            
+                <a href="../自我提升与开源代码/">
+            
+                    
+                    自我提升与开源代码
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.3.1" data-path="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                <a href="../自我提升与开源代码/2020年好好读一读开源代码吧.html">
+            
+                    
+                    2020 年好好读一读开源代码吧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="../后端开发相关的书籍/">
+            
+                <a href="../后端开发相关的书籍/">
+            
+                    
+                    后端开发相关的书籍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.4.1" data-path="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                <a href="../后端开发相关的书籍/后台开发应该读的书.html">
+            
+                    
+                    后台开发应该读的书
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="../程序员的简历/">
+            
+                <a href="../程序员的简历/">
+            
+                    
+                    程序员的简历
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.5.1" data-path="../程序员的简历/程序员如何写简历.html">
+            
+                <a href="../程序员的简历/程序员如何写简历.html">
+            
+                    
+                    程序员如何写简历
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="../程序员的薪资与年终奖那些事儿/">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/">
+            
+                    
+                    程序员的薪资与年终奖那些事儿
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.6.1" data-path="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/技术面试与HR谈薪资技巧.html">
+            
+                    
+                    技术面试与HR谈薪资技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.2" data-path="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/聊一聊程序员如何增加收入.html">
+            
+                    
+                    聊一聊程序员如何增加收入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6.3" data-path="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                <a href="../程序员的薪资与年终奖那些事儿/谈一谈年终奖.html">
+            
+                    
+                    谈一谈年终奖
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="../程序员的烦心事/">
+            
+                <a href="../程序员的烦心事/">
+            
+                    
+                    程序员的烦心事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.7.1" data-path="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                <a href="../程序员的烦心事/拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？.html">
+            
+                    
+                    拒绝了一家公司的offer后，他们的副总和hr总监同时打电话来询问拒绝原因并极力要求加入，我该不该去？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7.2" data-path="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                <a href="../程序员的烦心事/我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？.html">
+            
+                    
+                    我是一名程序员，结婚时女友要求我用两年的工资作为彩礼，我该不该答应？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="../作者的故事/">
+            
+                <a href="../作者的故事/">
+            
+                    
+                    作者的故事
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.8.1" data-path="../作者的故事/我的2019.html">
+            
+                <a href="../作者的故事/我的2019.html">
+            
+                    
+                    我的 2019
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8.2" data-path="../作者的故事/我是如何年薪五十万的.html">
+            
+                <a href="../作者的故事/我是如何年薪五十万的.html">
+            
+                    
+                    我是如何年薪五十万的
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+		</nav>
+		
+		
+	</div>
+
+	<!-- Content nav -->
+	<div class="book-anchor">
+		<div class="book-anchor-title">在这篇文章中:</div>
+		<div class="book-anchor-body">
+
+		</div>
+	</div>
+
+	<div class="book-body">
+		
+		<div class="body-inner">
+			
+			
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >详解C++11中的智能指针</a>
+    </h1>
+</div>
+
+
+
+
+			<div class="page-wrapper" tabindex="-1" role="main">
+				<div class="page-inner">
+					
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+					<section class="normal markdown-section">
+						
+						<div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x8BE6;&#x89E3;-c-11-&#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;"><b></b>&#x8BE6;&#x89E3; C++ 11 &#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;</a></li></ul></ul></div><h2 id="&#x8BE6;&#x89E3;-c-11-&#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;"><a name="&#x8BE6;&#x89E3;-c-11-&#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;" class="anchor-navigation-ex-anchor" href="#&#x8BE6;&#x89E3;-c-11-&#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x8BE6;&#x89E3; C++ 11 &#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;</h2>
+<p>C/C++ &#x8BED;&#x8A00;&#x6700;&#x4E3A;&#x4EBA;&#x6240;&#x8BDF;&#x75C5;&#x7684;&#x7279;&#x6027;&#x4E4B;&#x4E00;&#x5C31;&#x662F;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x6B64;&#x540E;&#x6765;&#x7684;&#x5927;&#x591A;&#x6570;&#x8BED;&#x8A00;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x5185;&#x7F6E;&#x5185;&#x5B58;&#x5206;&#x914D;&#x4E0E;&#x91CA;&#x653E;&#x529F;&#x80FD;&#xFF0C;&#x6709;&#x7684;&#x751A;&#x81F3;&#x5E72;&#x8106;&#x5BF9;&#x8BED;&#x8A00;&#x7684;&#x4F7F;&#x7528;&#x8005;&#x5C4F;&#x853D;&#x4E86;&#x5185;&#x5B58;&#x6307;&#x9488;&#x8FD9;&#x4E00;&#x6982;&#x5FF5;&#x3002;&#x8FD9;&#x91CC;&#x4E0D;&#x7F6E;&#x8D2C;&#x8912;&#xFF0C;&#x624B;&#x52A8;&#x5206;&#x914D;&#x5185;&#x5B58;&#x4E0E;&#x624B;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x6709;&#x5229;&#x4E5F;&#x6709;&#x5F0A;&#xFF0C;&#x81EA;&#x52A8;&#x5206;&#x914D;&#x5185;&#x5B58;&#x548C;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x4EA6;&#x5982;&#x6B64;&#xFF0C;&#x8FD9;&#x662F;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x8BBE;&#x8BA1;&#x54F2;&#x5B66;&#x3002;&#x6709;&#x4EBA;&#x8BA4;&#x4E3A;&#xFF0C;&#x5185;&#x5B58;&#x5982;&#x6B64;&#x91CD;&#x8981;&#x7684;&#x4E1C;&#x897F;&#x600E;&#x4E48;&#x80FD;&#x653E;&#x5FC3;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x53BB;&#x7BA1;&#x7406;&#x5462;&#xFF1F;&#x800C;&#x53E6;&#x5916;&#x4E00;&#x4E9B;&#x4EBA;&#x5219;&#x8BA4;&#x4E3A;&#xFF0C;&#x5185;&#x5B58;&#x5982;&#x6B64;&#x91CD;&#x8981;&#x7684;&#x4E1C;&#x897F;&#x600E;&#x4E48;&#x80FD;&#x653E;&#x5FC3;&#x4EA4;&#x7ED9;&#x7CFB;&#x7EDF;&#x53BB;&#x7BA1;&#x7406;&#x5462;&#xFF1F;&#x5728; C/C++ &#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x95EE;&#x9898;&#x4E00;&#x76F4;&#x56F0;&#x6270;&#x7740;&#x5E7F;&#x5927;&#x7684;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x56E0;&#x6B64;&#x5404;&#x7C7B;&#x5E93;&#x548C;&#x5DE5;&#x5177;&#x7684;&#x4E00;&#x76F4;&#x5728;&#x52AA;&#x529B;&#x5C1D;&#x8BD5;&#x5404;&#x79CD;&#x65B9;&#x6CD5;&#x53BB;&#x68C0;&#x6D4B;&#x548C;&#x907F;&#x514D;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#xFF0C;&#x5982; boost&#xFF0C;&#x667A;&#x80FD;&#x6307;&#x9488;&#x6280;&#x672F;&#x5E94;&#x8FD0;&#x800C;&#x751F;&#x3002;</p>
+<h4 id="c-9803-&#x7684;&#x5C1D;&#x8BD5;&#x2014;&#x2014;stdautoptr"><a name="c-9803-&#x7684;&#x5C1D;&#x8BD5;&#x2014;&#x2014;stdautoptr" class="anchor-navigation-ex-anchor" href="#c-9803-&#x7684;&#x5C1D;&#x8BD5;&#x2014;&#x2014;stdautoptr"><i class="fa fa-link" aria-hidden="true"></i></a>C++ 98/03 &#x7684;&#x5C1D;&#x8BD5;&#x2014;&#x2014;std::auto_ptr</h4>
+<p>&#x5728; 2019 &#x5E74;&#x8BA8;&#x8BBA; <strong>std::auto_ptr</strong> &#x4E0D;&#x514D;&#x6709;&#x70B9;&#x8BA9;&#x4EBA;&#x6000;&#x7591;&#x662F;&#x4E0D;&#x662F;&#x6709;&#x70B9;&#x8FC7;&#x65F6;&#x4E86;&#xFF0C;&#x786E;&#x5B9E;&#x5982;&#x6B64;&#xFF0C;&#x968F;&#x7740; C++11 &#x6807;&#x51C6;&#x7684;&#x51FA;&#x73B0;&#xFF08;&#x6700;&#x65B0;&#x6807;&#x51C6;&#x662F; C++20&#xFF09;&#xFF0C;<strong>std::auto_ptr</strong> &#x5DF2;&#x7ECF;&#x88AB;&#x5F7B;&#x5E95;&#x5E9F;&#x5F03;&#x4E86;&#xFF0C;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x662F; <strong>std::unique_ptr</strong>&#x3002;&#x7136;&#x800C;&#xFF0C;&#x6211;&#x4E4B;&#x6240;&#x4EE5;&#x8FD8;&#x5411;&#x4F60;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B; <strong>std::auto_ptr</strong> &#x7684;&#x7528;&#x6CD5;&#x4EE5;&#x53CA;&#x5B83;&#x7684;&#x8BBE;&#x8BA1;&#x4E0D;&#x8DB3;&#x4E4B;&#x5904;&#x662F;&#x60F3;&#x8BA9;&#x4F60;&#x4E86;&#x89E3; C++ &#x8BED;&#x8A00;&#x4E2D;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7684;&#x53D1;&#x5C55;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E00;&#x9879;&#x6280;&#x672F;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x5B83;&#x8FC7;&#x53BB;&#x7684;&#x6837;&#x5B50;&#x548C;&#x53D1;&#x5C55;&#x7684;&#x8F68;&#x8FF9;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x66F4;&#x597D;&#x5730;&#x638C;&#x63E1;&#x5B83;&#xFF0C;&#x4E0D;&#x662F;&#x5417;&#xFF1F;</p>
+<p><strong>std::auto_ptr</strong> &#x7684;&#x57FA;&#x672C;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#x6240;&#x793A;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+int main()
+{
+    //&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;1
+    std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(new int(8));
+    //&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;2
+    std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2;
+    sp2.reset(new int(8));
+
+    return 0;
+}
+</code></pre><p>&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61; <strong>sp1</strong> &#x548C; <strong>sp2</strong> &#x5747;&#x6301;&#x6709;&#x4E00;&#x4E2A;&#x5728;&#x5806;&#x4E0A;&#x5206;&#x914D; int &#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x503C;&#x5747;&#x662F; 8&#xFF0C;&#x8FD9;&#x4E24;&#x5757;&#x5806;&#x5185;&#x5B58;&#x5747;&#x53EF;&#x4EE5;&#x5728; <strong>sp1</strong> &#x548C; <strong>sp2</strong> &#x91CA;&#x653E;&#x65F6;&#x5F97;&#x5230;&#x91CA;&#x653E;&#x3002;&#x8FD9;&#x662F; <strong>std::auto_ptr</strong> &#x7684;&#x57FA;&#x672C;&#x7528;&#x6CD5;&#x3002;</p>
+<blockquote>
+<p>sp &#x662F; smart pointer&#xFF08;&#x667A;&#x80FD;&#x6307;&#x9488;&#xFF09;&#x7684;&#x7B80;&#x5199;&#x3002;</p>
+</blockquote>
+<p><strong>std::auto_ptr</strong> &#x771F;&#x6B63;&#x8BA9;&#x4EBA;&#x5BB9;&#x6613;&#x8BEF;&#x7528;&#x7684;&#x5730;&#x65B9;&#x662F;&#x5176;&#x4E0D;&#x5E38;&#x7528;&#x7684;&#x590D;&#x5236;&#x8BED;&#x4E49;&#xFF0C;&#x5373;&#x5F53;&#x590D;&#x5236;&#x4E00;&#x4E2A; <strong>std::auto_ptr</strong> &#x5BF9;&#x8C61;&#x65F6;&#xFF08;&#x62F7;&#x8D1D;&#x590D;&#x5236;&#x6216; operator = &#x590D;&#x5236;&#xFF09;&#xFF0C;&#x539F;&#x5BF9;&#x8C61;&#x6240;&#x6301;&#x6709;&#x7684;&#x5806;&#x5185;&#x5B58;&#x5BF9;&#x8C61;&#x4E5F;&#x4F1A;&#x8F6C;&#x79FB;&#x7ED9;&#x590D;&#x5236;&#x51FA;&#x6765;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+int main()
+{
+    //&#x6D4B;&#x8BD5;&#x62F7;&#x8D1D;&#x6784;&#x9020;
+    std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(new int(8));
+    std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2(sp1);
+    if (sp1.get() != NULL)
+    {
+        std::cout &lt;&lt; &quot;sp1 is not empty.&quot; &lt;&lt; std::endl;
+    }
+    else
+    {
+        std::cout &lt;&lt; &quot;sp1 is empty.&quot; &lt;&lt; std::endl;
+    }
+
+    if (sp2.get() != NULL)
+    {
+        std::cout &lt;&lt; &quot;sp2 is not empty.&quot; &lt;&lt; std::endl;
+    }
+    else
+    {
+        std::cout &lt;&lt; &quot;sp2 is empty.&quot; &lt;&lt; std::endl;
+    }
+
+    //&#x6D4B;&#x8BD5;&#x8D4B;&#x503C;&#x6784;&#x9020;
+    std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3(new int(8));
+    std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp4;
+    sp4 = sp3;
+    if (sp3.get() != NULL)
+    {
+        std::cout &lt;&lt; &quot;sp3 is not empty.&quot; &lt;&lt; std::endl;
+    }
+    else
+    {
+        std::cout &lt;&lt; &quot;sp3 is empty.&quot; &lt;&lt; std::endl;
+    }
+
+    if (sp4.get() != NULL)
+    {
+        std::cout &lt;&lt; &quot;sp4 is not empty.&quot; &lt;&lt; std::endl;
+    }
+    else
+    {
+        std::cout &lt;&lt; &quot;sp4 is empty.&quot; &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#x5206;&#x522B;&#x5229;&#x7528;&#x62F7;&#x8D1D;&#x6784;&#x9020;&#xFF08;sp1 =&gt; sp2&#xFF09;&#x548C; &#x8D4B;&#x503C;&#x6784;&#x9020;&#xFF08;sp3 =&gt; sp4&#xFF09;&#x6765;&#x521B;&#x5EFA;&#x65B0;&#x7684; std::auto_ptr &#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64; sp1 &#x6301;&#x6709;&#x7684;&#x5806;&#x5BF9;&#x8C61;&#x88AB;&#x8F6C;&#x79FB;&#x7ED9; sp2&#xFF0C;sp3 &#x6301;&#x6709;&#x7684;&#x5806;&#x5BF9;&#x8C61;&#x88AB;&#x8F6C;&#x79FB;&#x7ED9; sp4&#x3002;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>[root@iZ238vnojlyZ testx]# g++ -g -o test_auto_ptr test_auto_ptr.cpp
+[root@iZ238vnojlyZ testx]# ./test_auto_ptr 
+sp1 is empty.
+sp2 is not empty.
+sp3 is empty.
+sp4 is not empty.
+</code></pre><p>&#x7531;&#x4E8E; <strong>std::auto_ptr</strong> &#x8FD9;&#x79CD;&#x4E0D;&#x5E38;&#x7528;&#x7684;&#x590D;&#x5236;&#x8BED;&#x4E49;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x5728; stl &#x5BB9;&#x5668;&#x4E2D;&#x4F7F;&#x7528; <strong>std::auto_ptr</strong>&#xFF0C;&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x7EDD;&#x4E0D;&#x5E94;&#x8BE5;&#x5199;&#x51FA;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>std::vector&lt;std::auto_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span>&gt; myvectors;
+</code></pre><p>&#x5F53;&#x7528;&#x7B97;&#x6CD5;&#x5BF9;&#x5BB9;&#x5668;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF08;&#x5982;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5BB9;&#x5668;&#x5143;&#x7D20;&#x904D;&#x5386;&#xFF09;&#xFF0C;&#x5F88;&#x96BE;&#x907F;&#x514D;&#x4E0D;&#x5BF9;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5B9E;&#x73B0;&#x8D4B;&#x503C;&#x4F20;&#x9012;&#xFF0C;&#x8FD9;&#x6837;&#x4FBF;&#x4F1A;&#x4F7F;&#x5BB9;&#x5668;&#x4E2D;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x88AB;&#x7F6E;&#x4E3A;&#x7A7A;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x770B;&#x5230;&#x7684;&#xFF0C;&#x4F1A;&#x9020;&#x6210;&#x5F88;&#x591A;&#x610F;&#x60F3;&#x4E0D;&#x5230;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x4EE5;&#x53F2;&#x4E3A;&#x9274;&#xFF0C;&#x4F5C;&#x4E3A; <strong>std::auto_ptr</strong> &#x7684;&#x66FF;&#x4EE3;&#x8005; <strong>std::unique_ptr</strong> &#x5438;&#x53D6;&#x4E86;&#x8FD9;&#x4E2A;&#x7ECF;&#x9A8C;&#x6559;&#x8BAD;&#x3002;&#x4E0B;&#x6587;&#x4F1A;&#x6765;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>&#x6B63;&#x56E0;&#x4E3A; <strong>std::auto_ptr</strong> &#x7684;&#x8BBE;&#x8BA1;&#x5B58;&#x5728;&#x5982;&#x6B64;&#x91CD;&#x5927;&#x7F3A;&#x9677;&#xFF0C;C++11 &#x6807;&#x51C6;&#x5728;&#x5145;&#x5206;&#x501F;&#x9274;&#x548C;&#x5438;&#x6536;&#x4E86; boost &#x5E93;&#x4E2D;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#xFF0C;&#x5373; <strong>std::unique_ptr</strong>&#x3001;<strong>std::shared_ptr</strong> &#x548C; <strong>std::weak_ptr</strong>&#x3002;</p>
+<blockquote>
+<p>boost &#x8FD8;&#x6709; scoped_ptr&#xFF0C;C++11 &#x5E76;&#x6CA1;&#x6709;&#x5168;&#x90E8;&#x7167;&#x642C;&#xFF0C;&#x800C;&#x662F;&#x9009;&#x62E9;&#x4E86;&#x4E09;&#x4E2A;&#x6700;&#x5B9E;&#x7528;&#x7684;&#x6307;&#x9488;&#x7C7B;&#x578B;&#x3002;&#x5728; C++11 &#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; std::unique_ptr &#x8FBE;&#x5230;&#x4E0E; boost::scoped_ptr &#x4E00;&#x6837;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+</blockquote>
+<p>&#x6240;&#x6709;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7C7B;&#xFF08;&#x5305;&#x62EC; std::unique_ptr&#xFF09;&#x5747;&#x5305;&#x542B;&#x4E8E;&#x5934;&#x6587;&#x4EF6; <em>**</em> &#x4E2D;&#x3002;</p>
+<blockquote>
+<p>&#x6B63;&#x56E0;&#x4E3A;&#x5B58;&#x5728;&#x4E0A;&#x8FF0;&#x8BBE;&#x8BA1;&#x4E0A;&#x7684;&#x7F3A;&#x9677;&#xFF0C;&#x5728; C++11&#x53CA;&#x540E;&#x7EED;&#x8BED;&#x8A00;&#x89C4;&#x8303;&#x4E2D; std::auto_ptr &#x5DF2;&#x7ECF;&#x88AB;&#x5E9F;&#x5F03;&#xFF0C;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x4E0D;&#x5E94;&#x8BE5;&#x518D;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+</blockquote>
+<h4 id="stduniqueptr"><a name="stduniqueptr" class="anchor-navigation-ex-anchor" href="#stduniqueptr"><i class="fa fa-link" aria-hidden="true"></i></a>std::unique_ptr</h4>
+<p><strong>std::unique_ptr</strong> &#x5BF9;&#x5176;&#x6301;&#x6709;&#x7684;&#x5806;&#x5185;&#x5B58;&#x5177;&#x6709;&#x552F;&#x4E00;&#x62E5;&#x6709;&#x6743;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x6C38;&#x8FDC;&#x662F; 1&#xFF0C;<strong>std::unique_ptr</strong> &#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x65F6;&#x4F1A;&#x91CA;&#x653E;&#x5176;&#x6301;&#x6709;&#x7684;&#x5806;&#x5185;&#x5B58;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A; <strong>std::unique_ptr</strong> &#x5BF9;&#x8C61;&#xFF1A;</p>
+<pre class="language-"><code>//&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;1
+std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(new int(123));
+
+//&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;2
+std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2;
+sp2.reset(new int(123));
+
+//&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;3
+std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3 = std::make_unique<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span>(123);
+</code></pre><p>&#x4F60;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F; 3 &#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <strong>std::unique_ptr</strong> &#x800C;&#x4E0D;&#x662F;&#x65B9;&#x5F0F; 1 &#x548C; 2&#xFF0C;&#x56E0;&#x4E3A;&#x5F62;&#x5F0F; 3 &#x66F4;&#x5B89;&#x5168;&#xFF0C;&#x539F;&#x56E0; Scott Meyers &#x5728;&#x5176;&#x300A;Effective Modern C++&#x300B;&#x4E2D;&#x5DF2;&#x7ECF;&#x89E3;&#x91CA;&#x8FC7;&#x4E86;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x9605;&#x8BFB;&#x6B64;&#x4E66;&#x76F8;&#x5173;&#x7AE0;&#x8282;&#x3002;</p>
+<blockquote>
+<p>&#x4EE4;&#x5F88;&#x591A;&#x4EBA;&#x5BF9; C++11 &#x89C4;&#x8303;&#x4E0D;&#x6EE1;&#x7684;&#x5730;&#x65B9;&#x662F;&#xFF0C;C++11 &#x65B0;&#x589E;&#x4E86; std::make_shared() &#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; std::shared_ptr &#x5BF9;&#x8C61;&#xFF0C;&#x5374;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x76F8;&#x5E94;&#x7684; std::make_unique() &#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; std::unique_ptr &#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x76F4;&#x5230; C++14 &#x624D;&#x88AB;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5728; C++11 &#x4E2D;&#x4F60;&#x5F88;&#x5BB9;&#x6613;&#x5B9E;&#x73B0;&#x51FA;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#xFF1A;</p>
+</blockquote>
+<pre class="language-"><code>template<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typename</span> <span class="token attr-name">T,</span> <span class="token attr-name">typename...</span> <span class="token attr-name">Ts</span><span class="token punctuation">&gt;</span></span>
+std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span> make_unique(Ts&amp;&amp; ...params)
+{
+    return std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span>(new T(std::forward<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Ts</span><span class="token punctuation">&gt;</span></span>(params)...));
+}
+</code></pre><p>&#x9274;&#x4E8E; <strong>std::auto_ptr</strong> &#x7684;&#x524D;&#x8F66;&#x4E4B;&#x9274;&#xFF0C;<strong>std::unique_ptr</strong> &#x7981;&#x6B62;&#x590D;&#x5236;&#x8BED;&#x4E49;&#xFF0C;&#x4E3A;&#x4E86;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x6548;&#x679C;&#xFF0C;<strong>std::unique_ptr</strong> &#x7C7B;&#x7684;&#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#xFF08;operator =&#xFF09;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <strong>delete</strong>&#x3002;</p>
+<pre class="language-"><code>template <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>class</span> <span class="token attr-name">T</span><span class="token punctuation">&gt;</span></span>
+class unique_ptr
+{
+    //&#x7701;&#x7565;&#x5176;&#x4ED6;&#x4EE3;&#x7801;...
+
+    //&#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;delete
+    unique_ptr(const unique_ptr&amp;) = delete;
+    unique_ptr&amp; operator=(const unique_ptr&amp;) = delete;
+};
+</code></pre><p>&#x56E0;&#x6B64;&#xFF0C;&#x4E0B;&#x5217;&#x4EE3;&#x7801;&#x662F;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x7684;&#xFF1A;</p>
+<pre class="language-"><code>std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(std::make_unique<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span>(123));;
+
+//&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;
+//std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2(sp1);
+std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3;
+//&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;
+//sp3 = sp1;
+</code></pre><p>&#x7981;&#x6B62;&#x590D;&#x5236;&#x8BED;&#x4E49;&#x4E5F;&#x5B58;&#x5728;&#x7279;&#x4F8B;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; std::unique_ptr&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> func(int val)
+{
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> up(new int(val));
+    return up;
+}
+
+int main()
+{
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1 = func(123);
+
+    return 0;
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4ECE; func &#x51FD;&#x6570;&#x4E2D;&#x5F97;&#x5230;&#x4E00;&#x4E2A; <strong>std::unique_ptr</strong> &#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x7ED9; sp1&#x3002;</p>
+<p>&#x65E2;&#x7136; <strong>std::unique_ptr</strong> &#x4E0D;&#x80FD;&#x590D;&#x5236;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x4F55;&#x5C06;&#x4E00;&#x4E2A; <strong>std::unique_ptr</strong> &#x5BF9;&#x8C61;&#x6301;&#x6709;&#x7684;&#x5806;&#x5185;&#x5B58;&#x8F6C;&#x79FB;&#x7ED9;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5462;&#xFF1F;&#x7B54;&#x6848;&#x662F;&#x4F7F;&#x7528;&#x79FB;&#x52A8;&#x6784;&#x9020;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+int main()
+{
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(std::make_unique<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span>(123));
+
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2(std::move(sp1));
+
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3;
+    sp3 = std::move(sp2);
+
+    return 0;
+}
+</code></pre><p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x5229;&#x7528; std::move &#x5C06; sp1 &#x6301;&#x6709;&#x7684;&#x5806;&#x5185;&#x5B58;&#xFF08;&#x503C;&#x4E3A; 123&#xFF09;&#x8F6C;&#x79FB;&#x7ED9; sp2&#xFF0C;&#x518D;&#x628A; sp2 &#x8F6C;&#x79FB;&#x7ED9; sp3&#x3002;&#x6700;&#x540E;&#xFF0C;sp1 &#x548C; sp2 &#x4E0D;&#x518D;&#x6301;&#x6709;&#x5806;&#x5185;&#x5B58;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x3002;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x7684; std::move &#x64CD;&#x4F5C;&#x90FD;&#x6709;&#x610F;&#x4E49;&#xFF0C;&#x53EA;&#x6709;&#x5B9E;&#x73B0;&#x4E86;&#x79FB;&#x52A8;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF08;Move Constructor&#xFF09;&#x6216;&#x79FB;&#x52A8;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#xFF08;operator =&#xFF09;&#x7684;&#x7C7B;&#x624D;&#x884C;&#xFF0C;&#x800C; <strong>std::unique_ptr</strong> &#x6B63;&#x597D;&#x5B9E;&#x73B0;&#x4E86;&#x8FD9;&#x4E8C;&#x8005;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x5B9E;&#x73B0;&#x4F2A;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>template<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typename</span> <span class="token attr-name">T,</span> <span class="token attr-name">typename</span> <span class="token attr-name">Deletor</span><span class="token punctuation">&gt;</span></span>
+class unique_ptr
+{
+    //&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x7701;&#x7565;...
+public:
+    unique_ptr(unique_ptr&amp;&amp; rhs)
+    {
+        this-&gt;m_pT = rhs.m_pT;
+        //&#x6E90;&#x5BF9;&#x8C61;&#x91CA;&#x653E;
+        rhs.m_pT = nullptr;
+    }
+
+    unique_ptr&amp; operator=(unique_ptr&amp;&amp; rhs)
+    {
+        this-&gt;m_pT = rhs.m_pT;
+        //&#x6E90;&#x5BF9;&#x8C61;&#x91CA;&#x653E;
+        rhs.m_pT = nullptr;
+        return *this;
+    }
+
+private:
+    T*    m_pT;
+};
+</code></pre><p>&#x8FD9;&#x662F; <strong>std::unique_ptr</strong> &#x5177;&#x6709;&#x79FB;&#x52A8;&#x8BED;&#x4E49;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5E0C;&#x671B;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E4B;&#x3002;&#x5173;&#x4E8E;&#x79FB;&#x52A8;&#x6784;&#x9020;&#x548C; <strong>std::move</strong>&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x540E;&#x9762;&#x7AE0;&#x8282;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p><strong>std::unique_ptr</strong> &#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x4E00;&#x4E2A;&#x5806;&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x4E00;&#x7EC4;&#x5806;&#x5BF9;&#x8C61;&#xFF0C;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+int main()
+{
+    //&#x521B;&#x5EFA;10&#x4E2A;int&#x7C7B;&#x578B;&#x7684;&#x5806;&#x5BF9;&#x8C61;
+    //&#x5F62;&#x5F0F;1
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int[]</span><span class="token punctuation">&gt;</span></span> sp1(new int[10]);
+
+    //&#x5F62;&#x5F0F;2
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int[]</span><span class="token punctuation">&gt;</span></span> sp2;
+    sp2.reset(new int[10]);
+    //&#x5F62;&#x5F0F;3
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int[]</span><span class="token punctuation">&gt;</span></span> sp3(std::make_unique<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int[]</span><span class="token punctuation">&gt;</span></span>(10));
+
+    for (int i = 0; i &lt; 10; ++i)
+    {
+        sp1[i] = i;
+        sp2[i] = i;
+        sp3[i] = i;
+    }
+
+    for (int i = 0; i &lt; 10; ++i)
+    {
+        std::cout &lt;&lt; sp1[i] &lt;&lt; &quot;, &quot; &lt;&lt; sp2[i] &lt;&lt; &quot;, &quot; &lt;&lt; sp3[i] &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre><p>&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>[root@myaliyun testmybook]# g++ -g -o test_unique_ptr_with_array test_unique_ptr_with_array.cpp -std=c++17
+[root@myaliyun testmybook]# ./test_unique_ptr_with_array 
+0, 0, 0
+1, 1, 1
+2, 2, 2
+3, 3, 3
+4, 4, 4
+5, 5, 5
+6, 6, 6
+7, 7, 7
+8, 8, 8
+9, 9, 9
+</code></pre><p><strong>std::shared_ptr</strong> &#x548C; <strong>std::weak_ptr</strong> &#x4E5F;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x4E00;&#x7EC4;&#x5806;&#x5BF9;&#x8C61;&#xFF0C;&#x7528;&#x6CD5;&#x4E0E; <strong>std::unique_ptr</strong> &#x76F8;&#x540C;&#xFF0C;&#x4E0B;&#x6587;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x3002;</p>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x6301;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x7684;&#x91CA;&#x653E;&#x51FD;&#x6570;</strong></p>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x5728;&#x6790;&#x6784;&#x65F6;&#x53EA;&#x4F1A;&#x91CA;&#x653E;&#x5176;&#x6301;&#x6709;&#x7684;&#x5806;&#x5185;&#x5B58;&#xFF08;&#x8C03;&#x7528; delete &#x6216;&#x8005; delete[]&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x5047;&#x8BBE;&#x8FD9;&#x5757;&#x5806;&#x5185;&#x5B58;&#x4EE3;&#x8868;&#x7684;&#x5BF9;&#x8C61;&#x8FD8;&#x5BF9;&#x5E94;&#x4E00;&#x79CD;&#x9700;&#x8981;&#x56DE;&#x6536;&#x7684;&#x8D44;&#x6E90;&#xFF08;&#x5982;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x53E5;&#x67C4;&#x3001;&#x6587;&#x4EF6;&#x53E5;&#x67C4;&#x7B49;&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x81EA;&#x5B9A;&#x4E49;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7684;&#x8D44;&#x6E90;&#x91CA;&#x653E;&#x51FD;&#x6570;&#x3002;&#x5047;&#x8BBE;&#x73B0;&#x5728;&#x6709;&#x4E00;&#x4E2A; Socket &#x7C7B;&#xFF0C;&#x5BF9;&#x5E94;&#x7740;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x53E5;&#x67C4;&#xFF0C;&#x5728;&#x56DE;&#x6536;&#x65F6;&#x9700;&#x8981;&#x5173;&#x95ED;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5982;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7684;&#x8D44;&#x6E90;&#x6790;&#x6784;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x4EE5; <strong>std::unique_ptr</strong> &#x4E3A;&#x4F8B;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class Socket
+{
+public:
+    Socket()
+    {
+
+    }
+
+    ~Socket()
+    {
+
+    }
+
+    //&#x5173;&#x95ED;&#x8D44;&#x6E90;&#x53E5;&#x67C4;
+    void close()
+    {
+
+    }
+};
+
+int main()
+{
+    auto deletor = [](Socket* pSocket) {
+        //&#x5173;&#x95ED;&#x53E5;&#x67C4;
+        pSocket-&gt;close();
+        //TODO: &#x4F60;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x6253;&#x5370;&#x4E00;&#x884C;&#x65E5;&#x5FD7;...
+        delete pSocket;
+    };
+
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Socket,</span> <span class="token attr-name">void(*)(Socket</span> <span class="token attr-name">*</span> <span class="token attr-name">pSocket)</span><span class="token punctuation">&gt;</span></span> spSocket(new Socket(), deletor);
+
+    return 0;
+}
+</code></pre><p>&#x81EA;&#x5B9A;&#x4E49; <strong>std::unique_ptr</strong> &#x7684;&#x8D44;&#x6E90;&#x91CA;&#x653E;&#x51FD;&#x6570;&#x5176;&#x89C4;&#x5219;&#x662F;&#xFF1A;</p>
+<pre class="language-"><code>std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T,</span> <span class="token attr-name">DeletorFuncPtr</span><span class="token punctuation">&gt;</span></span>
+</code></pre><p>&#x5176;&#x4E2D; T &#x662F;&#x4F60;&#x8981;&#x91CA;&#x653E;&#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#xFF0C;DeletorPtr &#x662F;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x6307;&#x9488;&#x3002;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801; <strong>33</strong> &#x884C;&#x8868;&#x793A; DeletorPtr &#x6709;&#x70B9;&#x590D;&#x6742;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <strong>decltype(deletor)</strong> &#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x5DF1;&#x63A8;&#x5BFC; deletor &#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5C06; <strong>33</strong> &#x884C;&#x4EE3;&#x7801;&#x4FEE;&#x6539;&#x4E3A;&#xFF1A;</p>
+<pre class="language-"><code>std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Socket,</span> <span class="token attr-name">decltype(deletor)</span><span class="token punctuation">&gt;</span></span> spSocket(new Socket(), deletor);
+</code></pre><h4 id="stdsharedptr"><a name="stdsharedptr" class="anchor-navigation-ex-anchor" href="#stdsharedptr"><i class="fa fa-link" aria-hidden="true"></i></a>std::shared_ptr</h4>
+<p><strong>std::unique_ptr</strong> &#x5BF9;&#x5176;&#x6301;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x5177;&#x6709;&#x72EC;&#x5360;&#x6027;&#xFF0C;&#x800C; <strong>std::shared_ptr</strong> &#x6301;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x4EE5;&#x5728;&#x591A;&#x4E2A; <strong>std::shared_ptr</strong> &#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#xFF0C;&#x6BCF;&#x591A;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x8D44;&#x6E90;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x5C06;&#x589E;&#x52A0; 1&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8BE5;&#x8D44;&#x6E90;&#x7684; <strong>std::shared_ptr</strong> &#x5BF9;&#x8C61;&#x6790;&#x6784;&#x65F6;&#xFF0C;&#x8D44;&#x6E90;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x51CF; 1&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x5BF9;&#x8C61;&#x6790;&#x6784;&#x65F6;&#xFF0C;&#x53D1;&#x73B0;&#x8D44;&#x6E90;&#x8BA1;&#x6570;&#x4E3A; 0&#xFF0C;&#x5C06;&#x91CA;&#x653E;&#x5176;&#x6301;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#xFF0C;&#x9012;&#x589E;&#x548C;&#x51CF;&#x5C11;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x662F;&#x5B89;&#x5168;&#x7684;&#x3002;&#xFF08;&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x64CD;&#x4F5C; <strong>std::shared_ptr</strong> &#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x662F;&#x5B89;&#x5168;&#x7684;&#xFF09;&#x3002;<strong>std::shared_ptr</strong> &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <strong>use_count()</strong> &#x65B9;&#x6CD5;&#x6765;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x6301;&#x6709;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x3002;&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x63CF;&#x8FF0;&#x7684;&#xFF0C;<strong>std::shared_ptr</strong> &#x7528;&#x6CD5;&#x548C; <strong>std::unique_ptr</strong> &#x57FA;&#x672C;&#x76F8;&#x540C;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5316; <strong>std::shared_ptr</strong> &#x7684;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre class="language-"><code>//&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;1
+std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(new int(123));
+
+//&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;2
+std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2;
+sp2.reset(new int(123));
+
+//&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;3
+std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3;
+sp3 = std::make_shared<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span>(123);
+</code></pre><p>&#x548C; <strong>std::unique_ptr</strong> &#x4E00;&#x6837;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x4F7F;&#x7528; <strong>std::make_shared</strong> &#x53BB;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x518D;&#x6765;&#x770B;&#x53E6;&#x5916;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class A
+{
+public:
+    A()
+    {
+        std::cout &lt;&lt; &quot;A constructor&quot; &lt;&lt; std::endl;
+    }
+
+    ~A()
+    {
+        std::cout &lt;&lt; &quot;A destructor&quot; &lt;&lt; std::endl;
+    }
+};
+
+int main()
+{
+    {
+        //&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;1
+        std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp1(new A());
+
+        std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+        //&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;2
+        std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp2(sp1);
+        std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+        sp2.reset();
+        std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+        {
+            std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp3 = sp1;
+            std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+        }
+
+        std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre><ul>
+<li>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801; <strong>22</strong> &#x884C; sp1 &#x6784;&#x9020;&#x65F6;&#xFF0C;&#x540C;&#x65F6;&#x89E6;&#x53D1;&#x5BF9;&#x8C61; A &#x7684;&#x6784;&#x9020;&#xFF0C;&#x56E0;&#x6B64; A &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F1A;&#x6267;&#x884C;&#xFF1B;</li>
+<li>&#x6B64;&#x65F6;&#x53EA;&#x6709;&#x4E00;&#x4E2A; sp1 &#x5BF9;&#x8C61;&#x5F15;&#x7528; <strong>22</strong> &#x884C; new &#x51FA;&#x6765;&#x7684; A &#x5BF9;&#x8C61;&#xFF08;&#x4E3A;&#x4E86;&#x53D9;&#x8FF0;&#x65B9;&#x4FBF;&#xFF0C;&#x4E0B;&#x6587;&#x7EDF;&#x4E00;&#x79F0;&#x4E4B;&#x4E3A;<strong>&#x8D44;&#x6E90;&#x5BF9;&#x8C61; A</strong>&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x4EE3;&#x7801; <strong>24</strong> &#x884C;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#x4E3A; <strong>1</strong>&#xFF1B;</li>
+<li>&#x4EE3;&#x7801; <strong>27</strong> &#x884C;&#xFF0C;&#x5229;&#x7528; sp1 &#x62F7;&#x8D1D;&#x4E00;&#x4EFD; sp2&#xFF0C;&#x5BFC;&#x81F4;&#x4EE3;&#x7801; <strong>28</strong> &#x884C;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A; <strong>2</strong>&#xFF1B;</li>
+<li>&#x4EE3;&#x7801; <strong>30</strong> &#x884C;&#x8C03;&#x7528; sp2 &#x7684; reset() &#x65B9;&#x6CD5;&#xFF0C;sp2 &#x91CA;&#x653E;&#x5BF9;&#x8D44;&#x6E90;&#x5BF9;&#x8C61; A &#x7684;&#x5F15;&#x7528;&#xFF0C;&#x56E0;&#x6B64;&#x4EE3;&#x7801; <strong>31</strong> &#x884C;&#x6253;&#x5370;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x503C;&#x518D;&#x6B21;&#x53D8;&#x4E3A; <strong>1</strong>&#xFF1B;</li>
+<li>&#x4EE3;&#x7801; <strong>34</strong> &#x884C; &#x5229;&#x7528; sp1 &#x518D;&#x6B21; &#x521B;&#x5EFA; sp3&#xFF0C;&#x56E0;&#x6B64;&#x4EE3;&#x7801; <strong>35</strong> &#x884C;&#x6253;&#x5370;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x53D8;&#x4E3A; <strong>2</strong>&#xFF1B;</li>
+<li>&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230; <strong>36</strong> &#x884C;&#x4EE5;&#x540E;&#xFF0C;sp3 &#x51FA;&#x4E86;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x88AB;&#x6790;&#x6784;&#xFF0C;&#x8D44;&#x6E90; A &#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x9012;&#x51CF; 1&#xFF0C;&#x56E0;&#x6B64; &#x4EE3;&#x7801; <strong>38</strong> &#x884C;&#x6253;&#x5370;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E3A; <strong>1</strong>&#xFF1B;</li>
+<li>&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230; <strong>39</strong> &#x884C;&#x4EE5;&#x540E;&#xFF0C;sp1 &#x51FA;&#x4E86;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x88AB;&#x6790;&#x6784;&#xFF0C;&#x5728;&#x5176;&#x6790;&#x6784;&#x65F6;&#x9012;&#x51CF;&#x8D44;&#x6E90; A &#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x81F3; <strong>0</strong>&#xFF0C;&#x5E76;&#x6790;&#x6784;&#x8D44;&#x6E90; A &#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x7C7B; A &#x7684;&#x6790;&#x6784;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x6240;&#x4EE5;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>[root@myaliyun testmybook]# ./test_shared_ptr_use_count 
+A constructor
+use count: 1
+use count: 2
+use count: 1
+use count: 2
+use count: 1
+A destructor
+</code></pre><p><strong>std::enable_shared_from_this</strong></p>
+<p>&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x4E2D;&#x8FD4;&#x56DE;&#x5305;&#x88F9;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#xFF08;this&#xFF09;&#x7684;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x5BF9;&#x8C61;&#x7ED9;&#x5916;&#x90E8;&#x4F7F;&#x7528;&#xFF0C;C++ &#x65B0;&#x6807;&#x51C6;&#x4E5F;&#x4E3A;&#x6211;&#x4EEC;&#x8003;&#x8651;&#x5230;&#x4E86;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6709;&#x5982;&#x6B64;&#x9700;&#x6C42;&#x7684;&#x7C7B;&#x53EA;&#x8981;&#x7EE7;&#x627F;&#x81EA; <strong>std::enable_shared_from_this</strong> &#x6A21;&#x677F;&#x5BF9;&#x8C61;&#x5373;&#x53EF;&#x3002;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class A : public std::enable_shared_from_this<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span>
+{
+public:
+    A()
+    {
+        std::cout &lt;&lt; &quot;A constructor&quot; &lt;&lt; std::endl;
+    }
+
+    ~A()
+    {
+        std::cout &lt;&lt; &quot;A destructor&quot; &lt;&lt; std::endl;
+    }
+
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> getSelf()
+    {
+        return shared_from_this();
+    }
+};
+
+int main()
+{
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp1(new A());
+
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp2 = sp1-&gt;getSelf();
+
+    std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x7C7B; A &#x7684;&#x7EE7;&#x627F; <strong>std::enable_shared_from_this</strong> &#x5E76;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A; <strong>getSelf()</strong> &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x81EA;&#x8EAB;&#x7684; <strong>std::shared_ptr</strong> &#x5BF9;&#x8C61;&#xFF0C;&#x5728; <strong>getSelf()</strong> &#x4E2D;&#x8C03;&#x7528; <strong>shared_from_this()</strong> &#x5373;&#x53EF;&#x3002;</p>
+<p><strong>std::enable_shared_from_this</strong> &#x7528;&#x8D77;&#x6765;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x5B58;&#x5728;&#x5F88;&#x591A;&#x4E0D;&#x6613;&#x5BDF;&#x89C9;&#x7684;&#x9677;&#x9631;&#x3002;</p>
+<p><strong>&#x9677;&#x9631;&#x4E00;&#xFF1A;&#x4E0D;&#x5E94;&#x8BE5;&#x5171;&#x4EAB;&#x6808;&#x5BF9;&#x8C61;&#x7684; this &#x7ED9;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;</strong></p>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x5C06;&#x4E0A;&#x9762;&#x4EE3;&#x7801; main &#x51FD;&#x6570; <strong>25</strong> &#x884C;&#x751F;&#x6210; A &#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x5F0F;&#x6539;&#x6210;&#x4E00;&#x4E2A;&#x6808;&#x53D8;&#x91CF;&#xFF0C;&#x5373;&#xFF1A;</p>
+<pre class="language-"><code>//&#x5176;&#x4ED6;&#x76F8;&#x540C;&#x4EE3;&#x7801;&#x7701;&#x7565;...
+
+int main()
+{
+    A a;
+
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp2 = a.getSelf();
+
+    std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp2.use_count() &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre><p>&#x8FD0;&#x884C;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x4F1A;&#x53D1;&#x73B0;&#x7A0B;&#x5E8F;&#x5728; <code>std::shared_ptr sp2 = a.getSelf();</code> &#x4EA7;&#x751F;&#x5D29;&#x6E83;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7BA1;&#x7406;&#x7684;&#x662F;&#x5806;&#x5BF9;&#x8C61;&#xFF0C;&#x6808;&#x5BF9;&#x8C61;&#x4F1A;&#x5728;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7ED3;&#x675F;&#x540E;&#x81EA;&#x884C;&#x9500;&#x6BC1;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x80FD;&#x901A;&#x8FC7; <strong>shared_from_this()</strong> &#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x4EA4;&#x7531;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7BA1;&#x7406;&#x3002;&#x5207;&#x8BB0;&#xFF1A;<strong>&#x667A;&#x80FD;&#x6307;&#x9488;&#x6700;&#x521D;&#x8BBE;&#x8BA1;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x7BA1;&#x7406;&#x5806;&#x5BF9;&#x8C61;&#x7684;&#xFF08;&#x5373;&#x90A3;&#x4E9B;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x7684;&#x8D44;&#x6E90;&#xFF09;</strong>&#x3002;</p>
+<p><strong>&#x9677;&#x9631;&#x4E8C;&#xFF1A;&#x907F;&#x514D; std::enable_shared_from_this &#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x95EE;&#x9898;</strong></p>
+<p>&#x518D;&#x6765;&#x770B;&#x53E6;&#x5916;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>// test_std_enable_shared_from_this.cpp : This file contains the &apos;main&apos; function. Program execution begins and ends there.
+//
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class A : public std::enable_shared_from_this<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span>
+{
+public:
+    A()
+    {
+        m_i = 9;
+        //&#x6CE8;&#x610F;:
+        //&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x8C03;&#x7528;shared_from_this()&#x7ED9;m_SelfPtr&#x8D4B;&#x503C;
+        //&#x4F46;&#x662F;&#x5F88;&#x9057;&#x61BE;&#x4E0D;&#x80FD;&#x8FD9;&#x4E48;&#x505A;,&#x5982;&#x679C;&#x5199;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x7A0B;&#x5E8F;&#x4F1A;&#x76F4;&#x63A5;&#x5D29;&#x6E83;
+
+        std::cout &lt;&lt; &quot;A constructor&quot; &lt;&lt; std::endl;
+    }
+
+    ~A()
+    {
+        m_i = 0;
+
+        std::cout &lt;&lt; &quot;A destructor&quot; &lt;&lt; std::endl;
+    }
+
+    void func()
+    {
+        m_SelfPtr = shared_from_this();
+    }
+
+public:
+    int                 m_i;
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span>  m_SelfPtr;
+
+};
+
+int main()
+{
+    {
+        std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> spa(new A());
+        spa-&gt;func();
+    }
+
+    return 0;
+}
+</code></pre><p>&#x4E4D;&#x4E00;&#x770B;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x597D;&#x50CF;&#x770B;&#x4E0D;&#x51FA;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x9645;&#x8FD0;&#x884C;&#x4E00;&#x4E0B;&#x770B;&#x770B;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre class="language-"><code>[root@myaliyun testmybook]# g++ -g -o test_std_enable_shared_from_this_problem test_std_enable_shared_from_this_problem.cpp
+[root@myaliyun testmybook]# ./test_std_enable_shared_from_this_problem
+A constructor
+</code></pre><p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x5728;&#x7A0B;&#x5E8F;&#x7684;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#xFF0C;&#x53EA;&#x6709; A &#x7C7B;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#xFF0C;&#x6CA1;&#x6709; A &#x7C7B;&#x6790;&#x6784;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x8F93;&#x51FA;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740; new &#x51FA;&#x6765;&#x7684; A &#x5BF9;&#x8C61;&#x4EA7;&#x751F;&#x4E86;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x4E86;&#xFF01;</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x4E3A;&#x4EC0;&#x4E48; new &#x51FA;&#x6765;&#x7684; A &#x5BF9;&#x8C61;&#x5F97;&#x4E0D;&#x5230;&#x91CA;&#x653E;&#x3002;&#x5F53;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230; <strong>42</strong> &#x884C;&#x540E;&#xFF0C;spa &#x51FA;&#x4E86;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x51C6;&#x5907;&#x6790;&#x6784;&#xFF0C;&#x5728;&#x6790;&#x6784;&#x65F6;&#x5176;&#x53D1;&#x73B0;&#x4ECD;&#x7136;&#x6709;&#x53E6;&#x5916;&#x7684;&#x4E00;&#x4E2A; std::shared_ptr &#x5BF9;&#x8C61;&#x5373; A::m_SelfPtr &#x5F15;&#x7528;&#x4E86; A&#xFF0C;&#x56E0;&#x6B64; spa &#x53EA;&#x4F1A;&#x5C06; A &#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x9012;&#x51CF;&#x4E3A; 1&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x9500;&#x6BC1;&#x81EA;&#x8EAB;&#x4E86;&#x3002;&#x73B0;&#x5728;&#x7559;&#x4E0B;&#x4E00;&#x4E2A;&#x77DB;&#x76FE;&#x7684;&#x5904;&#x5883;&#xFF1A;&#x5FC5;&#x987B;&#x9500;&#x6BC1; A &#x624D;&#x80FD;&#x9500;&#x6BC1;&#x5176;&#x6210;&#x5458;&#x53D8;&#x91CF; m_SelfPtr&#xFF0C;&#x800C;&#x9500;&#x6BC1; m_SelfPtr &#x5FC5;&#x987B;&#x5148;&#x9500;&#x6BC1; A&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684; std::enable_shared_from_this &#x7684;&#x5FAA;&#x73AF;&#x5F15;&#x7528;&#x95EE;&#x9898;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x505A;&#x51FA;&#x8FD9;&#x6837;&#x7684;&#x903B;&#x8F91;&#x8BBE;&#x8BA1;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x5F62;&#x4E0B;&#x5373;&#x4F7F;&#x4F7F;&#x7528;&#x4E86;&#x667A;&#x80FD;&#x6307;&#x9488;&#x4E5F;&#x4F1A;&#x9020;&#x6210;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E00;&#x4E2A;&#x8D44;&#x6E90;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x53EF;&#x4EE5;&#x4EA4;&#x7ED9;&#x4E00;&#x4E2A;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x662F;&#x8BE5;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E0D;&#x53EF;&#x4EE5;&#x518D;&#x4EA4;&#x7ED9;&#x6574;&#x4E2A;&#x8D44;&#x6E90;&#x6765;&#x7BA1;&#x7406;&#x3002;</p>
+<h4 id="stdweakptr"><a name="stdweakptr" class="anchor-navigation-ex-anchor" href="#stdweakptr"><i class="fa fa-link" aria-hidden="true"></i></a>std::weak_ptr</h4>
+<p><strong>std::weak_ptr</strong> &#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x63A7;&#x5236;&#x8D44;&#x6E90;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#xFF0C;&#x662F;&#x5BF9;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x79CD;&#x5F31;&#x5F15;&#x7528;&#xFF0C;&#x53EA;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5176;&#x7BA1;&#x7406;&#x7684;&#x8D44;&#x6E90;&#x7684;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x624B;&#x6BB5;&#xFF0C;&#x5F15;&#x5165;&#x5B83;&#x7684;&#x76EE;&#x7684;&#x4E3A;&#x534F;&#x52A9; <strong>std::shared_ptr</strong> &#x5DE5;&#x4F5C;&#x3002;</p>
+<p><strong>std::weak_ptr</strong> &#x53EF;&#x4EE5;&#x4ECE;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x6216;&#x53E6;&#x4E00;&#x4E2A; <strong>std::weak_ptr</strong> &#x5BF9;&#x8C61;&#x6784;&#x9020;&#xFF0C;<strong>std::shared_ptr</strong> &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#x7ED9; <strong>std::weak_ptr</strong> &#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <strong>std::weak_ptr</strong> &#x7684; <strong>lock()</strong> &#x51FD;&#x6570;&#x6765;&#x83B7;&#x5F97; <strong>std::shared_ptr</strong>&#x3002;&#x5B83;&#x7684;&#x6784;&#x9020;&#x548C;&#x6790;&#x6784;&#x4E0D;&#x4F1A;&#x5F15;&#x8D77;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x589E;&#x52A0;&#x6216;&#x51CF;&#x5C11;&#x3002;<strong>std::weak_ptr</strong> &#x53EF;&#x7528;&#x6765;&#x89E3;&#x51B3; <strong>std::shared_ptr</strong> &#x76F8;&#x4E92;&#x5F15;&#x7528;&#x65F6;&#x7684;&#x6B7B;&#x9501;&#x95EE;&#x9898;&#xFF08;&#x5373;&#x4E24;&#x4E2A;<strong>std::shared_ptr</strong> &#x76F8;&#x4E92;&#x5F15;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x6C38;&#x8FDC;&#x4E0D;&#x53EF;&#x80FD;&#x4E0B;&#x964D;&#x4E3A; 0&#xFF0C; &#x8D44;&#x6E90;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x91CA;&#x653E;&#xFF09;&#x3002;</p>
+<p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+int main()
+{
+    //&#x521B;&#x5EFA;&#x4E00;&#x4E2A;std::shared_ptr&#x5BF9;&#x8C61;
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp1(new int(123));
+    std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+    //&#x901A;&#x8FC7;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5F97;&#x5230;&#x4E00;&#x4E2A;std::weak_ptr&#x5BF9;&#x8C61;
+    std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2(sp1);
+    std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+    //&#x901A;&#x8FC7;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#x5F97;&#x5230;&#x4E00;&#x4E2A;std::weak_ptr&#x5BF9;&#x8C61;
+    std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3 = sp1;
+    std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+    //&#x901A;&#x8FC7;&#x4E00;&#x4E2A;std::weak_ptr&#x5BF9;&#x8C61;&#x5F97;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;std::weak_ptr&#x5BF9;&#x8C61;
+    std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp4 = sp2;
+    std::cout &lt;&lt; &quot;use count: &quot; &lt;&lt; sp1.use_count() &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre><p>&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>[root@myaliyun testmybook]# g++ -g -o test_weak_ptr test_weak_ptr.cpp 
+[root@myaliyun testmybook]# ./test_weak_ptr
+use count: 1
+use count: 1
+use count: 1
+use count: 1
+</code></pre><p>&#x65E0;&#x8BBA;&#x901A;&#x8FC7;&#x4F55;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA; <strong>std::weak_ptr</strong> &#x90FD;&#x4E0D;&#x4F1A;&#x589E;&#x52A0;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x6B21;&#x8F93;&#x51FA;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x7684;&#x503C;&#x90FD;&#x662F; 1&#x3002;</p>
+<p>&#x65E2;&#x7136;&#xFF0C;<strong>std::weak_ptr</strong> &#x4E0D;&#x7BA1;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x88AB;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;&#x5982;&#x4F55;&#x5F97;&#x77E5;&#x5462;&#xFF1F;<strong>std::weak_ptr</strong> &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <strong>expired()</strong> &#x65B9;&#x6CD5;&#x6765;&#x505A;&#x8FD9;&#x4E00;&#x9879;&#x68C0;&#x6D4B;&#xFF0C;&#x8FD4;&#x56DE; true&#xFF0C;&#x8BF4;&#x660E;&#x5176;&#x5F15;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x5DF2;&#x7ECF;&#x4E0D;&#x5B58;&#x5728;&#x4E86;&#xFF1B;&#x8FD4;&#x56DE; false&#xFF0C;&#x8BF4;&#x660E;&#x8BE5;&#x8D44;&#x6E90;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <strong>std::weak_ptr</strong> &#x7684; <strong>lock()</strong> &#x65B9;&#x6CD5;&#x5F97;&#x5230;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x5BF9;&#x8C61;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x64CD;&#x4F5C;&#x8D44;&#x6E90;&#xFF0C;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x6F14;&#x793A;&#x4E86;&#x8BE5;&#x7528;&#x6CD5;&#xFF1A;</p>
+<pre class="language-"><code>//tmpConn_ &#x662F;&#x4E00;&#x4E2A; std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TcpConnection</span><span class="token punctuation">&gt;</span></span> &#x5BF9;&#x8C61;
+//tmpConn_&#x5F15;&#x7528;&#x7684;TcpConnection&#x5DF2;&#x7ECF;&#x9500;&#x6BC1;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;
+if (tmpConn_.expired())
+    return;
+
+std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TcpConnection</span><span class="token punctuation">&gt;</span></span> conn = tmpConn_.lock();
+if (conn)
+{
+    //&#x5BF9;conn&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x7701;&#x7565;...
+}
+</code></pre><p>&#x6709;&#x8BFB;&#x8005;&#x53EF;&#x80FD;&#x5BF9;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4EA7;&#x751F;&#x7591;&#x95EE;&#xFF0C;&#x65E2;&#x7136;&#x4F7F;&#x7528;&#x4E86; <strong>std::weak_ptr</strong> &#x7684; <strong>expired()</strong> &#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x4E86;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <strong>std::weak_ptr</strong> &#x5BF9;&#x8C61;&#x5BF9;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x5462;&#xFF1F;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x662F;&#x884C;&#x4E0D;&#x901A;&#x7684;&#xFF0C;<strong>std::weak_ptr</strong> &#x7C7B;&#x6CA1;&#x6709;&#x91CD;&#x5199; <strong>operator-&gt;</strong> &#x548C; <strong>operator*</strong> &#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x80FD;&#x50CF; <strong>std::shared_ptr</strong> &#x6216; <strong>std::unique_ptr</strong> &#x4E00;&#x6837;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x5BF9;&#x8C61;&#xFF0C;&#x540C;&#x65F6; <strong>std::weak_ptr</strong> &#x7C7B;&#x4E5F;&#x6CA1;&#x6709;&#x91CD;&#x5199; <strong>operator!</strong> &#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x4E0D;&#x80FD;&#x901A;&#x8FC7; <strong>std::weak_ptr</strong> &#x5BF9;&#x8C61;&#x76F4;&#x63A5;&#x5224;&#x65AD;&#x5176;&#x5F15;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class A
+{
+public:
+    void doSomething()
+    {
+
+    }
+};
+
+int main()
+{    
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp1(new A());
+
+    std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span> sp2(sp1);
+
+    //&#x6B63;&#x786E;&#x4EE3;&#x7801;
+    if (sp1)
+    {
+        //&#x6B63;&#x786E;&#x4EE3;&#x7801;
+        sp1-&gt;doSomething();
+        (*sp1).doSomething();
+    }
+
+    //&#x6B63;&#x786E;&#x4EE3;&#x7801;
+    if (!sp1)
+    {
+
+    }
+
+    //&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#xFF0C;&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#x901A;&#x8FC7;
+    //if (sp2)
+    //{
+    //    //&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#xFF0C;&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#x901A;&#x8FC7;
+    //    sp2-&gt;doSomething();
+    //    (*sp2).doSomething();
+    //}
+
+    //&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#xFF0C;&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#x901A;&#x8FC7;
+    //if (!sp2)
+    //{
+
+    //}
+
+    return 0;
+}
+</code></pre><p>&#x4E4B;&#x6240;&#x4EE5; <strong>std::weak_ptr</strong> &#x4E0D;&#x589E;&#x52A0;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x7684;&#x5F15;&#x7528;&#x8BA1;&#x6570;&#x4E0D;&#x7BA1;&#x7406;&#x8D44;&#x6E90;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;&#x5373;&#x4F7F;&#x5B83;&#x5B9E;&#x73B0;&#x4E86;&#x4EE5;&#x4E0A;&#x8BF4;&#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x5B83;&#x4EEC;&#x4E5F;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x8C03;&#x7528;&#x671F;&#x95F4;&#xFF0C;&#x5F15;&#x7528;&#x7684;&#x8D44;&#x6E90;&#x53EF;&#x80FD;&#x6070;&#x597D;&#x88AB;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;&#x8FD9;&#x4F1A;&#x9020;&#x6210;&#x68D8;&#x624B;&#x7684;&#x9519;&#x8BEF;&#x548C;&#x9EBB;&#x70E6;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;<strong>std::weak_ptr</strong> &#x7684;&#x6B63;&#x786E;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x662F;&#x90A3;&#x4E9B;&#x8D44;&#x6E90;&#x5982;&#x679C;&#x53EF;&#x80FD;&#x5C31;&#x4F7F;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x53EF;&#x4F7F;&#x7528;&#x5219;&#x4E0D;&#x7528;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5B83;&#x4E0D;&#x53C2;&#x4E0E;&#x8D44;&#x6E90;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x7BA1;&#x7406;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7F51;&#x7EDC;&#x5206;&#x5C42;&#x7ED3;&#x6784;&#x4E2D;&#xFF0C;Session &#x5BF9;&#x8C61;&#xFF08;&#x4F1A;&#x8BDD;&#x5BF9;&#x8C61;&#xFF09;&#x5229;&#x7528; Connection &#x5BF9;&#x8C61;&#xFF08;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#xFF09;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x662F; Session &#x5BF9;&#x8C61;&#x4E0D;&#x7BA1;&#x7406; Connection &#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;Session &#x7BA1;&#x7406; Connection &#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x4E0D;&#x5408;&#x7406;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x7F51;&#x7EDC;&#x5E95;&#x5C42;&#x51FA;&#x9519;&#x4F1A;&#x5BFC;&#x81F4; Connection &#x5BF9;&#x8C61;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x6B64;&#x65F6; Session &#x5BF9;&#x8C61;&#x5982;&#x679C;&#x5F3A;&#x884C;&#x6301;&#x6709; Connection &#x5BF9;&#x8C61;&#x4E0E;&#x4E8B;&#x5B9E;&#x77DB;&#x76FE;&#x3002;</p>
+<p><strong>std::weak_ptr</strong> &#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x7ECF;&#x5178;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x8BA2;&#x9605;&#x8005;&#x6A21;&#x5F0F;&#x6216;&#x8005;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x4E2D;&#x3002;&#x8FD9;&#x91CC;&#x4EE5;&#x8BA2;&#x9605;&#x8005;&#x4E3A;&#x4F8B;&#x6765;&#x8BF4;&#x660E;&#xFF0C;&#x6D88;&#x606F;&#x53D1;&#x5E03;&#x5668;&#x53EA;&#x6709;&#x5728;&#x67D0;&#x4E2A;&#x8BA2;&#x9605;&#x8005;&#x5B58;&#x5728;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x4F1A;&#x5411;&#x5176;&#x53D1;&#x5E03;&#x6D88;&#x606F;&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x7BA1;&#x7406;&#x8BA2;&#x9605;&#x8005;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x3002;</p>
+<pre class="language-"><code>class Subscriber
+{
+
+};
+
+class SubscribeManager
+{
+public:
+    void publish()
+    {
+        for (const auto&amp; iter : m_subscribers)
+        {
+            if (!iter.expired())
+            {
+                //TODO&#xFF1A;&#x7ED9;&#x8BA2;&#x9605;&#x8005;&#x53D1;&#x9001;&#x6D88;&#x606F;
+            }
+        }
+    }
+
+private:
+    std::vector&lt;std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Subscriber</span><span class="token punctuation">&gt;</span></span>&gt;   m_subscribers;
+};
+</code></pre><h4 id="&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;"><a name="&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;" class="anchor-navigation-ex-anchor" href="#&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F;</h4>
+<p>&#x4E00;&#x4E2A; <strong>std::unique_ptr</strong> &#x5BF9;&#x8C61;&#x5927;&#x5C0F;&#x4E0E;&#x88F8;&#x6307;&#x9488;&#x5927;&#x5C0F;&#x76F8;&#x540C;&#xFF08;&#x5373; sizeof(std::unique_ptr<t>) == sizeof(void<em>)&#xFF09;&#xFF0C;&#x800C; <strong>std::shared_ptr</strong> &#x7684;&#x5927;&#x5C0F;&#x662F; <em>*std::unique_ptr</em></em> &#x7684;&#x4E00;&#x500D;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x6211;&#x5206;&#x522B;&#x5728; Visual Studio 2019 &#x548C; gcc/g++ 4.8 &#x4E0A;&#xFF08;&#x4E8C;&#x8005;&#x90FD;&#x7F16;&#x8BD1;&#x6210; x64 &#x7A0B;&#x5E8F;&#xFF09;&#x7684;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;&#xFF1A;</t></p>
+<p><strong>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</strong></p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">&gt;</span></span>
+
+int main()
+{
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp0;
+    std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">std:</span>:string</span><span class="token punctuation">&gt;</span></span> sp1;
+    sp1.reset(new std::string());
+    std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp2;
+    std::weak_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>int</span><span class="token punctuation">&gt;</span></span> sp3;
+
+    std::cout &lt;&lt; &quot;sp0 size: &quot; &lt;&lt; sizeof(sp0) &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;sp1 size: &quot; &lt;&lt; sizeof(sp1) &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;sp2 size: &quot; &lt;&lt; sizeof(sp2) &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;sp3 size: &quot; &lt;&lt; sizeof(sp3) &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre><p>Visual Studio 2019 &#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../imgs/sp1.webp" alt=""></p>
+<p>gcc/g++ &#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../imgs/sp2.webp" alt=""></p>
+<p>&#x5728; 32 &#x4F4D;&#x673A;&#x5668;&#x4E0A;&#xFF0C;<strong>std_unique_ptr</strong> &#x5360; 4 &#x5B57;&#x8282;&#xFF0C;<strong>std::shared_ptr</strong> &#x548C; <strong>std::weak_ptr</strong> &#x5360; 8 &#x5B57;&#x8282;&#xFF1B;&#x5728; 64 &#x4F4D;&#x673A;&#x5668;&#x4E0A;&#xFF0C;<strong>std_unique_ptr</strong> &#x5360; 8 &#x5B57;&#x8282;&#xFF0C;<strong>std::shared_ptr</strong> &#x548C; <strong>std::weak_ptr</strong> &#x5360; 16 &#x5B57;&#x8282;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;<strong>std_unique_ptr</strong> &#x7684;&#x5927;&#x5C0F;&#x603B;&#x662F;&#x548C;&#x539F;&#x59CB;&#x6307;&#x9488;&#x5927;&#x5C0F;&#x4E00;&#x6837;&#xFF0C;<strong>std::shared_ptr</strong> &#x548C; <strong>std::weak_ptr</strong> &#x5927;&#x5C0F;&#x662F;&#x539F;&#x59CB;&#x6307;&#x9488;&#x7684;&#x4E00;&#x500D;&#x3002;</p>
+<h4 id="&#x667A;&#x80FD;&#x6307;&#x9488;&#x4F7F;&#x7528;&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><a name="&#x667A;&#x80FD;&#x6307;&#x9488;&#x4F7F;&#x7528;&#x6CE8;&#x610F;&#x4E8B;&#x9879;" class="anchor-navigation-ex-anchor" href="#&#x667A;&#x80FD;&#x6307;&#x9488;&#x4F7F;&#x7528;&#x6CE8;&#x610F;&#x4E8B;&#x9879;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x667A;&#x80FD;&#x6307;&#x9488;&#x4F7F;&#x7528;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h4>
+<p>C++ &#x65B0;&#x6807;&#x51C6;&#x63D0;&#x5021;&#x7684;&#x7406;&#x5FF5;&#x4E4B;&#x4E00;&#x662F;&#x4E0D;&#x5E94;&#x8BE5;&#x518D;&#x624B;&#x52A8;&#x8C03;&#x7528; delete &#x6216;&#x8005; free &#x51FD;&#x6570;&#x53BB;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x4E86;&#xFF0C;&#x800C;&#x5E94;&#x8BE5;&#x628A;&#x5B83;&#x4EEC;&#x4EA4;&#x7ED9;&#x65B0;&#x6807;&#x51C6;&#x63D0;&#x4F9B;&#x7684;&#x5404;&#x79CD;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x3002;C++ &#x65B0;&#x6807;&#x51C6;&#x4E2D;&#x7684;&#x5404;&#x79CD;&#x667A;&#x80FD;&#x6307;&#x9488;&#x662F;&#x5982;&#x6B64;&#x7684;&#x5B9E;&#x7528;&#x4E0E;&#x5F3A;&#x5927;&#xFF0C;&#x5728;&#x73B0;&#x4EE3; C++ &#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x8BFB;&#x8005;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x53BB;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x667A;&#x80FD;&#x6307;&#x9488;&#x867D;&#x7136;&#x597D;&#x7528;&#xFF0C;&#x4F46;&#x7A0D;&#x4E0D;&#x6CE8;&#x610F;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x8BB8;&#x591A;&#x96BE;&#x4EE5;&#x53D1;&#x73B0;&#x7684; bug&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x6839;&#x636E;&#x7ECF;&#x9A8C;&#x603B;&#x7ED3;&#x4E86;&#x51E0;&#x6761;&#xFF1A;</p>
+<ul>
+<li><p>&#x4E00;&#x65E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7BA1;&#x7406;&#x540E;&#xFF0C;&#x5C31;&#x4E0D;&#x8BE5;&#x518D;&#x4F7F;&#x7528;&#x539F;&#x59CB;&#x88F8;&#x6307;&#x9488;&#x53BB;&#x64CD;&#x4F5C;&#xFF1B;</p>
+<p>&#x770B;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class Subscriber
+{
+
+};
+
+int main()
+{    
+  Subscriber* pSubscriber = new Subscriber();
+
+  std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Subscriber</span><span class="token punctuation">&gt;</span></span> spSubscriber(pSubscriber);
+
+  delete pSubscriber;
+
+  return 0;
+}
+</code></pre><p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5229;&#x7528;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x5806;&#x5BF9;&#x8C61; Subscriber&#xFF0C;&#x7136;&#x540E;&#x5229;&#x7528;&#x667A;&#x80FD;&#x6307;&#x9488; spSubscriber &#x53BB;&#x7BA1;&#x7406;&#x4E4B;&#xFF0C;&#x53EF;&#x4EE5;&#x5374;&#x79C1;&#x4E0B;&#x5229;&#x7528;&#x539F;&#x59CB;&#x6307;&#x9488;&#x9500;&#x6BC1;&#x4E86;&#x8BE5;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x8BA9;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61; <strong>spSubscriber</strong> &#x60C5;&#x4F55;&#x4EE5;&#x582A;&#x554A;&#xFF1F;</p>
+<p>&#x8BB0;&#x4F4F;&#xFF0C;&#x4E00;&#x65E6;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x63A5;&#x7BA1;&#x4E86;&#x4F60;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x6240;&#x6709;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x5E94;&#x8BE5;&#x901A;&#x8FC7;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#xFF0C;&#x4E0D;&#x5EFA;&#x8BAE;&#x518D;&#x901A;&#x8FC7;&#x539F;&#x59CB;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x4E86;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x9664;&#x4E86; <strong>std::weak_ptr</strong>&#xFF0C;<strong>std::unique_ptr</strong> &#x548C; <strong>std::shared_ptr</strong> &#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x83B7;&#x53D6;&#x539F;&#x59CB;&#x6307;&#x9488;&#x7684;&#x65B9;&#x6CD5;&#x2014;&#x2014;<strong>get()</strong> &#x51FD;&#x6570;&#x3002;</p>
+<pre class="language-"><code>int main()
+{    
+  Subscriber* pSubscriber = new Subscriber();
+
+  std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Subscriber</span><span class="token punctuation">&gt;</span></span> spSubscriber(pSubscriber);
+
+  //pTheSameSubscriber&#x548C;pSubscriber&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;
+  Subscriber* pTheSameSubscriber= spSubscriber.get();
+
+  return 0;
+}
+</code></pre></li>
+<li><p>&#x5206;&#x6E05;&#x695A;&#x573A;&#x5408;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#xFF1B;</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x8D44;&#x6E90;&#x4E0D;&#x9700;&#x8981;&#x5728;&#x5176;&#x4ED6;&#x5730;&#x65B9;&#x5171;&#x4EAB;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x4F7F;&#x7528; <strong>std::unique_ptr</strong>&#xFF0C;&#x53CD;&#x4E4B;&#x4F7F;&#x7528; <strong>std::shared_ptr</strong>&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x662F;&#x5728;&#x8BE5;&#x667A;&#x80FD;&#x6307;&#x9488;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x8D44;&#x6E90;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF1B;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528; <strong>std::weak_ptr</strong>&#x3002;</p>
+</li>
+<li><p>&#x8BA4;&#x771F;&#x8003;&#x8651;&#xFF0C;&#x907F;&#x514D;&#x64CD;&#x4F5C;&#x67D0;&#x4E2A;&#x5F15;&#x7528;&#x8D44;&#x6E90;&#x5DF2;&#x7ECF;&#x91CA;&#x653E;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#xFF1B;</p>
+<p>&#x524D;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x4E00;&#x5B9A;&#x8BA9;&#x4F60;&#x89C9;&#x5F97;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7684;&#x6301;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x662F;&#x5426;&#x8FD8;&#x6709;&#x6548;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x662F;&#x5EFA;&#x8BAE;&#x5728;&#x4E0D;&#x540C;&#x573A;&#x666F;&#x8C28;&#x614E;&#x4E00;&#x70B9;&#xFF0C;&#x6709;&#x4E9B;&#x573A;&#x666F;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x9020;&#x6210;&#x8BEF;&#x5224;&#x3002;&#x4F8B;&#x5982;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre class="language-"><code>#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iostream</span><span class="token punctuation">&gt;</span></span>
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+class T
+{
+public:
+  void doSomething()
+  {
+      std::cout &lt;&lt; &quot;T do something...&quot; &lt;&lt; m_i &lt;&lt; std::endl;
+  }
+
+private:
+  int     m_i;
+};
+
+int main()
+{    
+  std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span> sp1(new T());
+  const auto&amp; sp2 = sp1;
+
+  sp1.reset();
+
+  //&#x7531;&#x4E8E;sp2&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x6301;&#x6709;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x5728;&#x8FD9;&#x91CC;&#x51FA;&#x73B0;&#x610F;&#x5916;&#x7684;&#x884C;&#x4E3A;
+  sp2-&gt;doSomething();
+
+  return 0;
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;sp2 &#x662F; sp1 &#x7684;&#x5F15;&#x7528;&#xFF0C;sp1 &#x88AB;&#x7F6E;&#x7A7A;&#x540E;&#xFF0C;sp2 &#x4E5F;&#x4E00;&#x540C;&#x4E3A;&#x7A7A;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x8C03;&#x7528; sp2-&gt;doSomething()&#xFF0C;sp2-&gt;&#xFF08;&#x5373; <strong>operator-&gt;</strong>&#xFF09;&#x5728;&#x5185;&#x90E8;&#x4F1A;&#x8C03;&#x7528; <strong>get()</strong> &#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x539F;&#x59CB;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x65F6;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x7A7A;&#x6307;&#x9488;&#xFF08;&#x5730;&#x5740;&#x4E3A; 0&#xFF09;&#xFF0C;&#x7EE7;&#x7EED;&#x8C03;&#x7528; doSomething() &#x5BFC;&#x81F4;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x3002;</p>
+<p>&#x4F60;&#x4E00;&#x5B9A;&#x4ECD;&#x7136;&#x89C9;&#x5F97;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E5F;&#x80FD;&#x5F88;&#x660E;&#x663E;&#x5730;&#x770B;&#x51FA;&#x95EE;&#x9898;&#xFF0C;ok&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x653E;&#x5230;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code>//&#x8FDE;&#x63A5;&#x65AD;&#x5F00;
+void MonitorServer::OnClose(const std::shared_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TcpConnection</span><span class="token punctuation">&gt;</span></span>&amp; conn)
+{    
+  std::lock_guard<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">std:</span>:mutex</span><span class="token punctuation">&gt;</span></span> guard(m_sessionMutex);
+  for (auto iter = m_sessions.begin(); iter != m_sessions.end(); ++iter)
+  {
+      //&#x901A;&#x8FC7;&#x6BD4;&#x5BF9;connection&#x5BF9;&#x8C61;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;session
+      if ((*iter)-&gt;GetConnectionPtr() == conn)
+      {
+          m_sessions.erase(iter);
+          //&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#xFF1A;&#x7A0B;&#x5E8F;&#x5728;&#x6B64;&#x5904;&#x5D29;&#x6E83;
+          LOGI(&quot;monitor client disconnected: %s&quot;, conn-&gt;peerAddress().toIpPort().c_str());
+          break;
+      }
+  }
+}
+</code></pre><p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E0D;&#x662F;&#x6211;&#x675C;&#x64B0;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x6765;&#x81EA;&#x4E8E;&#x6211;&#x5B9E;&#x9645;&#x7684;&#x4E00;&#x4E2A;&#x5546;&#x4E1A;&#x9879;&#x76EE;&#x4E2D;&#x3002;&#x6CE8;&#x610F;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x63D0;&#x9192;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x8BE5;&#x6BB5;&#x7A0B;&#x5E8F;&#x4F1A;&#x5728;&#x4EE3;&#x7801; <strong>12</strong> &#x884C;&#x5904;&#x5D29;&#x6E83;&#xFF0C;&#x5D29;&#x6E83;&#x539F;&#x56E0;&#x662F;&#x8C03;&#x7528;&#x4E86; <code>conn-&gt;peerAddress()</code> &#x65B9;&#x6CD5;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x8D77;&#x5D29;&#x6E83;&#xFF1F;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x4E00;&#x76EE;&#x4E86;&#x7136;&#x5730;&#x770B;&#x51FA;&#x4E86;&#x5417;&#xFF1F;</p>
+<p>&#x5D29;&#x6E83;&#x539F;&#x56E0;&#x662F;&#x4F20;&#x5165;&#x7684; conn &#x5BF9;&#x8C61;&#x548C;&#x4E0A;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x7684; sp2 &#x4E00;&#x6837;&#x90FD;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x4E2A; <strong>std::shared_ptr</strong> &#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5F53;&#x8FDE;&#x63A5;&#x65AD;&#x5F00;&#x65F6;&#xFF0C;&#x5BF9;&#x5E94;&#x7684; TcpConnection &#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x65E9;&#x5DF2;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x800C; conn &#x5F15;&#x7528;&#x5C31;&#x4F1A;&#x53D8;&#x6210;&#x7A7A;&#x6307;&#x9488;&#xFF08;&#x4E25;&#x683C;&#x6765;&#x8BF4;&#x662F;&#x4E0D;&#x518D;&#x62E5;&#x6709;&#x4E00;&#x4E2A; TcpConnection &#x5BF9;&#x8C61;&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x8C03;&#x7528; TcpConnection &#x7684; peerAddress() &#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x548C;&#x4E0A;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x4E00;&#x6837;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+</li>
+<li><p>&#x4F5C;&#x4E3A;&#x7C7B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x4F7F;&#x7528;&#x524D;&#x7F6E;&#x58F0;&#x660E;&#xFF08;forward declarations&#xFF09;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x4E3A;&#x4E86;&#x51CF;&#x5C0F;&#x7F16;&#x8BD1;&#x4F9D;&#x8D56;&#x52A0;&#x5FEB;&#x7F16;&#x8BD1;&#x901F;&#x5EA6;&#x548C;&#x751F;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x7684;&#x5927;&#x5C0F;&#xFF0C;C/C++ &#x9879;&#x76EE;&#x4E2D;&#x4E00;&#x822C;&#x5728; *.h &#x6587;&#x4EF6;&#x5BF9;&#x4E8E;&#x6307;&#x9488;&#x7C7B;&#x578B;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x524D;&#x7F6E;&#x58F0;&#x660E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5305;&#x542B;&#x5BF9;&#x5E94;&#x7C7B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre class="language-"><code>//Test.h
+//&#x5728;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;A&#x7684;&#x524D;&#x7F6E;&#x58F0;&#x660E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5305;&#x542B;A.h&#x6587;&#x4EF6;
+class A;
+
+class Test
+{
+public:
+  Test();
+  ~Test();
+
+private:
+  A*      m_pA;
+};
+</code></pre><p>&#x540C;&#x6837;&#x7684;&#x9053;&#x7406;&#xFF0C;&#x5728;&#x5934;&#x6587;&#x4EF6;&#x4E2D;&#x5F53;&#x4F7F;&#x7528;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x7C7B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x4E5F;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x4F7F;&#x7528;&#x524D;&#x7F6E;&#x58F0;&#x660E;&#x53BB;&#x5F15;&#x7528;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x7684;&#x5305;&#x88F9;&#x7C7B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5305;&#x542B;&#x5305;&#x88F9;&#x7C7B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x3002;</p>
+<pre class="language-"><code>//Test.h
+#include <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>memory</span><span class="token punctuation">&gt;</span></span>
+
+//&#x667A;&#x80FD;&#x6307;&#x9488;&#x5305;&#x88F9;&#x7C7B;A&#xFF0C;&#x8FD9;&#x91CC;&#x4F18;&#x5148;&#x4F7F;&#x7528;A&#x7684;&#x524D;&#x7F6E;&#x58F0;&#x660E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5305;&#x542B;A.h
+class A;
+
+class Test
+{
+public:
+  Test();
+  ~Test();
+
+private:  
+  std::unique_ptr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>A</span><span class="token punctuation">&gt;</span></span>  m_spA;
+};
+</code></pre></li>
+</ul>
+<p>C++ &#x65B0;&#x6807;&#x51C6;&#x4E2D;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#x6211;&#x60F3;&#x4ECB;&#x7ECD;&#x7684;&#x5C31;&#x8FD9;&#x4E48;&#x591A;&#x4E86;&#xFF0C;Modern C/C++ &#x5DF2;&#x7ECF;&#x53D8;&#x4E3A; C/C++ &#x5F00;&#x53D1;&#x7684;&#x8D8B;&#x52BF;&#xFF0C;&#x5E0C;&#x671B;&#x8BFB;&#x8005;&#x80FD;&#x5584;&#x7528;&#x548C;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x540E;&#x4E09;&#x79CD;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x3002;</p>
+<footer class="page-footer"><span class="copyright">&#x5982;&#x9700;&#x4E0B;&#x8F7D;&#x672C;&#x7AD9;&#x5168;&#x90E8;&#x6280;&#x672F;&#x6587;&#x7AE0;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x3010;&#x9AD8;&#x6027;&#x80FD;&#x670D;&#x52A1;&#x5668;&#x5F00;&#x53D1;&#x3011;&#x516C;&#x4F17;&#x53F7;&#x56DE;&#x590D;&#x5173;&#x952E;&#x5B57;&#x201C;&#x6587;&#x7AE0;&#x4E0B;&#x8F7D;&#x201D;&#x5373;&#x53EF;&#x3002;</span><span class="footer-modification">&#x6700;&#x8FD1;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;
+2020-09-15 21:36:21
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+						
+					</section>
+					
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+		
+		<a href="深入理解CC++中的指针.html" class="navigation navigation-prev " aria-label="Previous page: 深入理解C/C++中的指针">
+			<i class="fa fa-angle-left"></i>
+		</a>
+		
+		
+		<a href="C++17结构化绑定.html" class="navigation navigation-next " aria-label="Next page: C++17结构化绑定">
+			<i class="fa fa-angle-right"></i>
+		</a>
+		
+		
+		
+	</div>
+	<script>
+		var gitbook = gitbook || [];
+		gitbook.push(function() {
+			gitbook.page.hasChanged({"page":{"title":"详解C++11中的智能指针","level":"1.2.5","depth":2,"next":{"title":"C++17结构化绑定","level":"1.2.6","depth":2,"path":"articles/C++必知必会的知识点/C++17结构化绑定.md","ref":"articles/C++必知必会的知识点/C++17结构化绑定.md","articles":[]},"previous":{"title":"深入理解C/C++中的指针","level":"1.2.4","depth":2,"path":"articles/C++必知必会的知识点/深入理解CC++中的指针.md","ref":"articles/C++必知必会的知识点/深入理解CC++中的指针.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","-lunr","-search","search-pro","splitter","popup","back-to-top-button","hide-element","prism","-highlight","tbfed-pagefooter","code","anchor-navigation-ex","theme-fexa","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"如需下载本站全部技术文章，可以在【高性能服务器开发】公众号回复关键字“文章下载”即可。","modify_label":"最近更新时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{},"livereload":{},"splitter":{},"search-pro":{},"popup":{},"theme-fexa":{"search-placeholder":"输入关键字搜索","logo":"./logo.png","favicon":"./favicon.ico"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"mode":"float","showGoTop":false,"printLog":false,"multipleH1":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""},"pageTop":{"showLevelIcon":false,"level1Icon":"","level2Icon":"","level3Icon":""}},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"easy_coder","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"高性能服务器开发 技术专栏","links":{},"gitbook":"*","description":"","theme-default":{"showLevel":true},"extension":null},"file":{"path":"articles/C++必知必会的知识点/详解C++11中的智能指针.md","mtime":"2020-09-15T13:36:21.557Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-10-09T15:31:57.905Z"},"basePath":"../..","book":{"language":""}});
+		});
+	</script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-fexa/fexa.js"></script>
+        
+    
+
+    </body>
+</html>
+
